@@ -18,6 +18,7 @@ var csurf = require('csurf')
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
+var logout = require('./routes/logout')
 var signUp = require('./routes/signUp')
 
 mongoose.connect('mongodb://admin:Doritos5!@ds257627.mlab.com:57627/fb_clone_db', { useMongoClient: true})
@@ -89,9 +90,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/signup', signUp )
-
-
-
+app.use('/logout', logout)
 
 
 // catch 404 and forward to error handler
