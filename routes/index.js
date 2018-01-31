@@ -9,7 +9,6 @@ var csrfProtection = csrf({ cookie: true})
 
 /* GET home page. */
 router.get('*', csrfProtection, function(req, res, next) {
-  console.log(req.session)
   if (req.session.user) {
   User.findOne({ email: req.session.user.email }, function (err, user) {
     if( !user) { // If no user send to login page
@@ -18,9 +17,7 @@ router.get('*', csrfProtection, function(req, res, next) {
       // If user exist compare session pass with server pass, if true allow to auth
       // For Simple 1-10 user sign in sync is fine. For larger, switch to async.
       if (bcrypt.compare(req.session.user.password, user.password)) { 
-        
         req.session.user = user
-        req.session.user.password = ''
         res.redirect('/auth/')
       } else { // If passwords do not match, send them back to login page
         res.render('index', { csrfToken: req.csrfToken() });
@@ -36,20 +33,20 @@ router.get('*', csrfProtection, function(req, res, next) {
 
 
 // Log in Route
-
 router.post('/', csrfProtection, function(req, res, next) {
-
-  User.findOne({ email: req.body.email } , function( err, user) {
+  
+  User.findOne({ email: req.body.email }, function (err, user) {
     if (!user) {
       res.render('index');
     } else {
-      if (bcrypt.compare(req.body.password, user.password)) {
+      if (bcrypt.compareSync(req.body.password, user.password)) {
         req.session.user = user;
         res.redirect('/auth/')
       } else {
-        res.render('index');
+        res.render('index', { csrfToken: req.csrfToken() });
       }
     }
+
   })
 });
 
