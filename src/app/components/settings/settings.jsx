@@ -1,18 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Header from '../base/header'
 
-class Home extends React.Component {
+class Settings extends React.Component {
 
     render() {
         return (
             <div>
                 <Header />
-            
+            <h1>Settings</h1>
             </div>
         )
     }
 }
 
 
-export default Home
+export default Settings
