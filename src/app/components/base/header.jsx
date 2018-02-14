@@ -14,37 +14,44 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <ul className="nav" style={styles.navbar}>
+                <nav class="navbar navbar-expand-lg nav" style={styles.navbar}>
                     <div onClick={this.handleToggle} ><span style={styles.hamburger}>&#9776;</span></div>
 
-                    <Drawer docked={false}
-                        width={200}
-                        open={this.state.open}
-                        onRequestChange={(open) => this.setState({ open })}>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
 
-                        <MenuItem
-                            containerElement={<Link to="/auth" />}
-                            primaryText="Time line" />
-                        <MenuItem
-                            containerElement={<Link to="/auth/myprofile" />}
-                            primaryText="My Profile" />
-                       <MenuItem
-                            containerElement={<Link to="/auth/friends" />}
-                            primaryText="Friends" />
-                            <MenuItem
-                            containerElement={<Link to="/auth/photos" />}
-                            primaryText="Photos" />
-                            <MenuItem
-                            containerElement={<Link to="/auth/settings" />}
-                            primaryText="Settings" />
-                    </Drawer>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
 
+                            <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
+                        </form>
+                    </div>
+                </nav>
 
-                </ul>
+                <Drawer docked={false}
+                    width={200}
+                    open={this.state.open}
+                    onRequestChange={(open) => this.setState({ open })}>
+
+                    <MenuItem
+                        containerElement={<Link to="/auth" />}
+                        primaryText="Time line" />
+                    <MenuItem
+                        containerElement={<Link to="/auth/myprofile" />}
+                        primaryText="My Profile" />
+                    <MenuItem
+                        containerElement={<Link to="/auth/friends" />}
+                        primaryText="Friends" />
+                    <MenuItem
+                        containerElement={<Link to="/auth/photos" />}
+                        primaryText="Photos" />
+                    <MenuItem
+                        containerElement={<Link to="/auth/settings" />}
+                        primaryText="Settings" />
+                </Drawer>
             </div>
         )
     }
-
 }
 
 

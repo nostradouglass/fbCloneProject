@@ -13,17 +13,14 @@ class App extends React.Component {
 
             <div>
                 <Header />
-                <form action="/logout" method="post">
-                    <input type="submit" value="Logout" />
-                </form>
-                <ul>
+                {/* <ul>
                     <Link to="/auth">Timeline</Link>
                     <Link to="/auth/myprofile">My Profile</Link>
                     <Link to="/auth/friends">friends</Link>
                     <Link to="/auth/photos">Photos</Link>
                     <Link to="/auth/setting">Settings</Link>
-                </ul>
-
+                </ul> */}
+<h2>Timeline page</h2>
                 <hr />
             </div>
         )

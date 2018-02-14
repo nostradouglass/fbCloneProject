@@ -7,7 +7,7 @@ class Friends extends React.Component {
         return (
             <div>
                 <Header />
-            <h1>Friends</h1>
+                <h1>Friends</h1>
             </div>
         )
     }

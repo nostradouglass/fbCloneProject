@@ -84,12 +84,12 @@ function requireLogin (req, res, next) {
 }
 
 app.use(express.static(path.join(__dirname, 'static')));
+app.use('/signup', signUp )
 app.use('/auth', requireLogin, express.static(path.join(__dirname, 'dist')));
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
-app.use('/signup', signUp )
+
 app.use('/logout', logout)
 
 
