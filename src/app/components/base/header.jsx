@@ -14,16 +14,16 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-lg nav" style={styles.navbar}>
+                <nav className="navbar navbar-expand-lg nav" style={styles.navbar}>
                     <div onClick={this.handleToggle} ><span style={styles.hamburger}>&#9776;</span></div>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
 
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
+                        <form className="form-inline my-2 my-lg-0">
 
-                            <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
+                            <a href="/logout"><button type="button" className="btn btn-outline-light">Logout</button></a>
                         </form>
                     </div>
                 </nav>
@@ -63,7 +63,8 @@ var styles = {
     hamburger: {
         marginTop: '13px',
         marginLeft: '25px',
-        fontSize: '30px'
+        fontSize: '30px',
+        color: '#ffffff'
     }
 }
 export default Header
