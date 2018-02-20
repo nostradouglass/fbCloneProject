@@ -48,7 +48,7 @@
 .input__label-content {
 	position: relative;
 	display: block;
-	padding: 1.6em 0;
+	padding: 0.6em 0;
 	width: 100%;
 }
 
@@ -196,7 +196,13 @@
 }
 
 .input__label--hoshi-color-3::after {
-	border-color: hsl(20, 100%, 50%);
+	/*border-color: hsl(20, 100%, 50%);*/
+	border-color: #1fc144;
+}
+
+
+.input__label--wrong-password::after {
+	border-color: #d42a3a;
 }
 
 .input__field--hoshi:focus + .input__label--hoshi::after,

@@ -3,20 +3,51 @@ body {
     padding-bottom: 40px;
     background-color: #eee;
   }
+
+.mod-body {
+	padding-top: 0;
+	padding-bottom: 40px;
+	background-color: white;
+}
+
+.sign_in_div {
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(31, 193, 68);
+	margin-top: 100px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
   
   .form-signin {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
   }
+
+  .sign_in_info {
+
+    color: #1fc144;
+    text-align: center;
+
+    }
+    .sign_in_info .sign_in_info_heading {
+
+    color: #1fc144;
+    margin-top:20px;
+    }
+
   .form-signin .form-signin-heading,
   .form-signin .checkbox {
+    color: #1fc144;
     margin-bottom: 10px;
   }
   .form-signin .checkbox {
     font-weight: 400;
   }
   .form-signin .form-control {
+    border: 1px solid #1fc144;
     position: relative;
     box-sizing: border-box;
     height: auto;
