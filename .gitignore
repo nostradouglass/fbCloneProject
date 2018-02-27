@@ -28,3 +28,6 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+# Config file with usernames and passwords
+config.js
