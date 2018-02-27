@@ -29155,7 +29155,7 @@
 	                null,
 	                _react2.default.createElement(
 	                    'nav',
-	                    { 'class': 'navbar navbar-expand-lg nav', style: styles.navbar },
+	                    { className: 'navbar navbar-expand-lg nav', style: styles.navbar },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { onClick: this.handleToggle },
@@ -29167,17 +29167,17 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { 'class': 'collapse navbar-collapse', id: 'navbarSupportedContent' },
-	                        _react2.default.createElement('ul', { 'class': 'navbar-nav mr-auto' }),
+	                        { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
+	                        _react2.default.createElement('ul', { className: 'navbar-nav mr-auto' }),
 	                        _react2.default.createElement(
 	                            'form',
-	                            { 'class': 'form-inline my-2 my-lg-0' },
+	                            { className: 'form-inline my-2 my-lg-0' },
 	                            _react2.default.createElement(
 	                                'a',
 	                                { href: '/logout' },
 	                                _react2.default.createElement(
 	                                    'button',
-	                                    { type: 'button', 'class': 'btn btn-outline-light' },
+	                                    { type: 'button', className: 'btn btn-outline-light' },
 	                                    'Logout'
 	                                )
 	                            )
@@ -29223,7 +29223,8 @@
 	    hamburger: {
 	        marginTop: '13px',
 	        marginLeft: '25px',
-	        fontSize: '30px'
+	        fontSize: '30px',
+	        color: '#ffffff'
 	    }
 	};
 	exports.default = Header;
