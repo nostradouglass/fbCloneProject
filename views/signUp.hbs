@@ -15,11 +15,38 @@
   <!--Google Fonts-->
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+<!--<label class="input__label input__label--hoshi input__label--hoshi-color-3" for="password2">-->
+
+function comparePass() {
+	var pass1= $("#password").val(); 	
+	var pass2= $("#password2").val();
+
+	if(pass1!= pass2) {
+		document.getElementById("pass2").className = "input__label input__label--hoshi input__label--wrong-password";
+	}
+			else
+			{
+
+		document.getElementById("pass2").className = "input__label input__label--hoshi input__label--hoshi-color-3";
+		document.getElementById("btn_signup").removeAttribute("disabled");
+			}
+}
+	
+
+  </script>
 
 </head>
 
-<body>
-  <div id="main-wrapper">
+<body class="mod-body">
+<div><nav class="navbar navbar-expand-lg nav" style="background-color: rgb(31, 193, 68); height: 70px;"><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav mr-auto"></ul></div></nav></div>
+
+
+<div id="main-wrapper">
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3"></div>
@@ -49,15 +76,15 @@
               <span class="input__label-content input__label-content--hoshi">Password</span>
             </label>
           </span>
-          {{!-- <span class="input input--hoshi">
-            <input class="input__field input__field--hoshi" type="password" id="password1" name="" />
-            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="password1">
-              <span class="input__label-content input__label-content--hoshi">Repeat Passowrd</span>
+           <span class="input input--hoshi">
+            <input class="input__field input__field--hoshi" type="password" id="password2" name="" onkeyup="comparePass();"/>
+            <label id="pass2" class="input__label input__label--hoshi input__label--hoshi-color-3" for="password2">
+              <span class="input__label-content input__label-content--hoshi">Repeat Password</span>
             </label>
-          </span> --}}
-          <div class="cta">
-            <button class="btn btn-primary pull-left" type="submit" >
-              Sign-Up Now
+          </span> 
+	  <div class="cta">
+		  <button id="btn_signup" class="btn btn-primary pull-left" type="submit" disabled>
+      		    Sign-Up Now
             </button>
             <span>
               <a href="/auth">I am already a member</a>
