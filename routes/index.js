@@ -10,30 +10,6 @@ var csrfProtection = csrf({ cookie: true })
 /* GET home page. */
 router.get('*', csrfProtection, function (req, res, next) {
   if (req.session.user) {
-<<<<<<< HEAD
-    User.findOne({ email: req.session.user.email }, function (err, user) {
-      if (!user) { // If no user send to login page
-        res.render('index', { csrfToken: req.csrfToken() });
-      } else {
-        // If user exist compare session pass with server pass, if true allow to auth
-        // For Simple 1-10 user sign in sync is fine. For larger, switch to async.
-
-
-        bcrypt.compare(req.session.user.password, user.password, function (err, result) {
-
-          if (result) {
-            req.session.user = user;
-            res.redirect('/auth/');
-          }
-          else {
-            res.render('index', { csrfToken: req.csrfToken() });
-          }
-        });
-
-
-      }
-    })
-=======
   User.findOne({ email: req.session.user.email }, function (err, user) {
     if( !user) { // If no user send to login page
       res.render('index', { csrfToken: req.csrfToken() });
@@ -59,7 +35,6 @@ router.get('*', csrfProtection, function (req, res, next) {
 		    
     }
   })
->>>>>>> async_login
 
   } else {
     res.render('index', { csrfToken: req.csrfToken() });
@@ -73,27 +48,6 @@ router.post('/', csrfProtection, function (req, res, next) {
     if (!user) {
       res.render('index');
     } else {
-<<<<<<< HEAD
-=======
-
-//Using bcrypt in async mode to compare hashes:
-
-	    bcrypt.compare(req.body.password, user.password, function(err, result) {
-		    
-		   if(result) {
-			   req.session.user = user;
-			   res.redirect('/auth/');
-		   }
-		    else
-		    {
-			    res.render('index', {csrfToken: req.csrfToken()});
-		    }
-	    });
-
-
-    }
->>>>>>> async_login
-
 
       bcrypt.compare(req.body.password, user.password, function (err, result) {
 
