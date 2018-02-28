@@ -29174,7 +29174,7 @@
 	                            { className: 'form-inline my-2 my-lg-0' },
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: '/logout' },
+	                                { href: 'http://localhost:3000/logout' },
 	                                _react2.default.createElement(
 	                                    'button',
 	                                    { type: 'button', className: 'btn btn-outline-light' },

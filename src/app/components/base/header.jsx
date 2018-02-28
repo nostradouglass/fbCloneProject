@@ -23,7 +23,7 @@ class Header extends React.Component {
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
 
-                            <a href="/logout"><button type="button" className="btn btn-outline-light">Logout</button></a>
+                            <a href="http://localhost:3000/logout"><button type="button" className="btn btn-outline-light">Logout</button></a>
                         </form>
                     </div>
                 </nav>
