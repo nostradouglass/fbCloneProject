@@ -23,7 +23,7 @@ var login = require('./routes/login');
 var logout = require('./routes/logout')
 var signUp = require('./routes/signUp')
 
-mongoose.connect(`mongodb://${database.username}:${database.password}@ds257627.mlab.com:57627/fb_clone_db`, { useMongoClient: true})
+mongoose.connect(`mongodb://${database.username}:${database.password}@${database.database_location}`, { useMongoClient: true})
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
 mongoose.connection.on('open', function() {
   console.log('Connected to mlab database fb_clone_db')
