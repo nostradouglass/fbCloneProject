@@ -64,7 +64,8 @@ var styles = {
         marginTop: '13px',
         marginLeft: '25px',
         fontSize: '30px',
-        color: '#ffffff'
+        color: '#ffffff',
+        cursor: 'pointer'
     }
 }
 export default Header
