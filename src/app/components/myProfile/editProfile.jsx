@@ -76,16 +76,7 @@ var styles = {
         border: "2px solid rgba(31,193,68, .5)",
         borderRadius: "22px",
         paddingLeft: '10px'
-    },
-    floatingLabelFocusStyle: {
-	    borderBottom: 'green',
-		    matFocused: 'color:red!important'
-    },
-
-
-    textFieldBorders: {
-	    borderBottom: '2px solid rgb(31, 193, 68)'
-}
+    }
 }
 
 export default EditProfile
