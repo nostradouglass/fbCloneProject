@@ -38178,6 +38178,14 @@
 
 	var _TextField2 = _interopRequireDefault(_TextField);
 
+	var _SelectField = __webpack_require__(288);
+
+	var _SelectField2 = _interopRequireDefault(_SelectField);
+
+	var _MenuItem = __webpack_require__(229);
+
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
 	var _MuiThemeProvider = __webpack_require__(25);
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
@@ -38203,10 +38211,15 @@
 	var EditProfile = function (_React$Component) {
 	    _inherits(EditProfile, _React$Component);
 
-	    function EditProfile() {
+	    function EditProfile(props) {
 	        _classCallCheck(this, EditProfile);
 
-	        return _possibleConstructorReturn(this, (EditProfile.__proto__ || Object.getPrototypeOf(EditProfile)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (EditProfile.__proto__ || Object.getPrototypeOf(EditProfile)).call(this, props));
+
+	        _this.state = {
+	            value: 1
+	        };
+	        return _this;
 	    }
 
 	    _createClass(EditProfile, [{
@@ -38229,41 +38242,243 @@
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'container' },
+	                                _react2.default.createElement('div', { style: styles.topArea }),
 	                                _react2.default.createElement(
 	                                    'div',
 	                                    { className: 'row' },
 	                                    _react2.default.createElement(
 	                                        'div',
-	                                        { className: 'col-md-4' },
+	                                        { className: 'col-md-7' },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { style: styles.inputBorder },
-	                                            _react2.default.createElement(_TextField2.default, { floatingLabelFocusStyle: styles.floatingLabelFocusStyle,
-	                                                hintText: 'Hint Text'
-	                                            })
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'First Name'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Required Field'
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Last Name'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Hint Text'
+	                                                    })
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Nickname'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Required Field'
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Email'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Hint Text'
+	                                                    })
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Work'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Required Field'
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Relationship Status'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    null,
+	                                                    _react2.default.createElement(
+	                                                        _SelectField2.default,
+	                                                        {
+	                                                            floatingLabelText: 'Frequency',
+	                                                            value: this.state.value,
+	                                                            onChange: function onChange() {
+	                                                                return null;
+	                                                            },
+	                                                            style: styles.SelectField
+	                                                        },
+	                                                        _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: 'Single' }),
+	                                                        _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: 'Married' }),
+	                                                        _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: 'Dating' }),
+	                                                        _react2.default.createElement(_MenuItem2.default, { value: 4, primaryText: 'Engaged' }),
+	                                                        _react2.default.createElement(_MenuItem2.default, { value: 5, primaryText: 'It\'s Complicated' })
+	                                                    )
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Zip'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Required Field'
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    ' City'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Hint Text'
+	                                                    })
+	                                                )
+	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'State'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Required Field'
+	                                                    })
+	                                                )
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-6', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    ' Country'
+	                                                ),
+	                                                _react2.default.createElement(
+	                                                    'div',
+	                                                    { style: styles.inputBorder },
+	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        hintText: 'Hint Text'
+	                                                    })
+	                                                )
+	                                            )
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
 	                                        'div',
-	                                        { className: 'col-md-4' },
+	                                        { className: 'col-md-5' },
 	                                        _react2.default.createElement(
 	                                            'div',
-	                                            { style: styles.inputBorder },
-	                                            _react2.default.createElement(_TextField2.default, {
-	                                                hintText: 'Hint Text'
-
-	                                            })
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'col-md-4' },
-	                                        _react2.default.createElement(
-	                                            'div',
-	                                            { style: styles.inputBorder },
-	                                            _react2.default.createElement(_TextField2.default, {
-	                                                hintText: 'Hint Text'
-	                                            })
+	                                            { className: 'row' },
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-12', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Cover Photo'
+	                                                ),
+	                                                _react2.default.createElement('div', { style: styles.coverPhotoBox })
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-12', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'About'
+	                                                ),
+	                                                _react2.default.createElement('div', { style: styles.aboutBox })
+	                                            ),
+	                                            _react2.default.createElement(
+	                                                'div',
+	                                                { className: 'col-md-12', style: styles.textInputArea },
+	                                                _react2.default.createElement(
+	                                                    'label',
+	                                                    { style: styles.textStyle },
+	                                                    'Interest'
+	                                                ),
+	                                                _react2.default.createElement('div', { style: styles.interestBox })
+	                                            )
 	                                        )
 	                                    )
 	                                )
@@ -38287,11 +38502,40 @@
 	    test: {
 	        border: "2px solid black"
 	    },
+	    topArea: {
+	        minHeight: "80px"
+	    },
 	    inputBorder: {
 	        width: '100%',
 	        border: "2px solid rgba(31,193,68, .5)",
-	        borderRadius: "22px",
-	        paddingLeft: '10px'
+	        borderRadius: "20px",
+	        paddingLeft: '10px',
+	        height: "2.7em"
+	    },
+	    textStyle: {
+	        color: "#1FC144",
+	        marginLeft: "15px"
+	    },
+	    textInputArea: {
+	        marginTop: '30px'
+	    },
+	    coverPhotoBox: {
+	        height: "150px",
+	        border: "2px solid rgba(31,193,68, .5)",
+	        borderRadius: '20px'
+	    },
+	    aboutBox: {
+	        height: "125px",
+	        border: "2px solid rgba(31,193,68, .5)",
+	        borderRadius: '20px'
+	    },
+	    interestBox: {
+	        height: "125px",
+	        border: "2px solid rgba(31,193,68, .5)",
+	        borderRadius: '20px'
+	    },
+	    SelectField: {
+	        width: "180px"
 	    }
 	};
 
@@ -40033,6 +40277,1392 @@
 	  style: _propTypes2.default.object
 	} : {};
 	exports.default = RaisedButton;
+
+/***/ }),
+/* 288 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _SelectField = __webpack_require__(289);
+
+	var _SelectField2 = _interopRequireDefault(_SelectField);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _SelectField2.default;
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends2 = __webpack_require__(224);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(214);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _getPrototypeOf = __webpack_require__(26);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(52);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(53);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(57);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(103);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _simpleAssign = __webpack_require__(212);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(111);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _TextField = __webpack_require__(280);
+
+	var _TextField2 = _interopRequireDefault(_TextField);
+
+	var _DropDownMenu = __webpack_require__(290);
+
+	var _DropDownMenu2 = _interopRequireDefault(_DropDownMenu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getStyles(props) {
+	  return {
+	    label: {
+	      paddingLeft: 0,
+	      top: props.floatingLabelText ? 6 : -4
+	    },
+	    icon: {
+	      right: 0,
+	      top: props.floatingLabelText ? 8 : 0
+	    },
+	    hideDropDownUnderline: {
+	      borderTop: 'none'
+	    },
+	    dropDownMenu: {
+	      display: 'block'
+	    }
+	  };
+	}
+
+	var SelectField = function (_Component) {
+	  (0, _inherits3.default)(SelectField, _Component);
+
+	  function SelectField() {
+	    (0, _classCallCheck3.default)(this, SelectField);
+	    return (0, _possibleConstructorReturn3.default)(this, (SelectField.__proto__ || (0, _getPrototypeOf2.default)(SelectField)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(SelectField, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          autoWidth = _props.autoWidth,
+	          multiple = _props.multiple,
+	          children = _props.children,
+	          style = _props.style,
+	          labelStyle = _props.labelStyle,
+	          iconStyle = _props.iconStyle,
+	          id = _props.id,
+	          underlineDisabledStyle = _props.underlineDisabledStyle,
+	          underlineFocusStyle = _props.underlineFocusStyle,
+	          menuItemStyle = _props.menuItemStyle,
+	          selectedMenuItemStyle = _props.selectedMenuItemStyle,
+	          underlineStyle = _props.underlineStyle,
+	          dropDownMenuProps = _props.dropDownMenuProps,
+	          errorStyle = _props.errorStyle,
+	          disabled = _props.disabled,
+	          floatingLabelFixed = _props.floatingLabelFixed,
+	          floatingLabelText = _props.floatingLabelText,
+	          floatingLabelStyle = _props.floatingLabelStyle,
+	          hintStyle = _props.hintStyle,
+	          hintText = _props.hintText,
+	          fullWidth = _props.fullWidth,
+	          errorText = _props.errorText,
+	          listStyle = _props.listStyle,
+	          maxHeight = _props.maxHeight,
+	          menuStyle = _props.menuStyle,
+	          onFocus = _props.onFocus,
+	          onBlur = _props.onBlur,
+	          onChange = _props.onChange,
+	          selectionRenderer = _props.selectionRenderer,
+	          value = _props.value,
+	          other = (0, _objectWithoutProperties3.default)(_props, ['autoWidth', 'multiple', 'children', 'style', 'labelStyle', 'iconStyle', 'id', 'underlineDisabledStyle', 'underlineFocusStyle', 'menuItemStyle', 'selectedMenuItemStyle', 'underlineStyle', 'dropDownMenuProps', 'errorStyle', 'disabled', 'floatingLabelFixed', 'floatingLabelText', 'floatingLabelStyle', 'hintStyle', 'hintText', 'fullWidth', 'errorText', 'listStyle', 'maxHeight', 'menuStyle', 'onFocus', 'onBlur', 'onChange', 'selectionRenderer', 'value']);
+
+
+	      var styles = getStyles(this.props, this.context);
+
+	      return _react2.default.createElement(
+	        _TextField2.default,
+	        (0, _extends3.default)({}, other, {
+	          style: style,
+	          disabled: disabled,
+	          floatingLabelFixed: floatingLabelFixed,
+	          floatingLabelText: floatingLabelText,
+	          floatingLabelStyle: floatingLabelStyle,
+	          hintStyle: hintStyle,
+	          hintText: !hintText && !floatingLabelText ? ' ' : hintText,
+	          fullWidth: fullWidth,
+	          errorText: errorText,
+	          underlineStyle: underlineStyle,
+	          errorStyle: errorStyle,
+	          onFocus: onFocus,
+	          onBlur: onBlur,
+	          id: id,
+	          underlineDisabledStyle: underlineDisabledStyle,
+	          underlineFocusStyle: underlineFocusStyle
+	        }),
+	        _react2.default.createElement(
+	          _DropDownMenu2.default,
+	          (0, _extends3.default)({
+	            disabled: disabled,
+	            style: (0, _simpleAssign2.default)(styles.dropDownMenu, menuStyle),
+	            labelStyle: (0, _simpleAssign2.default)(styles.label, labelStyle),
+	            iconStyle: (0, _simpleAssign2.default)(styles.icon, iconStyle),
+	            menuItemStyle: menuItemStyle,
+	            selectedMenuItemStyle: selectedMenuItemStyle,
+	            underlineStyle: styles.hideDropDownUnderline,
+	            listStyle: listStyle,
+	            autoWidth: autoWidth,
+	            value: value,
+	            onChange: onChange,
+	            maxHeight: maxHeight,
+	            multiple: multiple,
+	            selectionRenderer: selectionRenderer
+	          }, dropDownMenuProps),
+	          children
+	        )
+	      );
+	    }
+	  }]);
+	  return SelectField;
+	}(_react.Component);
+
+	SelectField.defaultProps = {
+	  autoWidth: false,
+	  disabled: false,
+	  fullWidth: false,
+	  multiple: false
+	};
+	SelectField.contextTypes = {
+	  muiTheme: _propTypes2.default.object.isRequired
+	};
+	SelectField.propTypes =  true ? {
+	  /**
+	   * If true, the width will automatically be set according to the
+	   * items inside the menu.
+	   * To control the width in CSS instead, leave this prop set to `false`.
+	   */
+	  autoWidth: _propTypes2.default.bool,
+	  /**
+	   * The `MenuItem` elements to populate the select field with.
+	   * If the menu items have a `label` prop, that value will
+	   * represent the selected menu item in the rendered select field.
+	   */
+	  children: _propTypes2.default.node,
+	  /**
+	   * If true, the select field will be disabled.
+	   */
+	  disabled: _propTypes2.default.bool,
+	  /**
+	   * Object that can handle and override any property of component DropDownMenu.
+	   */
+	  dropDownMenuProps: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the error element.
+	   */
+	  errorStyle: _propTypes2.default.object,
+	  /**
+	   * The error content to display.
+	   */
+	  errorText: _propTypes2.default.node,
+	  /**
+	   * If true, the floating label will float even when no value is selected.
+	   */
+	  floatingLabelFixed: _propTypes2.default.bool,
+	  /**
+	   * Override the inline-styles of the floating label.
+	   */
+	  floatingLabelStyle: _propTypes2.default.object,
+	  /**
+	   * The content of the floating label.
+	   */
+	  floatingLabelText: _propTypes2.default.node,
+	  /**
+	   * If true, the select field will take up the full width of its container.
+	   */
+	  fullWidth: _propTypes2.default.bool,
+	  /**
+	   * Override the inline-styles of the hint element.
+	   */
+	  hintStyle: _propTypes2.default.object,
+	  /**
+	   * The hint content to display.
+	   */
+	  hintText: _propTypes2.default.node,
+	  /**
+	   * Override the inline-styles of the icon element.
+	   */
+	  iconStyle: _propTypes2.default.object,
+	  /**
+	   * The id prop for the text field.
+	   */
+	  id: _propTypes2.default.string,
+	  /**
+	   * Override the label style when the select field is inactive.
+	   */
+	  labelStyle: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the underlying `List` element.
+	   */
+	  listStyle: _propTypes2.default.object,
+	  /**
+	   * Override the default max-height of the underlying `DropDownMenu` element.
+	   */
+	  maxHeight: _propTypes2.default.number,
+	  /**
+	   * Override the inline-styles of menu items.
+	   */
+	  menuItemStyle: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the underlying `DropDownMenu` element.
+	   */
+	  menuStyle: _propTypes2.default.object,
+	  /**
+	   * If true, `value` must be an array and the menu will support
+	   * multiple selections.
+	   */
+	  multiple: _propTypes2.default.bool,
+	  /** @ignore */
+	  onBlur: _propTypes2.default.func,
+	  /**
+	   * Callback function fired when a menu item is selected.
+	   *
+	   * @param {object} event Click event targeting the menu item
+	   * that was selected.
+	   * @param {number} key The index of the selected menu item, or undefined
+	   * if `multiple` is true.
+	   * @param {any} payload If `multiple` is true, the menu's `value`
+	   * array with either the menu item's `value` added (if
+	   * it wasn't already selected) or omitted (if it was already selected).
+	   * Otherwise, the `value` of the menu item.
+	   */
+	  onChange: _propTypes2.default.func,
+	  /** @ignore */
+	  onFocus: _propTypes2.default.func,
+	  /**
+	   * Override the inline-styles of selected menu items.
+	   */
+	  selectedMenuItemStyle: _propTypes2.default.object,
+	  /**
+	   * Customize the rendering of the selected item.
+	   *
+	   * @param {any} value If `multiple` is true, the menu's `value`
+	   * array with either the menu item's `value` added (if
+	   * it wasn't already selected) or omitted (if it was already selected).
+	   * Otherwise, the `value` of the menu item.
+	   * @param {any} menuItem The selected `MenuItem`.
+	   * If `multiple` is true, this will be an array with the `MenuItem`s matching the `value`s parameter.
+	   */
+	  selectionRenderer: _propTypes2.default.func,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the underline element when the select
+	   * field is disabled.
+	   */
+	  underlineDisabledStyle: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the underline element when the select field
+	   * is focused.
+	   */
+	  underlineFocusStyle: _propTypes2.default.object,
+	  /**
+	   * Override the inline-styles of the underline element.
+	   */
+	  underlineStyle: _propTypes2.default.object,
+	  /**
+	   * If `multiple` is true, an array of the `value`s of the selected
+	   * menu items. Otherwise, the `value` of the selected menu item.
+	   * If provided, the menu will be a controlled component.
+	   */
+	  value: _propTypes2.default.any
+	} : {};
+	exports.default = SelectField;
+
+/***/ }),
+/* 290 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = exports.MenuItem = exports.DropDownMenu = undefined;
+
+	var _DropDownMenu2 = __webpack_require__(291);
+
+	var _DropDownMenu3 = _interopRequireDefault(_DropDownMenu2);
+
+	var _MenuItem2 = __webpack_require__(230);
+
+	var _MenuItem3 = _interopRequireDefault(_MenuItem2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.DropDownMenu = _DropDownMenu3.default;
+	exports.MenuItem = _MenuItem3.default;
+	exports.default = _DropDownMenu3.default;
+
+/***/ }),
+/* 291 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends2 = __webpack_require__(224);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(214);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _getPrototypeOf = __webpack_require__(26);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(52);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(53);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(57);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(103);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _simpleAssign = __webpack_require__(212);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(111);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactDom = __webpack_require__(11);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _transitions = __webpack_require__(222);
+
+	var _transitions2 = _interopRequireDefault(_transitions);
+
+	var _arrowDropDown = __webpack_require__(292);
+
+	var _arrowDropDown2 = _interopRequireDefault(_arrowDropDown);
+
+	var _Menu = __webpack_require__(270);
+
+	var _Menu2 = _interopRequireDefault(_Menu);
+
+	var _ClearFix = __webpack_require__(293);
+
+	var _ClearFix2 = _interopRequireDefault(_ClearFix);
+
+	var _Popover = __webpack_require__(232);
+
+	var _Popover2 = _interopRequireDefault(_Popover);
+
+	var _PopoverAnimationVertical = __webpack_require__(295);
+
+	var _PopoverAnimationVertical2 = _interopRequireDefault(_PopoverAnimationVertical);
+
+	var _keycode = __webpack_require__(220);
+
+	var _keycode2 = _interopRequireDefault(_keycode);
+
+	var _events = __webpack_require__(248);
+
+	var _events2 = _interopRequireDefault(_events);
+
+	var _IconButton = __webpack_require__(258);
+
+	var _IconButton2 = _interopRequireDefault(_IconButton);
+
+	var _propTypes3 = __webpack_require__(228);
+
+	var _propTypes4 = _interopRequireDefault(_propTypes3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getStyles(props, context) {
+	  var disabled = props.disabled;
+
+	  var spacing = context.muiTheme.baseTheme.spacing;
+	  var palette = context.muiTheme.baseTheme.palette;
+	  var accentColor = context.muiTheme.dropDownMenu.accentColor;
+	  return {
+	    control: {
+	      cursor: disabled ? 'not-allowed' : 'pointer',
+	      height: '100%',
+	      position: 'relative',
+	      width: '100%'
+	    },
+	    icon: {
+	      fill: accentColor,
+	      position: 'absolute',
+	      right: spacing.desktopGutterLess,
+	      top: (spacing.iconSize - 24) / 2 + spacing.desktopGutterMini / 2
+	    },
+	    iconChildren: {
+	      fill: 'inherit'
+	    },
+	    label: {
+	      color: disabled ? palette.disabledColor : palette.textColor,
+	      height: spacing.desktopToolbarHeight + 'px',
+	      lineHeight: spacing.desktopToolbarHeight + 'px',
+	      overflow: 'hidden',
+	      opacity: 1,
+	      position: 'relative',
+	      paddingLeft: spacing.desktopGutter,
+	      paddingRight: spacing.iconSize * 2 + spacing.desktopGutterMini,
+	      textOverflow: 'ellipsis',
+	      top: 0,
+	      whiteSpace: 'nowrap'
+	    },
+	    labelWhenOpen: {
+	      opacity: 0,
+	      top: spacing.desktopToolbarHeight / 8
+	    },
+	    root: {
+	      display: 'inline-block',
+	      fontSize: spacing.desktopDropDownMenuFontSize,
+	      height: spacing.desktopSubheaderHeight,
+	      fontFamily: context.muiTheme.baseTheme.fontFamily,
+	      outline: 'none',
+	      position: 'relative',
+	      transition: _transitions2.default.easeOut()
+	    },
+	    rootWhenOpen: {
+	      opacity: 1
+	    },
+	    underline: {
+	      borderTop: 'solid 1px ' + accentColor,
+	      bottom: 1,
+	      left: 0,
+	      margin: '-1px ' + spacing.desktopGutter + 'px',
+	      right: 0,
+	      position: 'absolute'
+	    }
+	  };
+	}
+
+	var DropDownMenu = function (_Component) {
+	  (0, _inherits3.default)(DropDownMenu, _Component);
+
+	  function DropDownMenu() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    (0, _classCallCheck3.default)(this, DropDownMenu);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DropDownMenu.__proto__ || (0, _getPrototypeOf2.default)(DropDownMenu)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      open: false
+	    }, _this.rootNode = undefined, _this.arrowNode = undefined, _this.handleClickControl = function (event) {
+	      event.preventDefault();
+	      if (!_this.props.disabled) {
+	        _this.setState({
+	          open: !_this.state.open,
+	          anchorEl: _this.rootNode
+	        });
+	      }
+	    }, _this.handleRequestCloseMenu = function () {
+	      _this.close(false);
+	    }, _this.handleEscKeyDownMenu = function () {
+	      _this.close(true);
+	    }, _this.handleKeyDown = function (event) {
+	      switch ((0, _keycode2.default)(event)) {
+	        case 'up':
+	        case 'down':
+	        case 'space':
+	        case 'enter':
+	          event.preventDefault();
+	          _this.setState({
+	            open: true,
+	            anchorEl: _this.rootNode
+	          });
+	          break;
+	      }
+	    }, _this.handleItemClick = function (event, child, index) {
+	      if (_this.props.multiple) {
+	        if (!_this.state.open) {
+	          _this.setState({ open: true });
+	        }
+	      } else {
+	        event.persist();
+	        _this.setState({
+	          open: false
+	        }, function () {
+	          if (_this.props.onChange) {
+	            _this.props.onChange(event, index, child.props.value);
+	          }
+
+	          _this.close(_events2.default.isKeyboard(event));
+	        });
+	      }
+	    }, _this.handleChange = function (event, value) {
+	      if (_this.props.multiple && _this.props.onChange) {
+	        _this.props.onChange(event, undefined, value);
+	      }
+	    }, _this.close = function (isKeyboard) {
+	      _this.setState({
+	        open: false
+	      }, function () {
+	        if (_this.props.onClose) {
+	          _this.props.onClose();
+	        }
+
+	        if (isKeyboard) {
+	          var dropArrow = _this.arrowNode;
+	          var dropNode = _reactDom2.default.findDOMNode(dropArrow);
+	          dropNode.focus();
+	          dropArrow.setKeyboardFocus(true);
+	        }
+	      });
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  }
+
+	  // The nested styles for drop-down-menu are modified by toolbar and possibly
+	  // other user components, so it will give full access to its js styles rather
+	  // than just the parent.
+
+
+	  (0, _createClass3.default)(DropDownMenu, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      if (this.props.autoWidth) {
+	        this.setWidth();
+	      }
+	      if (this.props.openImmediately) {
+	        // TODO: Temporary fix to make openImmediately work with popover.
+	        /* eslint-disable react/no-did-mount-set-state */
+	        setTimeout(function () {
+	          return _this2.setState({
+	            open: true,
+	            anchorEl: _this2.rootNode
+	          });
+	        }, 0);
+	        /* eslint-enable react/no-did-mount-set-state */
+	      }
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+	      if (this.props.autoWidth) {
+	        this.setWidth();
+	      }
+	    }
+	  }, {
+	    key: 'getInputNode',
+
+
+	    /**
+	     * This method is deprecated but still here because the TextField
+	     * need it in order to work. TODO: That will be addressed later.
+	     */
+	    value: function getInputNode() {
+	      var _this3 = this;
+
+	      var rootNode = this.rootNode;
+
+	      rootNode.focus = function () {
+	        if (!_this3.props.disabled) {
+	          _this3.setState({
+	            open: !_this3.state.open,
+	            anchorEl: _this3.rootNode
+	          });
+	        }
+	      };
+
+	      return rootNode;
+	    }
+	  }, {
+	    key: 'setWidth',
+	    value: function setWidth() {
+	      var el = this.rootNode;
+	      if (!this.props.style || !this.props.style.hasOwnProperty('width')) {
+	        el.style.width = 'auto';
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+
+	      var _props = this.props,
+	          animated = _props.animated,
+	          animation = _props.animation,
+	          autoWidth = _props.autoWidth,
+	          multiple = _props.multiple,
+	          children = _props.children,
+	          className = _props.className,
+	          disabled = _props.disabled,
+	          iconStyle = _props.iconStyle,
+	          labelStyle = _props.labelStyle,
+	          listStyle = _props.listStyle,
+	          maxHeight = _props.maxHeight,
+	          menuStyleProp = _props.menuStyle,
+	          selectionRenderer = _props.selectionRenderer,
+	          onClose = _props.onClose,
+	          openImmediately = _props.openImmediately,
+	          menuItemStyle = _props.menuItemStyle,
+	          selectedMenuItemStyle = _props.selectedMenuItemStyle,
+	          style = _props.style,
+	          underlineStyle = _props.underlineStyle,
+	          value = _props.value,
+	          iconButton = _props.iconButton,
+	          anchorOrigin = _props.anchorOrigin,
+	          targetOrigin = _props.targetOrigin,
+	          other = (0, _objectWithoutProperties3.default)(_props, ['animated', 'animation', 'autoWidth', 'multiple', 'children', 'className', 'disabled', 'iconStyle', 'labelStyle', 'listStyle', 'maxHeight', 'menuStyle', 'selectionRenderer', 'onClose', 'openImmediately', 'menuItemStyle', 'selectedMenuItemStyle', 'style', 'underlineStyle', 'value', 'iconButton', 'anchorOrigin', 'targetOrigin']);
+	      var _state = this.state,
+	          anchorEl = _state.anchorEl,
+	          open = _state.open;
+	      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+	      var styles = getStyles(this.props, this.context);
+
+	      var displayValue = '';
+	      if (!multiple) {
+	        _react2.default.Children.forEach(children, function (child) {
+	          if (child && value === child.props.value) {
+	            if (selectionRenderer) {
+	              displayValue = selectionRenderer(value, child);
+	            } else {
+	              // This will need to be improved (in case primaryText is a node)
+	              displayValue = child.props.label || child.props.primaryText;
+	            }
+	          }
+	        });
+	      } else {
+	        var values = [];
+	        var selectionRendererChildren = [];
+	        _react2.default.Children.forEach(children, function (child) {
+	          if (child && value && value.indexOf(child.props.value) > -1) {
+	            if (selectionRenderer) {
+	              values.push(child.props.value);
+	              selectionRendererChildren.push(child);
+	            } else {
+	              values.push(child.props.label || child.props.primaryText);
+	            }
+	          }
+	        });
+
+	        displayValue = [];
+	        if (selectionRenderer) {
+	          displayValue = selectionRenderer(values, selectionRendererChildren);
+	        } else {
+	          displayValue = values.join(', ');
+	        }
+	      }
+
+	      var menuStyle = void 0;
+	      if (anchorEl && !autoWidth) {
+	        menuStyle = (0, _simpleAssign2.default)({
+	          width: anchorEl.clientWidth
+	        }, menuStyleProp);
+	      } else {
+	        menuStyle = menuStyleProp;
+	      }
+
+	      return _react2.default.createElement(
+	        'div',
+	        (0, _extends3.default)({}, other, {
+	          ref: function ref(node) {
+	            _this4.rootNode = node;
+	          },
+	          className: className,
+	          style: prepareStyles((0, _simpleAssign2.default)({}, styles.root, open && styles.rootWhenOpen, style))
+	        }),
+	        _react2.default.createElement(
+	          _ClearFix2.default,
+	          { style: styles.control, onClick: this.handleClickControl },
+	          _react2.default.createElement(
+	            'div',
+	            { style: prepareStyles((0, _simpleAssign2.default)({}, styles.label, open && styles.labelWhenOpen, labelStyle)) },
+	            displayValue
+	          ),
+	          _react2.default.createElement(
+	            _IconButton2.default,
+	            {
+	              disabled: disabled,
+	              onKeyDown: this.handleKeyDown,
+	              ref: function ref(node) {
+	                _this4.arrowNode = node;
+	              },
+	              style: (0, _simpleAssign2.default)({}, styles.icon, iconStyle),
+	              iconStyle: styles.iconChildren
+	            },
+	            iconButton
+	          ),
+	          _react2.default.createElement('div', { style: prepareStyles((0, _simpleAssign2.default)({}, styles.underline, underlineStyle)) })
+	        ),
+	        _react2.default.createElement(
+	          _Popover2.default,
+	          {
+	            anchorOrigin: anchorOrigin,
+	            targetOrigin: targetOrigin,
+	            anchorEl: anchorEl,
+	            animation: animation || _PopoverAnimationVertical2.default,
+	            open: open,
+	            animated: animated,
+	            onRequestClose: this.handleRequestCloseMenu
+	          },
+	          _react2.default.createElement(
+	            _Menu2.default,
+	            {
+	              multiple: multiple,
+	              maxHeight: maxHeight,
+	              desktop: true,
+	              value: value,
+	              onEscKeyDown: this.handleEscKeyDownMenu,
+	              style: menuStyle,
+	              listStyle: listStyle,
+	              onItemClick: this.handleItemClick,
+	              onChange: this.handleChange,
+	              menuItemStyle: menuItemStyle,
+	              selectedMenuItemStyle: selectedMenuItemStyle,
+	              autoWidth: autoWidth,
+	              width: !autoWidth && menuStyle ? menuStyle.width : null
+	            },
+	            children
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return DropDownMenu;
+	}(_react.Component);
+
+	DropDownMenu.muiName = 'DropDownMenu';
+	DropDownMenu.defaultProps = {
+	  animated: true,
+	  autoWidth: true,
+	  disabled: false,
+	  iconButton: _react2.default.createElement(_arrowDropDown2.default, null),
+	  openImmediately: false,
+	  maxHeight: 500,
+	  multiple: false,
+	  anchorOrigin: {
+	    vertical: 'top',
+	    horizontal: 'left'
+	  }
+	};
+	DropDownMenu.contextTypes = {
+	  muiTheme: _propTypes2.default.object.isRequired
+	};
+	DropDownMenu.propTypes =  true ? {
+	  /**
+	   * This is the point on the anchor that the popover's
+	   * `targetOrigin` will attach to.
+	   * Options:
+	   * vertical: [top, center, bottom]
+	   * horizontal: [left, middle, right].
+	   */
+	  anchorOrigin: _propTypes4.default.origin,
+	  /**
+	   * If true, the popover will apply transitions when
+	   * it gets added to the DOM.
+	   */
+	  animated: _propTypes2.default.bool,
+	  /**
+	   * Override the default animation component used.
+	   */
+	  animation: _propTypes2.default.func,
+	  /**
+	   * The width will automatically be set according to the items inside the menu.
+	   * To control this width in css instead, set this prop to `false`.
+	   */
+	  autoWidth: _propTypes2.default.bool,
+	  /**
+	   * The `MenuItem`s to populate the `Menu` with. If the `MenuItems` have the
+	   * prop `label` that value will be used to render the representation of that
+	   * item within the field.
+	   */
+	  children: _propTypes2.default.node,
+	  /**
+	   * The css class name of the root element.
+	   */
+	  className: _propTypes2.default.string,
+	  /**
+	   * Disables the menu.
+	   */
+	  disabled: _propTypes2.default.bool,
+	  /**
+	   * Overrides default `SvgIcon` dropdown arrow component.
+	   */
+	  iconButton: _propTypes2.default.node,
+	  /**
+	   * Overrides the styles of icon element.
+	   */
+	  iconStyle: _propTypes2.default.object,
+	  /**
+	   * Overrides the styles of label when the `DropDownMenu` is inactive.
+	   */
+	  labelStyle: _propTypes2.default.object,
+	  /**
+	   * The style object to use to override underlying list style.
+	   */
+	  listStyle: _propTypes2.default.object,
+	  /**
+	   * The maximum height of the `Menu` when it is displayed.
+	   */
+	  maxHeight: _propTypes2.default.number,
+	  /**
+	   * Override the inline-styles of menu items.
+	   */
+	  menuItemStyle: _propTypes2.default.object,
+	  /**
+	   * Overrides the styles of `Menu` when the `DropDownMenu` is displayed.
+	   */
+	  menuStyle: _propTypes2.default.object,
+	  /**
+	   * If true, `value` must be an array and the menu will support
+	   * multiple selections.
+	   */
+	  multiple: _propTypes2.default.bool,
+	  /**
+	   * Callback function fired when a menu item is clicked, other than the one currently selected.
+	   *
+	   * @param {object} event Click event targeting the menu item that was clicked.
+	   * @param {number} key The index of the clicked menu item in the `children` collection.
+	   * @param {any} value If `multiple` is true, the menu's `value`
+	   * array with either the menu item's `value` added (if
+	   * it wasn't already selected) or omitted (if it was already selected).
+	   * Otherwise, the `value` of the menu item.
+	   */
+	  onChange: _propTypes2.default.func,
+	  /**
+	   * Callback function fired when the menu is closed.
+	   */
+	  onClose: _propTypes2.default.func,
+	  /**
+	   * Set to true to have the `DropDownMenu` automatically open on mount.
+	   */
+	  openImmediately: _propTypes2.default.bool,
+	  /**
+	   * Override the inline-styles of selected menu items.
+	   */
+	  selectedMenuItemStyle: _propTypes2.default.object,
+	  /**
+	   * Callback function fired when a menu item is clicked, other than the one currently selected.
+	   *
+	   * @param {any} value If `multiple` is true, the menu's `value`
+	   * array with either the menu item's `value` added (if
+	   * it wasn't already selected) or omitted (if it was already selected).
+	   * Otherwise, the `value` of the menu item.
+	   * @param {any} menuItem The selected `MenuItem`.
+	   * If `multiple` is true, this will be an array with the `MenuItem`s matching the `value`s parameter.
+	   */
+	  selectionRenderer: _propTypes2.default.func,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _propTypes2.default.object,
+	  /**
+	   * This is the point on the popover which will attach to
+	   * the anchor's origin.
+	   * Options:
+	   * vertical: [top, center, bottom]
+	   * horizontal: [left, middle, right].
+	   */
+	  targetOrigin: _propTypes4.default.origin,
+	  /**
+	   * Overrides the inline-styles of the underline.
+	   */
+	  underlineStyle: _propTypes2.default.object,
+	  /**
+	   * If `multiple` is true, an array of the `value`s of the selected
+	   * menu items. Otherwise, the `value` of the selected menu item.
+	   * If provided, the menu will be a controlled component.
+	   */
+	  value: _propTypes2.default.any
+	} : {};
+	exports.default = DropDownMenu;
+
+/***/ }),
+/* 292 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _pure = __webpack_require__(238);
+
+	var _pure2 = _interopRequireDefault(_pure);
+
+	var _SvgIcon = __webpack_require__(244);
+
+	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NavigationArrowDropDown = function NavigationArrowDropDown(props) {
+	  return _react2.default.createElement(
+	    _SvgIcon2.default,
+	    props,
+	    _react2.default.createElement('path', { d: 'M7 10l5 5 5-5z' })
+	  );
+	};
+	NavigationArrowDropDown = (0, _pure2.default)(NavigationArrowDropDown);
+	NavigationArrowDropDown.displayName = 'NavigationArrowDropDown';
+	NavigationArrowDropDown.muiName = 'SvgIcon';
+
+	exports.default = NavigationArrowDropDown;
+
+/***/ }),
+/* 293 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends2 = __webpack_require__(224);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(214);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(111);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _BeforeAfterWrapper = __webpack_require__(294);
+
+	var _BeforeAfterWrapper2 = _interopRequireDefault(_BeforeAfterWrapper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var styles = {
+	  before: {
+	    content: "' '",
+	    display: 'table'
+	  },
+	  after: {
+	    content: "' '",
+	    clear: 'both',
+	    display: 'table'
+	  }
+	};
+
+	var ClearFix = function ClearFix(_ref) {
+	  var style = _ref.style,
+	      children = _ref.children,
+	      other = (0, _objectWithoutProperties3.default)(_ref, ['style', 'children']);
+	  return _react2.default.createElement(
+	    _BeforeAfterWrapper2.default,
+	    (0, _extends3.default)({}, other, {
+	      beforeStyle: styles.before,
+	      afterStyle: styles.after,
+	      style: style
+	    }),
+	    children
+	  );
+	};
+
+	ClearFix.muiName = 'ClearFix';
+
+	ClearFix.propTypes =  true ? {
+	  children: _propTypes2.default.node,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _propTypes2.default.object
+	} : {};
+
+	exports.default = ClearFix;
+
+/***/ }),
+/* 294 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _objectWithoutProperties2 = __webpack_require__(214);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _getPrototypeOf = __webpack_require__(26);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(52);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(53);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(57);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(103);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _simpleAssign = __webpack_require__(212);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(111);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 *  BeforeAfterWrapper
+	 *    An alternative for the ::before and ::after css pseudo-elements for
+	 *    components whose styles are defined in javascript instead of css.
+	 *
+	 *  Usage: For the element that we want to apply before and after elements to,
+	 *    wrap its children with BeforeAfterWrapper. For example:
+	 *
+	 *                                            <Paper>
+	 *  <Paper>                                     <div> // See notice
+	 *    <BeforeAfterWrapper>        renders         <div/> // before element
+	 *      [children of paper]       ------>         [children of paper]
+	 *    </BeforeAfterWrapper>                       <div/> // after element
+	 *  </Paper>                                    </div>
+	 *                                            </Paper>
+	 *
+	 *  Notice: Notice that this div bundles together our elements. If the element
+	 *    that we want to apply before and after elements is a HTML tag (i.e. a
+	 *    div, p, or button tag), we can avoid this extra nesting by passing using
+	 *    the BeforeAfterWrapper in place of said tag like so:
+	 *
+	 *  <p>
+	 *    <BeforeAfterWrapper>   do this instead   <BeforeAfterWrapper elementType='p'>
+	 *      [children of p]          ------>         [children of p]
+	 *    </BeforeAfterWrapper>                    </BeforeAfterWrapper>
+	 *  </p>
+	 *
+	 *  BeforeAfterWrapper features spread functionality. This means that we can
+	 *  pass HTML tag properties directly into the BeforeAfterWrapper tag.
+	 *
+	 *  When using BeforeAfterWrapper, ensure that the parent of the beforeElement
+	 *  and afterElement have a defined style position.
+	 */
+
+	var styles = {
+	  box: {
+	    boxSizing: 'border-box'
+	  }
+	};
+
+	var BeforeAfterWrapper = function (_Component) {
+	  (0, _inherits3.default)(BeforeAfterWrapper, _Component);
+
+	  function BeforeAfterWrapper() {
+	    (0, _classCallCheck3.default)(this, BeforeAfterWrapper);
+	    return (0, _possibleConstructorReturn3.default)(this, (BeforeAfterWrapper.__proto__ || (0, _getPrototypeOf2.default)(BeforeAfterWrapper)).apply(this, arguments));
+	  }
+
+	  (0, _createClass3.default)(BeforeAfterWrapper, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          beforeStyle = _props.beforeStyle,
+	          afterStyle = _props.afterStyle,
+	          beforeElementType = _props.beforeElementType,
+	          afterElementType = _props.afterElementType,
+	          elementType = _props.elementType,
+	          other = (0, _objectWithoutProperties3.default)(_props, ['beforeStyle', 'afterStyle', 'beforeElementType', 'afterElementType', 'elementType']);
+	      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+
+	      var beforeElement = void 0;
+	      var afterElement = void 0;
+
+	      if (beforeStyle) {
+	        beforeElement = _react2.default.createElement(this.props.beforeElementType, {
+	          style: prepareStyles((0, _simpleAssign2.default)({}, styles.box, beforeStyle)),
+	          key: '::before'
+	        });
+	      }
+
+	      if (afterStyle) {
+	        afterElement = _react2.default.createElement(this.props.afterElementType, {
+	          style: prepareStyles((0, _simpleAssign2.default)({}, styles.box, afterStyle)),
+	          key: '::after'
+	        });
+	      }
+
+	      var children = [beforeElement, this.props.children, afterElement];
+
+	      var props = other;
+	      props.style = prepareStyles((0, _simpleAssign2.default)({}, this.props.style));
+
+	      return _react2.default.createElement(this.props.elementType, props, children);
+	    }
+	  }]);
+	  return BeforeAfterWrapper;
+	}(_react.Component);
+
+	BeforeAfterWrapper.defaultProps = {
+	  beforeElementType: 'div',
+	  afterElementType: 'div',
+	  elementType: 'div'
+	};
+	BeforeAfterWrapper.contextTypes = {
+	  muiTheme: _propTypes2.default.object.isRequired
+	};
+	BeforeAfterWrapper.propTypes =  true ? {
+	  afterElementType: _propTypes2.default.string,
+	  afterStyle: _propTypes2.default.object,
+	  beforeElementType: _propTypes2.default.string,
+	  beforeStyle: _propTypes2.default.object,
+	  children: _propTypes2.default.node,
+	  elementType: _propTypes2.default.string,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _propTypes2.default.object
+	} : {};
+	exports.default = BeforeAfterWrapper;
+
+/***/ }),
+/* 295 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(26);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(52);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(53);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(57);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(103);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _simpleAssign = __webpack_require__(212);
+
+	var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(111);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _Paper = __webpack_require__(226);
+
+	var _Paper2 = _interopRequireDefault(_Paper);
+
+	var _transitions = __webpack_require__(222);
+
+	var _transitions2 = _interopRequireDefault(_transitions);
+
+	var _propTypes3 = __webpack_require__(228);
+
+	var _propTypes4 = _interopRequireDefault(_propTypes3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getStyles(props, context, state) {
+	  var targetOrigin = props.targetOrigin;
+	  var open = state.open;
+	  var muiTheme = context.muiTheme;
+
+	  var horizontal = targetOrigin.horizontal.replace('middle', 'center');
+
+	  return {
+	    root: {
+	      position: 'fixed',
+	      zIndex: muiTheme.zIndex.popover,
+	      opacity: open ? 1 : 0,
+	      transform: open ? 'scaleY(1)' : 'scaleY(0)',
+	      transformOrigin: horizontal + ' ' + targetOrigin.vertical,
+	      transition: _transitions2.default.easeOut('450ms', ['transform', 'opacity']),
+	      maxHeight: '100%'
+	    }
+	  };
+	}
+
+	var PopoverAnimationVertical = function (_Component) {
+	  (0, _inherits3.default)(PopoverAnimationVertical, _Component);
+
+	  function PopoverAnimationVertical() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    (0, _classCallCheck3.default)(this, PopoverAnimationVertical);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = PopoverAnimationVertical.__proto__ || (0, _getPrototypeOf2.default)(PopoverAnimationVertical)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      open: false
+	    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+	  }
+
+	  (0, _createClass3.default)(PopoverAnimationVertical, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({ open: true }); // eslint-disable-line react/no-did-mount-set-state
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.setState({
+	        open: nextProps.open
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          className = _props.className,
+	          style = _props.style,
+	          zDepth = _props.zDepth;
+
+
+	      var styles = getStyles(this.props, this.context, this.state);
+
+	      return _react2.default.createElement(
+	        _Paper2.default,
+	        {
+	          style: (0, _simpleAssign2.default)(styles.root, style),
+	          zDepth: zDepth,
+	          className: className
+	        },
+	        this.props.children
+	      );
+	    }
+	  }]);
+	  return PopoverAnimationVertical;
+	}(_react.Component);
+
+	PopoverAnimationVertical.defaultProps = {
+	  style: {},
+	  zDepth: 1
+	};
+	PopoverAnimationVertical.contextTypes = {
+	  muiTheme: _propTypes2.default.object.isRequired
+	};
+	PopoverAnimationVertical.propTypes =  true ? {
+	  children: _propTypes2.default.node,
+	  className: _propTypes2.default.string,
+	  open: _propTypes2.default.bool.isRequired,
+	  /**
+	   * Override the inline-styles of the root element.
+	   */
+	  style: _propTypes2.default.object,
+	  targetOrigin: _propTypes4.default.origin.isRequired,
+	  zDepth: _propTypes4.default.zDepth
+	} : {};
+	exports.default = PopoverAnimationVertical;
 
 /***/ })
 /******/ ]);

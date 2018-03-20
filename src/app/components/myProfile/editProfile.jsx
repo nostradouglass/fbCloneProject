@@ -1,66 +1,199 @@
 import React from 'react'
-
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const myCustomTheme = getMuiTheme({
-	textField: {
-		focusColor: '#1fc144'
-	}
+    textField: {
+        focusColor: '#1fc144'
+    }
 });
 
 class EditProfile extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            value: 1
+        }
+    }
 
     render() {
-	    
+
         return (
-		<MuiThemeProvider muiTheme={myCustomTheme}>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-1" ></div>
+            <MuiThemeProvider muiTheme={myCustomTheme}>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-1" ></div>
 
 
 
 
 
-                    {/* Main Area */}
-                    <div className="col-md-9" >
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-4" >
-                                <div style={styles.inputBorder}>
-                                <TextField floatingLabelFocusStyle ={styles.floatingLabelFocusStyle}
-                                    hintText="Hint Text"
-                                />
+                        {/* Main Area */}
+                        <div className="col-md-9" >
+                            <div className="container">
+                                <div style={styles.topArea}></div>
+
+                                <div className="row">
+                                    <div className="col-md-7">
+                                        <div className="row">
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >First Name</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Required Field"
+                                                    />
+                                                </div></div>
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Last Name</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Hint Text"
+                                                    />
+                                                </div></div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Nickname</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Required Field"
+                                                    />
+                                                </div></div>
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Email</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Hint Text"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div className="row">
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Work</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Required Field"
+                                                    />
+                                                </div></div>
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Relationship Status</label>
+                                                <div>
+                                                    <SelectField
+                                                        floatingLabelText="Frequency"
+                                                        value={this.state.value}
+                                                        onChange={() => null}
+                                                        style={styles.SelectField}
+                                                    >
+                                                        <MenuItem value={1} primaryText="Single" />
+                                                        <MenuItem value={2} primaryText="Married" />
+                                                        <MenuItem value={3} primaryText="Dating" />
+                                                        <MenuItem value={4} primaryText="Engaged" />
+                                                        <MenuItem value={5} primaryText="It's Complicated" />
+                                                    </SelectField>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div className="row">
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Zip</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Required Field"
+                                                    />
+                                                </div></div>
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} > City</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Hint Text"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div className="row">
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >State</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Required Field"
+                                                    />
+                                                </div></div>
+                                            <div className="col-md-6" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} > Country</label>
+                                                <div style={styles.inputBorder}>
+                                                    <TextField
+                                                        hintText="Hint Text"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-md-5">
+                                        <div className="row">
+                                            <div className="col-md-12" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Cover Photo</label>
+                                                <div style={styles.coverPhotoBox}></div>
+
+                                            </div>
+                                            <div className="col-md-12" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >About</label>
+                                                <div style={styles.aboutBox}></div>
+
+                                            </div>
+                                            <div className="col-md-12" style={styles.textInputArea}>
+                                                <label style={styles.textStyle} >Interest</label>
+                                                <div style={styles.interestBox}></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
-                                </div>
-                                <div className="col-md-4"><div style={styles.inputBorder}>
-                                <TextField
-                                    hintText="Hint Text"
-                                    
-                                />
-                                </div></div>
-                                <div className="col-md-4" ><div style={styles.inputBorder}>
-                                <TextField
-                                    hintText="Hint Text"
-                                />
-                                </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
+
+
                         </div>
+                        <div className="col-md-2" >right side</div>
                     </div>
 
 
 
 
 
-                    <div className="col-md-2" >right side</div>
+
+
 
                 </div>
-            </div>
 
-	    </MuiThemeProvider>
+            </MuiThemeProvider>
 
         )
     }
@@ -71,11 +204,40 @@ var styles = {
     test: {
         border: "2px solid black"
     },
+    topArea: {
+        minHeight: "80px"
+    },
     inputBorder: {
         width: '100%',
         border: "2px solid rgba(31,193,68, .5)",
-        borderRadius: "22px",
-        paddingLeft: '10px'
+        borderRadius: "20px",
+        paddingLeft: '10px',
+        height: "2.7em"
+    },
+    textStyle: {
+        color: "#1FC144",
+        marginLeft: "15px"
+    },
+    textInputArea: {
+        marginTop: '30px'
+    },
+    coverPhotoBox: {
+        height: "150px",
+        border: "2px solid rgba(31,193,68, .5)",
+        borderRadius: '20px'
+    },
+    aboutBox: {
+        height: "125px",
+        border: "2px solid rgba(31,193,68, .5)",
+        borderRadius: '20px'
+    },
+    interestBox: {
+        height: "125px",
+        border: "2px solid rgba(31,193,68, .5)",
+        borderRadius: '20px'
+    },
+    SelectField: {
+        width: "180px"
     }
 }
 
