@@ -4,6 +4,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import axios from 'axios'
 
 const myCustomTheme = getMuiTheme({
     textField: {
@@ -17,9 +18,48 @@ class EditProfile extends React.Component {
         super(props)
 
         this.state = {
-            value: 1
+            value: 1,
+            firstName: "",
+            lastName: "",
+            email: "",
+            nickname: "",
+            about: "",
+            DOB: "",
+            city: "",
+            state: "",
+            zip: "",
+            work: "",
+            relationship_status: ""
         }
     }
+
+    componentWillMount() {
+        var that = this
+        axios.get('/users/user')
+            .then(function (res) {
+                that.setState({
+                    firstName: res.data.firstName,
+                    lastName: res.data.lastName,
+                    email: res.data.email,
+                    nickname: res.data.nickname,
+                    about: res.data.about,
+                    DOB: res.data.DOB,
+                    city: res.data.city,
+                    state: res.data.state,
+                    zip: res.data.zip,
+                    country: res.data.country,
+                    work: res.data.work,
+                    relationship_status: res.data.relationship_status
+
+                })
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
 
     render() {
 
@@ -28,10 +68,6 @@ class EditProfile extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-1" ></div>
-
-
-
-
 
                         {/* Main Area */}
                         <div className="col-md-9" >
@@ -44,8 +80,10 @@ class EditProfile extends React.Component {
                                             <div className="col-md-6" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >First Name</label>
                                                 <div style={styles.inputBorder}>
-                                                    <TextField
+                                                    <TextField 
+                                                        onChange ={(e)=> this.setState({firstName: e.target.value})}
                                                         hintText="Required Field"
+                                                        value={this.state.firstName}
                                                     />
                                                 </div></div>
                                             <div className="col-md-6" style={styles.textInputArea}>
@@ -53,6 +91,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Hint Text"
+                                                        value={this.state.lastName}
                                                     />
                                                 </div></div>
                                         </div>
@@ -63,6 +102,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Required Field"
+                                                        value={this.state.nickname}
                                                     />
                                                 </div></div>
                                             <div className="col-md-6" style={styles.textInputArea}>
@@ -70,6 +110,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Hint Text"
+                                                        value={this.state.email}
                                                     />
                                                 </div>
                                             </div>
@@ -82,6 +123,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Required Field"
+                                                        value={this.state.work}
                                                     />
                                                 </div></div>
                                             <div className="col-md-6" style={styles.textInputArea}>
@@ -111,6 +153,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Required Field"
+                                                        value={this.state.zip}
                                                     />
                                                 </div></div>
                                             <div className="col-md-6" style={styles.textInputArea}>
@@ -118,6 +161,7 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Hint Text"
+                                                        value={this.state.city}
                                                     />
                                                 </div>
                                             </div>
@@ -130,13 +174,15 @@ class EditProfile extends React.Component {
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Required Field"
+                                                        value={this.state.state}
                                                     />
                                                 </div></div>
                                             <div className="col-md-6" style={styles.textInputArea}>
-                                                <label style={styles.textStyle} > Country</label>
+                                                <label style={styles.textStyle} >Country</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
                                                         hintText="Hint Text"
+                                                        value={this.state.country}
                                                     />
                                                 </div>
                                             </div>
@@ -151,7 +197,7 @@ class EditProfile extends React.Component {
 
                                             </div>
                                             <div className="col-md-12" style={styles.textInputArea}>
-                                                <label style={styles.textStyle} >About</label>
+                                                <label style={styles.textStyle} >{this.state.about}</label>
                                                 <div style={styles.aboutBox}></div>
 
                                             </div>

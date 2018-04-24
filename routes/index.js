@@ -11,30 +11,32 @@ var csrfProtection = csrf({ cookie: true })
 
 /* GET home page. */
 router.get('*', csrfProtection, function (req, res, next) {
-  // if (isProduction) {
-  //   if (req.session.user) {
-  //     User.findOne({ email: req.session.user.email }, function (err, user) {
-  //       if (!user) { // If no user send to login page
-  //         res.render('index', { csrfToken: req.csrfToken() });
-  //       } else {
-  //         bcrypt.compare(req.session.user.password, user.password, function (err, result) {
-
-  //           if (result) {
-  //             req.session.user = user;
-  //             res.redirect('/auth/');
-  //           }
-  //           else {
-  //             res.render('index', { csrfToken: req.csrfToken() });
-  //           }
-  //         });
-  //       }
-  //     })
-  //   } else {
-  //     res.render('index', { csrfToken: req.csrfToken() });
-  //   }
-  // } else {
-    res.render('index', { csrfToken: req.csrfToken() });
-  //}
+  if (isProduction) {
+    if (req.session.user) {
+      User.findOne({ email: req.session.user.email }, function (err, user) {
+        if (!user) { // If no user send to login page
+          res.render('index', { csrfToken: req.csrfToken() });
+        } else {
+          bcrypt.compare(req.session.user.password, user.password, function (err, result) {
+            if (result) {
+              res.cookie('id', req.session.user._id);
+              req.session.user = user;
+              
+              res.redirect('/auth/');
+            }
+            else {
+              res.render('index', { csrfToken: req.csrfToken() });
+            }
+          });
+        }
+      })
+    } else {
+      res.render('index', { csrfToken: req.csrfToken() });
+    }
+  } else {
+    
+    
+  }
 });
 
 
