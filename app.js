@@ -68,6 +68,7 @@ app.use(function (req, res, next) {
         delete req.user.password
         req.session.user = user
         res.locals.user = user
+    	res.cookie("currentUserId", `${req.user._id}`);
       }
       next()
     })

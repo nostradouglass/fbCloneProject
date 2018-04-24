@@ -26066,10 +26066,12 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
 	 *
-	 * This source code is licensed under the MIT license found in the
-	 * LICENSE file in the root directory of this source tree.
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
 	'use strict';
@@ -28959,80 +28961,73 @@
 
 /***/ }),
 /* 207 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2015, Yahoo! Inc.
 	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
 	 */
-	(function (global, factory) {
-	     true ? module.exports = factory() :
-	    typeof define === 'function' && define.amd ? define(factory) :
-	    (global.hoistNonReactStatics = factory());
-	}(this, (function () {
-	    'use strict';
-	    
-	    var REACT_STATICS = {
-	        childContextTypes: true,
-	        contextTypes: true,
-	        defaultProps: true,
-	        displayName: true,
-	        getDefaultProps: true,
-	        getDerivedStateFromProps: true,
-	        mixins: true,
-	        propTypes: true,
-	        type: true
-	    };
-	    
-	    var KNOWN_STATICS = {
-	        name: true,
-	        length: true,
-	        prototype: true,
-	        caller: true,
-	        callee: true,
-	        arguments: true,
-	        arity: true
-	    };
-	    
-	    var defineProperty = Object.defineProperty;
-	    var getOwnPropertyNames = Object.getOwnPropertyNames;
-	    var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-	    var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-	    var getPrototypeOf = Object.getPrototypeOf;
-	    var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
-	    
-	    return function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-	        if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-	            
-	            if (objectPrototype) {
-	                var inheritedComponent = getPrototypeOf(sourceComponent);
-	                if (inheritedComponent && inheritedComponent !== objectPrototype) {
-	                    hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-	                }
+	'use strict';
+
+	var REACT_STATICS = {
+	    childContextTypes: true,
+	    contextTypes: true,
+	    defaultProps: true,
+	    displayName: true,
+	    getDefaultProps: true,
+	    mixins: true,
+	    propTypes: true,
+	    type: true
+	};
+
+	var KNOWN_STATICS = {
+	  name: true,
+	  length: true,
+	  prototype: true,
+	  caller: true,
+	  callee: true,
+	  arguments: true,
+	  arity: true
+	};
+
+	var defineProperty = Object.defineProperty;
+	var getOwnPropertyNames = Object.getOwnPropertyNames;
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+	var getPrototypeOf = Object.getPrototypeOf;
+	var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
+
+	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+
+	        if (objectPrototype) {
+	            var inheritedComponent = getPrototypeOf(sourceComponent);
+	            if (inheritedComponent && inheritedComponent !== objectPrototype) {
+	                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
 	            }
-	            
-	            var keys = getOwnPropertyNames(sourceComponent);
-	            
-	            if (getOwnPropertySymbols) {
-	                keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-	            }
-	            
-	            for (var i = 0; i < keys.length; ++i) {
-	                var key = keys[i];
-	                if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
-	                    var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-	                    try { // Avoid failures from read-only properties
-	                        defineProperty(targetComponent, key, descriptor);
-	                    } catch (e) {}
-	                }
-	            }
-	            
-	            return targetComponent;
 	        }
-	        
+
+	        var keys = getOwnPropertyNames(sourceComponent);
+
+	        if (getOwnPropertySymbols) {
+	            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+	        }
+
+	        for (var i = 0; i < keys.length; ++i) {
+	            var key = keys[i];
+	            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
+	                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+	                try { // Avoid failures from read-only properties
+	                    defineProperty(targetComponent, key, descriptor);
+	                } catch (e) {}
+	            }
+	        }
+
 	        return targetComponent;
-	    };
-	})));
+	    }
+
+	    return targetComponent;
+	};
 
 
 /***/ }),
@@ -30130,7 +30125,7 @@
 	 * @api public
 	 */
 
-	function keyCode(searchInput) {
+	exports = module.exports = function(searchInput) {
 	  // Keyboard Events
 	  if (searchInput && 'object' === typeof searchInput) {
 	    var hasKeyCode = searchInput.which || searchInput.keyCode || searchInput.charCode
@@ -30156,35 +30151,6 @@
 
 	  return undefined
 	}
-
-	/**
-	 * Compares a keyboard event with a given keyCode or keyName.
-	 *
-	 * @param {Event} event Keyboard event that should be tested
-	 * @param {Mixed} keyCode {Number} or keyName {String}
-	 * @return {Boolean}
-	 * @api public
-	 */
-	keyCode.isEventKey = function isEventKey(event, nameOrCode) {
-	  if (event && 'object' === typeof event) {
-	    var keyCode = event.which || event.keyCode || event.charCode
-	    if (keyCode === null || keyCode === undefined) { return false; }
-	    if (typeof nameOrCode === 'string') {
-	      // check codes
-	      var foundNamedKey = codes[nameOrCode.toLowerCase()]
-	      if (foundNamedKey) { return foundNamedKey === keyCode; }
-	    
-	      // check aliases
-	      var foundNamedKey = aliases[nameOrCode.toLowerCase()]
-	      if (foundNamedKey) { return foundNamedKey === keyCode; }
-	    } else if (typeof nameOrCode === 'number') {
-	      return nameOrCode === keyCode;
-	    }
-	    return false;
-	  }
-	}
-
-	exports = module.exports = keyCode;
 
 	/**
 	 * Get by name
@@ -30255,13 +30221,13 @@
 	  'return': 13,
 	  'escape': 27,
 	  'spc': 32,
-	  'spacebar': 32,
 	  'pgup': 33,
 	  'pgdn': 34,
 	  'ins': 45,
 	  'del': 46,
 	  'cmd': 91
 	}
+
 
 	/*!
 	 * Programatically add the following
@@ -38062,7 +38028,7 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _currentProfile = __webpack_require__(278);
+	var _currentProfile = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./currentProfile\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _currentProfile2 = _interopRequireDefault(_currentProfile);
 
@@ -38144,399 +38110,7 @@
 	exports.default = MyProfile;
 
 /***/ }),
-/* 278 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var CurrentProfile = function (_React$Component) {
-	    _inherits(CurrentProfile, _React$Component);
-
-	    function CurrentProfile() {
-	        _classCallCheck(this, CurrentProfile);
-
-	        return _possibleConstructorReturn(this, (CurrentProfile.__proto__ || Object.getPrototypeOf(CurrentProfile)).apply(this, arguments));
-	    }
-
-	    _createClass(CurrentProfile, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "div",
-	                { className: "container-fluid" },
-	                _react2.default.createElement(
-	                    "div",
-	                    { className: "row" },
-	                    _react2.default.createElement("div", { className: "col-md-1" }),
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-md-9" },
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "container" },
-	                            _react2.default.createElement("div", { style: styles.topArea }),
-	                            _react2.default.createElement(
-	                                "div",
-	                                { className: "row" },
-	                                _react2.default.createElement(
-	                                    "div",
-	                                    { className: "col-md-7" },
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "First Name"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "John"
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Last Name"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    " Doe"
-	                                                )
-	                                            )
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Nickname"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "JDub"
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Email"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "jdub18@fbclone.com"
-	                                                )
-	                                            )
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Work"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "Carpenter"
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Relationship Status"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "Married"
-	                                                )
-	                                            )
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Zip"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "73110"
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                " City"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "Yukon"
-	                                                )
-	                                            )
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "State"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "Oklahoma"
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-6", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                " Country"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                null,
-	                                                _react2.default.createElement(
-	                                                    "h5",
-	                                                    { style: styles.content },
-	                                                    "United States"
-	                                                )
-	                                            )
-	                                        )
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    "div",
-	                                    { className: "col-md-5" },
-	                                    _react2.default.createElement(
-	                                        "div",
-	                                        { className: "row" },
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-12", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Cover Photo"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                { style: styles.coverPhotoBox },
-	                                                _react2.default.createElement(
-	                                                    "a",
-	                                                    { href: "https://placeholder.com" },
-	                                                    _react2.default.createElement("img", { src: "http://via.placeholder.com/350x150" })
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-12", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "About"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                { style: styles.aboutBox },
-	                                                _react2.default.createElement(
-	                                                    "p",
-	                                                    null,
-	                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque dolor quis est fringilla eleifend. Aliquam bibendum ut nibh nec porttitor. Proin in neque tortor. Donec fringilla nisi in consequat sodales. Aenean porttitor volutpat velit, ut ultrices eros. Maecenas fermentum suscipit facilisis. Nam non felis sed odio fringilla vehicula. Donec vel erat vestibulum, lacinia."
-	                                                )
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            "div",
-	                                            { className: "col-md-12", style: styles.textInputArea },
-	                                            _react2.default.createElement(
-	                                                "label",
-	                                                { style: styles.textStyle },
-	                                                "Interest"
-	                                            ),
-	                                            _react2.default.createElement(
-	                                                "div",
-	                                                { style: styles.interestBox },
-	                                                _react2.default.createElement(
-	                                                    "p",
-	                                                    null,
-	                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sodales dolor."
-	                                                )
-	                                            )
-	                                        )
-	                                    )
-	                                )
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-md-2" },
-	                        "right side"
-	                    )
-	                ),
-	                _react2.default.createElement("footer", { style: styles.footer })
-	            );
-	        }
-	    }]);
-
-	    return CurrentProfile;
-	}(_react2.default.Component);
-
-	var styles = {
-	    test: {
-	        border: "2px solid black"
-	    },
-	    topArea: {
-	        minHeight: "80px"
-	    },
-	    inputBorder: {
-	        width: '100%',
-	        border: "2px solid rgba(31,193,68, .5)",
-	        borderRadius: "20px",
-	        paddingLeft: '10px',
-	        height: "2.7em"
-	    },
-	    textStyle: {
-	        color: "#1FC144",
-	        marginLeft: "15px"
-	    },
-	    textInputArea: {
-	        marginTop: '30px'
-	    },
-	    coverPhotoBox: {
-	        height: "150px",
-
-	        borderRadius: '20px',
-	        color: "#333333"
-	    },
-	    aboutBox: {
-	        height: "125px",
-	        border: "2px solid rgba(31,193,68, .5)",
-	        color: "#333333",
-	        overflow: "auto",
-	        width: "350px",
-	        padding: "12px"
-	    },
-	    interestBox: {
-	        height: "125px",
-	        border: "2px solid rgba(31,193,68, .5)",
-	        color: "#333333",
-	        overflow: "auto",
-	        width: "350px",
-	        padding: "12px"
-	    },
-	    SelectField: {
-	        width: "180px"
-	    },
-	    content: {
-	        color: "rgb(51,51,51)",
-	        paddingLeft: "23px"
-	    },
-	    footer: {
-	        height: "70px"
-	    }
-	};
-
-	exports.default = CurrentProfile;
-
-/***/ }),
+/* 278 */,
 /* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 

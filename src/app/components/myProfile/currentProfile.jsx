@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 class CurrentProfile extends React.Component {
@@ -209,4 +208,4 @@ var styles = {
 
 
 
-export default CurrentProfile
+export default CurrentProfile;
