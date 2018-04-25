@@ -38070,6 +38070,10 @@
 
 	var _editProfile2 = _interopRequireDefault(_editProfile);
 
+	var _axios = __webpack_require__(279);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	var _RaisedButton = __webpack_require__(321);
 
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
@@ -38090,19 +38094,50 @@
 
 	        var _this = _possibleConstructorReturn(this, (MyProfile.__proto__ || Object.getPrototypeOf(MyProfile)).call(this, props));
 
+	        _this.sendDataToServer = function (dataFromChild) {
+	            _this.setState({ userData: dataFromChild });
+	        };
+
 	        _this.state = {
 	            EditProfileMode: false,
-	            ButtonText: "Edit"
+	            ButtonText: "Edit",
+	            userData: {}
+
+	            // Do an axios get request for current user data and set to state.userData
 	        };
 	        _this.onEditButtonPress = _this.onEditButtonPress.bind(_this);
+	        _this.sendUpdatedUserData = _this.sendUpdatedUserData.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(MyProfile, [{
+	        key: 'sendUpdatedUserData',
+	        value: function sendUpdatedUserData() {
+	            console.log(this.state.userData.firstName);
+	            _axios2.default.put('/users', {
+	                firstName: this.state.userData.firstName,
+	                lastName: this.state.userData.lastName,
+	                email: this.state.userData.email,
+	                nickname: this.state.userData.nickname,
+	                about: this.state.userData.about,
+	                // DOB:this.state.userData.DOB,
+	                city: this.state.userData.city,
+	                state: this.state.userData.state,
+	                //zip:this.state.userData.zip,
+	                country: this.state.userData.country,
+	                work: this.state.userData.work,
+	                relationship_status: this.state.userData.relationship_status
+	            }).then(function (response) {
+	                console.log(response);
+	            }).catch(function (error) {
+	                console.log(error);
+	            });
+	        }
+	    }, {
 	        key: 'chooseView',
 	        value: function chooseView() {
 	            if (this.state.EditProfileMode) {
-	                return _react2.default.createElement(_editProfile2.default, null);
+	                return _react2.default.createElement(_editProfile2.default, { userData: this.sendDataToServer });
 	            } else {
 	                return _react2.default.createElement(_currentProfile2.default, null);
 	            }
@@ -38115,6 +38150,7 @@
 	                this.setState({ ButtonText: "Save" });
 	            } else {
 	                this.setState({ ButtonText: "Edit" });
+	                this.sendUpdatedUserData();
 	            }
 	        }
 	    }, {
@@ -40378,6 +40414,10 @@
 
 	        var _this = _possibleConstructorReturn(this, (EditProfile.__proto__ || Object.getPrototypeOf(EditProfile)).call(this, props));
 
+	        _this.updateUserData = function () {
+	            _this.props.userData(_this.state);
+	        };
+
 	        _this.state = {
 	            value: 1,
 	            firstName: "",
@@ -40389,9 +40429,11 @@
 	            city: "",
 	            state: "",
 	            zip: "",
+	            country: "",
 	            work: "",
 	            relationship_status: ""
 	        };
+	        _this.updateUserData = _this.updateUserData.bind(_this);
 	        return _this;
 	    }
 
@@ -40463,7 +40505,7 @@
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
 	                                                        onChange: function onChange(e) {
-	                                                            return _this2.setState({ firstName: e.target.value });
+	                                                            _this2.setState({ firstName: e.target.value }, _this2.updateUserData);
 	                                                        },
 	                                                        hintText: 'Required Field',
 	                                                        value: this.state.firstName
@@ -40482,6 +40524,10 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            _this2.setState({ lastName: e.target.value }, _this2.updateUserData);
+	                                                            _this2.props.userData(_this2.state);
+	                                                        },
 	                                                        hintText: 'Hint Text',
 	                                                        value: this.state.lastName
 	                                                    })
@@ -40503,6 +40549,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ nickname: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Required Field',
 	                                                        value: this.state.nickname
 	                                                    })
@@ -40520,6 +40569,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ email: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Hint Text',
 	                                                        value: this.state.email
 	                                                    })
@@ -40541,6 +40593,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ work: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Required Field',
 	                                                        value: this.state.work
 	                                                    })
@@ -40591,6 +40646,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ zip: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Required Field',
 	                                                        value: this.state.zip
 	                                                    })
@@ -40608,6 +40666,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ city: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Hint Text',
 	                                                        value: this.state.city
 	                                                    })
@@ -40629,6 +40690,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ state: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Required Field',
 	                                                        value: this.state.state
 	                                                    })
@@ -40646,6 +40710,9 @@
 	                                                    'div',
 	                                                    { style: styles.inputBorder },
 	                                                    _react2.default.createElement(_TextField2.default, {
+	                                                        onChange: function onChange(e) {
+	                                                            return _this2.setState({ country: e.target.value }, _this2.updateUserData);
+	                                                        },
 	                                                        hintText: 'Hint Text',
 	                                                        value: this.state.country
 	                                                    })
