@@ -30,7 +30,7 @@ class EditProfile extends React.Component {
             zip: "",
             country: "",
             work: "",
-            relationship_status: ""
+            relationship_status: "",
         }
         this.updateUserData = this.updateUserData.bind(this)
     }
@@ -62,9 +62,9 @@ class EditProfile extends React.Component {
 
     }
 
-     updateUserData = () => {
+    updateUserData = () => {
         this.props.userData(this.state)
-      }
+    }
 
     render() {
 
@@ -85,9 +85,9 @@ class EditProfile extends React.Component {
                                             <div className="col-md-6" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >First Name</label>
                                                 <div style={styles.inputBorder}>
-                                                    <TextField 
-                                                        onChange ={(e)=> {
-                                                            this.setState({firstName: e.target.value}, this.updateUserData)
+                                                    <TextField
+                                                        onChange={(e) => {
+                                                            this.setState({ firstName: e.target.value }, this.updateUserData)
                                                         }}
                                                         hintText="Required Field"
                                                         value={this.state.firstName}
@@ -97,8 +97,8 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Last Name</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                        onChange ={(e)=> { 
-                                                            this.setState({lastName: e.target.value}, this.updateUserData)
+                                                        onChange={(e) => {
+                                                            this.setState({ lastName: e.target.value }, this.updateUserData)
                                                             this.props.userData(this.state)
                                                         }
                                                         }
@@ -106,7 +106,7 @@ class EditProfile extends React.Component {
                                                         value={this.state.lastName}
                                                     />
                                                 </div>
-                                                </div>
+                                            </div>
                                         </div>
 
                                         <div className="row">
@@ -114,7 +114,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Nickname</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                        onChange ={(e)=> this.setState({nickname: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ nickname: e.target.value }, this.updateUserData)}
                                                         hintText="Required Field"
                                                         value={this.state.nickname}
                                                     />
@@ -123,7 +123,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Email</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                    onChange ={(e)=> this.setState({email: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ email: e.target.value }, this.updateUserData)}
                                                         hintText="Hint Text"
                                                         value={this.state.email}
                                                     />
@@ -137,7 +137,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Work</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                    onChange ={(e)=> this.setState({work: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ work: e.target.value }, this.updateUserData)}
                                                         hintText="Required Field"
                                                         value={this.state.work}
                                                     />
@@ -168,7 +168,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Zip</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                    onChange ={(e)=> this.setState({zip: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ zip: e.target.value }, this.updateUserData)}
                                                         hintText="Required Field"
                                                         value={this.state.zip}
                                                     />
@@ -177,7 +177,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} > City</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                    onChange ={(e)=> this.setState({city: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ city: e.target.value }, this.updateUserData)}
                                                         hintText="Hint Text"
                                                         value={this.state.city}
                                                     />
@@ -191,7 +191,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >State</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                    onChange ={(e)=> this.setState({state: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ state: e.target.value }, this.updateUserData)}
                                                         hintText="Required Field"
                                                         value={this.state.state}
                                                     />
@@ -200,7 +200,7 @@ class EditProfile extends React.Component {
                                                 <label style={styles.textStyle} >Country</label>
                                                 <div style={styles.inputBorder}>
                                                     <TextField
-                                                        onChange ={(e)=> this.setState({country: e.target.value}, this.updateUserData)}
+                                                        onChange={(e) => this.setState({ country: e.target.value }, this.updateUserData)}
                                                         hintText="Hint Text"
                                                         value={this.state.country}
                                                     />
@@ -213,12 +213,15 @@ class EditProfile extends React.Component {
                                         <div className="row">
                                             <div className="col-md-12" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >Cover Photo</label>
-                                                <div style={styles.coverPhotoBox}></div>
+                                                <div style={styles.coverPhotoBox}>
+                                    
+                                                </div>
 
                                             </div>
                                             <div className="col-md-12" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >{this.state.about}</label>
-                                                <div style={styles.aboutBox}></div>
+                                                <div style={styles.aboutBox}>
+                                                </div>
 
                                             </div>
                                             <div className="col-md-12" style={styles.textInputArea}>
@@ -240,10 +243,6 @@ class EditProfile extends React.Component {
                         </div>
                         <div className="col-md-2" >right side</div>
                     </div>
-
-
-
-
 
 
 

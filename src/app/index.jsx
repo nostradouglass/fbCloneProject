@@ -13,6 +13,7 @@ import Friends from './components/friends/friends'
 import Settings from './components/settings/settings'
 import Photos from './components/photos/photos'
 import MyProfile from './components/myProfile/myProfile'
+import Search from './components/search/search'
 
 const BasicExample = () => (
   <Router>
@@ -20,12 +21,26 @@ const BasicExample = () => (
       <div>
 
 
-        <Route exact path="/auth" component={App} />
+        {/* <Route exact path="/auth" component={App} />
         <Route path="/auth/home" component={Home} />
         <Route path="/auth/friends" component={Friends} />
         <Route path="/auth/myProfile" component={MyProfile} />
         <Route path="/auth/photos" component={Photos} />
-        <Route path="/auth/settings" component={Settings} />
+        <Route path="/auth/settings" component={Settings} /> 
+        <Route path="/auth/search" component={Search} />
+      */}
+
+
+        {/* For dev */}
+        <Route exact path="/auth" component={MyProfile} />
+        <Route path="/auth/home" component={Home} />
+        <Route path="/auth/friends" component={Friends} />
+        <Route path="/auth/myProfile" component={MyProfile} />
+        <Route path="/auth/photos" component={Photos} />
+        <Route path="/auth/settings" component={Settings} /> 
+        <Route path="/auth/search" component={Search} />
+     
+
       </div>
     </MuiThemeProvider>
   </Router>

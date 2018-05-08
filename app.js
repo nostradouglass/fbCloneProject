@@ -22,6 +22,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var logout = require('./routes/logout')
 var signUp = require('./routes/signUp')
+var upload = require('./routes/upload')
 
 mongoose.connect(`mongodb://${database.username}:${database.password}@${database.database_location}`, { useMongoClient: true})
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
@@ -75,7 +76,7 @@ app.use(function (req, res, next) {
     next()
   }
 })
-
+app.use(express.static(path.join(__dirname, 'static')));
 
 function requireLogin (req, res, next) {
   if (!req.user) {
@@ -85,7 +86,7 @@ function requireLogin (req, res, next) {
   }
 }
 
-app.use(express.static(path.join(__dirname, 'static')));
+
 app.use('/users', users);
 app.use('/signup', signUp )
 app.use('/auth', requireLogin, express.static(path.join(__dirname, 'dist')));
@@ -94,6 +95,22 @@ app.use('/', index);
 app.use('/login', login);
 
 app.use('/logout', logout)
+
+
+
+// Add require login function after completion
+//************************************
+
+app.use('/upload', upload)
+
+//************************************
+
+
+// 
+
+
+
+
 
 
 // catch 404 and forward to error handler
