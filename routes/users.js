@@ -4,6 +4,8 @@ var router = express.Router();
 var User = require('../models/Users')
 
 
+// @ /users 
+
 router.get('/user', function (req, res, next) {
   User.findOne({ email: req.session.user.email }, function (err, user) {
     if (user) {
@@ -11,6 +13,31 @@ router.get('/user', function (req, res, next) {
       res.json(user)
     }
   })
+})
+
+router.post('/findUsers', function (req, res) {
+
+  let searchTerm = req.body.searchTerm
+
+  User.find({$or:[
+    {firstName:{'$regex': searchTerm,$options:'i'}},
+    {lastName: {'$regex': searchTerm,$options:'i'}}, 
+    {email: {'$regex': searchTerm,$options:'i'}}]} )
+    
+    .select('_id firstName lastName email nickname city state country')
+    .exec(function(err, userList) 
+ {
+    if (err)
+    {
+        res.send(err);
+    }
+    console.log(userList)
+    res.json(userList);
+
+ })
+
+
+
 })
 
 

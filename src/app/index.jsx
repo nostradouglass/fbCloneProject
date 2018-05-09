@@ -32,7 +32,7 @@ const BasicExample = () => (
 
 
         {/* For dev */}
-        <Route exact path="/auth" component={MyProfile} />
+        <Route exact path="/auth" component={Search} />
         <Route path="/auth/home" component={Home} />
         <Route path="/auth/friends" component={Friends} />
         <Route path="/auth/myProfile" component={MyProfile} />

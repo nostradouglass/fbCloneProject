@@ -17,7 +17,7 @@ class Header extends React.Component {
                 <nav className="navbar navbar-expand-lg nav" style={styles.navbar}>
                     <div onClick={this.handleToggle} ><span style={styles.hamburger}>&#9776;</span></div>
                     
-                   <input type="text" placeholder="Find Friends..." /> <img onClick={()=> console.log("test")} src="/icons/magnifying-glass.svg" alt="Search" className="searchIcon"/>
+                   
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
 

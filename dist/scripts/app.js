@@ -107,7 +107,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/auth', component: _myProfile2.default }),
+	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/auth', component: _search2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/home', component: _home2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friends', component: _friends2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/myProfile', component: _myProfile2.default }),
@@ -29170,11 +29170,6 @@
 	                            '\u2630'
 	                        )
 	                    ),
-	                    _react2.default.createElement('input', { type: 'text', placeholder: 'Find Friends...' }),
-	                    ' ',
-	                    _react2.default.createElement('img', { onClick: function onClick() {
-	                            return console.log("test");
-	                        }, src: '/icons/magnifying-glass.svg', alt: 'Search', className: 'searchIcon' }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
@@ -43940,6 +43935,10 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
+	var _axios = __webpack_require__(279);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43951,23 +43950,73 @@
 	var Search = function (_React$Component) {
 	    _inherits(Search, _React$Component);
 
-	    function Search() {
+	    function Search(props) {
 	        _classCallCheck(this, Search);
 
-	        return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
+
+	        _this.state = {
+	            searchTerm: ""
+	        };
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        _this.handleSubmit = _this.handleSubmit.bind(_this);
+
+	        return _this;
 	    }
 
 	    _createClass(Search, [{
+	        key: 'handleSubmit',
+	        value: function handleSubmit() {
+	            event.preventDefault();
+
+	            _axios2.default.post('http://localhost:3000/users/findusers', {
+	                searchTerm: this.state.searchTerm
+	            }).then(function (response) {
+	                console.log(response);
+	            }).catch(function (error) {
+	                console.log(error);
+	            });
+	        }
+	    }, {
+	        key: 'handleChange',
+	        value: function handleChange(e) {
+
+	            this.setState({ searchTerm: e.target.value });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
 	                null,
 	                _react2.default.createElement(_header2.default, null),
+	                _react2.default.createElement('input', { type: 'text', placeholder: 'Find Friends...' }),
+	                ' ',
+	                _react2.default.createElement('img', { onClick: function onClick() {
+	                        return console.log("test");
+	                    }, src: '/icons/svg/magnifying-glass.svg', alt: 'Search', className: 'searchIcon' }),
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Search'
+	                    'form',
+	                    { onSubmit: this.handleSubmit },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'form-group' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            null,
+	                            'Email address'
+	                        ),
+	                        _react2.default.createElement('input', { type: 'text', onChange: this.handleChange,
+	                            value: this.state.searchTerm,
+	                            className: 'form-control',
+	                            placeholder: 'Enter searchTerm' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'button',
+	                        { type: 'submit', className: 'btn btn-primary' },
+	                        'Submit'
+	                    )
 	                )
 	            );
 	        }
