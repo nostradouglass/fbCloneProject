@@ -24,7 +24,7 @@ class MyProfile extends React.Component {
     }
 
     sendUpdatedUserData() {
-        console.log(this.state.userData.firstName)
+       
         axios.put('/users', {
             firstName: this.state.userData.firstName,
                     lastName: this.state.userData.lastName,
@@ -40,7 +40,7 @@ class MyProfile extends React.Component {
                     relationship_status:this.state.userData.relationship_status
           })
           .then(function (response) {
-            console.log(response);
+            //console.log(response);
           })
           .catch(function (error) {
             console.log(error);

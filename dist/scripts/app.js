@@ -38087,7 +38087,7 @@
 	    _createClass(MyProfile, [{
 	        key: 'sendUpdatedUserData',
 	        value: function sendUpdatedUserData() {
-	            console.log(this.state.userData.firstName);
+
 	            _axios2.default.put('/users', {
 	                firstName: this.state.userData.firstName,
 	                lastName: this.state.userData.lastName,
@@ -38102,7 +38102,7 @@
 	                work: this.state.userData.work,
 	                relationship_status: this.state.userData.relationship_status
 	            }).then(function (response) {
-	                console.log(response);
+	                //console.log(response);
 	            }).catch(function (error) {
 	                console.log(error);
 	            });
@@ -43939,6 +43939,10 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _searchResults = __webpack_require__(324);
+
+	var _searchResults2 = _interopRequireDefault(_searchResults);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43956,7 +43960,8 @@
 	        var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
 
 	        _this.state = {
-	            searchTerm: ""
+	            searchTerm: "",
+	            searchResultsList: ""
 	        };
 
 	        _this.handleChange = _this.handleChange.bind(_this);
@@ -43968,12 +43973,13 @@
 	    _createClass(Search, [{
 	        key: 'handleSubmit',
 	        value: function handleSubmit() {
+	            var that = this;
 	            event.preventDefault();
 
 	            _axios2.default.post('http://localhost:3000/users/findusers', {
 	                searchTerm: this.state.searchTerm
 	            }).then(function (response) {
-	                console.log(response);
+	                that.setState({ searchResultsList: response.data });
 	            }).catch(function (error) {
 	                console.log(error);
 	            });
@@ -43987,35 +43993,51 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            return _react2.default.createElement(
 	                'div',
 	                null,
 	                _react2.default.createElement(_header2.default, null),
-	                _react2.default.createElement('input', { type: 'text', placeholder: 'Find Friends...' }),
-	                ' ',
-	                _react2.default.createElement('img', { onClick: function onClick() {
-	                        return console.log("test");
-	                    }, src: '/icons/svg/magnifying-glass.svg', alt: 'Search', className: 'searchIcon' }),
 	                _react2.default.createElement(
 	                    'form',
 	                    { onSubmit: this.handleSubmit },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'form-group' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Email address'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'text', onChange: this.handleChange,
+	                        _react2.default.createElement('input', {
+	                            type: 'text',
 	                            value: this.state.searchTerm,
-	                            className: 'form-control',
-	                            placeholder: 'Enter searchTerm' })
-	                    ),
+	                            onChange: this.handleChange,
+	                            placeholder: 'Find Friends...' }),
+	                        _react2.default.createElement('img', { onClick: function onClick() {
+	                                return _this2.handleSubmit();
+	                            },
+	                            src: '/icons/svg/magnifying-glass.svg',
+	                            alt: 'Search', className: 'searchIcon' })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container-fluid' },
 	                    _react2.default.createElement(
-	                        'button',
-	                        { type: 'submit', className: 'btn btn-primary' },
-	                        'Submit'
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-3' },
+	                            'left'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-6' },
+	                            _react2.default.createElement(_searchResults2.default, { searchResultsList: this.state.searchResultsList })
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-3' },
+	                            'right'
+	                        )
 	                    )
 	                )
 	            );
@@ -44026,6 +44048,131 @@
 	}(_react2.default.Component);
 
 	exports.default = Search;
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _axios = __webpack_require__(279);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _searchResult = __webpack_require__(325);
+
+	var _searchResult2 = _interopRequireDefault(_searchResult);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SearchResults = function (_React$Component) {
+	    _inherits(SearchResults, _React$Component);
+
+	    function SearchResults(props) {
+	        _classCallCheck(this, SearchResults);
+
+	        var _this = _possibleConstructorReturn(this, (SearchResults.__proto__ || Object.getPrototypeOf(SearchResults)).call(this, props));
+
+	        _this.mapSearchResultsList = _this.mapSearchResultsList.bind(_this);
+
+	        return _this;
+	    }
+
+	    _createClass(SearchResults, [{
+	        key: 'mapSearchResultsList',
+	        value: function mapSearchResultsList() {
+
+	            if (this.props.searchResultsList) {
+
+	                var list = this.props.searchResultsList;
+
+	                var mappedList = list.map(function (person) {
+	                    return _react2.default.createElement(_searchResult2.default, { personProp: person, key: person._id });
+	                });
+
+	                return mappedList;
+	            } else {
+	                return _react2.default.createElement('li', null);
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    this.mapSearchResultsList()
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SearchResults;
+	}(_react2.default.Component);
+
+	exports.default = SearchResults;
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SearchResult = function SearchResult(_ref) {
+	  var personProp = _ref.personProp;
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "card", style: { width: "18rem" } },
+	    _react2.default.createElement("img", { className: "card-img-top", src: ".../100px180/", alt: "Card image cap" }),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "card-body" },
+	      _react2.default.createElement(
+	        "h5",
+	        { className: "card-title" },
+	        personProp.firstName,
+	        " ",
+	        personProp.lastName
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        { className: "card-text" },
+	        personProp.email
+	      )
+	    )
+	  );
+	};
+
+	exports.default = SearchResult;
 
 /***/ })
 /******/ ]);

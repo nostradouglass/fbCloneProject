@@ -18,3 +18,7 @@ input[type=text]:focus {
     margin-left: 10px;
     height: 24px;
 }
+
+ul {
+    list-style-type: none;
+  }
