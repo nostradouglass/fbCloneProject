@@ -22,3 +22,50 @@ input[type=text]:focus {
 ul {
     list-style-type: none;
   }
+
+  .timelineBg {
+      background-color:#1FC144;
+  }
+
+  .card {
+      margin: 20px 0px;
+  }
+
+.subHeadArea {
+    height: 200px;
+}
+
+  .smallUserPic {
+    margin: 10px;
+    height: 70px;
+    width: 70px;
+    background-color: #bbb;
+    border-radius: 50%;
+    float: left;
+  }
+
+  .postUserName {
+      width: 250px;
+      margin: 10px;
+  }
+
+
+  .postImage { 
+      margin: 0 10px;
+      border: 1px solid #1FC144;
+      min-height: 250px; 
+      border: "1px solid black";
+    } 
+
+.likeCommentButtons {
+    margin-top: 20px;
+}
+
+  .addCommentPic {
+    margin: 20px 10px 20px 30px;
+    height: 35px;
+    width: 35px;
+    background-color: #bbb;
+    border-radius: 50%;
+    float: left;
+  }

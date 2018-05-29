@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 
 import App from './components/App'
-import Home from './components/home/home'
 import Friends from './components/friends/friends'
 import Settings from './components/settings/settings'
 import Photos from './components/photos/photos'
@@ -32,8 +31,7 @@ const BasicExample = () => (
 
 
         {/* For dev */}
-        <Route exact path="/auth" component={Search} />
-        <Route path="/auth/home" component={Home} />
+        <Route exact path="/auth" component={App} />
         <Route path="/auth/friends" component={Friends} />
         <Route path="/auth/myProfile" component={MyProfile} />
         <Route path="/auth/photos" component={Photos} />
