@@ -37,6 +37,7 @@ class Search extends React.Component {
     handleChange(e) {
 
         this.setState({ searchTerm: e.target.value })
+		console.log(this.state.searchTerm);
 
 
     }
@@ -52,9 +53,10 @@ class Search extends React.Component {
                         <input 
                         type="text" 
                         value={this.state.searchTerm} 
-                        onChange={this.handleChange} 
+                        onChange={this.handleChange(e)} 
                         placeholder="Find Friends..." /> 
-                        <img onClick={() => this.handleSubmit()} 
+			{/*<img onClick={() => this.handleSubmit()} */}
+                        <img onClick={()=>this.handleSubmit()} 
                         src="/icons/svg/magnifying-glass.svg" 
                         alt="Search" className="searchIcon" />
                         
