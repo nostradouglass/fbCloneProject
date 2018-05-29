@@ -10,7 +10,8 @@ class MyProfile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            EditProfileMode: false
+            EditProfileMode: false,
+            ButtonText: "Edit"
         }
         this.onEditButtonPress = this.onEditButtonPress.bind(this)
     }
@@ -18,21 +19,27 @@ class MyProfile extends React.Component {
 
     chooseView() {
         if (this.state.EditProfileMode) {
-            return <EditProfile />
+            return <EditProfile />;   
         } else {
-            return <CurrentProfile />
+            return <CurrentProfile />;    
         }
     }
 
     onEditButtonPress() {
         this.setState({ EditProfileMode: !this.state.EditProfileMode})
+        if(this.state.ButtonText=="Edit"){
+            this.setState({ButtonText:"Save"})
+        }else{
+            this.setState({ButtonText:"Edit"})
+        }
+        
     }
 
     render() {
         return (
             <div>
                 <Header />
-                <button onClick={() => {this.onEditButtonPress()}} >Change</button>
+                <button id="Btn1" onClick={() => {this.onEditButtonPress()}} >{this.state.ButtonText}</button>
             {this.chooseView()}
 
             </div>
