@@ -4,14 +4,23 @@ import React from 'react'
 
 const SearchResult = ({ personProp }) => (
 
-<div className="card" style={{ width: "18rem"}}>
-  <img className="card-img-top" src=".../100px180/" alt="Card image cap" />
-  <div className="card-body">
-    <h5 className="card-title">{personProp.firstName} {personProp.lastName}</h5>
-    <p className="card-text">{personProp.email}</p>
+
+<div className="card searchResultCard">
+<div style={{display: "inline"}}>
+<div className="smallUserPic"></div>
+    <div className="postUserName">{personProp.firstName} {personProp.lastName}</div>
+    <div className="postDate">{personProp.email}</div>
+    </div>
+    <p>Hello</p>
+    <div className="card-body">
+       
+    </div>
     
-  </div>    
 </div>
+
 );
 
 export default SearchResult;
+
+
+

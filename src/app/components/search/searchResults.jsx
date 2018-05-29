@@ -31,6 +31,9 @@ class SearchResults extends React.Component {
     render() {
         return (
             <div>
+
+
+
                 <ul>
                     {this.mapSearchResultsList()}
                 </ul>

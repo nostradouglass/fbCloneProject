@@ -29056,7 +29056,7 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _timeline = __webpack_require__(326);
+	var _timeline = __webpack_require__(273);
 
 	var _timeline2 = _interopRequireDefault(_timeline);
 
@@ -37781,7 +37781,178 @@
 	}();
 
 /***/ }),
-/* 273 */,
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(11);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _header = __webpack_require__(209);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Timeline = function (_React$Component) {
+	    _inherits(Timeline, _React$Component);
+
+	    function Timeline(props) {
+	        _classCallCheck(this, Timeline);
+
+	        var _this = _possibleConstructorReturn(this, (Timeline.__proto__ || Object.getPrototypeOf(Timeline)).call(this, props));
+
+	        _this.state = {
+
+	            tempPostInfo: [{
+	                postId: "123",
+	                userName: "Steve Holt",
+	                postDate: "May 29th 2018",
+	                postText: "Arrested Season 5!",
+	                postImageUrl: "",
+	                postComments: [{
+	                    user: "Maybe Funke",
+	                    comment: "Where?"
+	                }, {
+	                    user: "Steve Holt",
+	                    comment: "Netflix"
+	                }]
+	            }, {
+	                postId: "456",
+	                userName: "Dave Thomas",
+	                postDate: "March 23rd 2018",
+	                postText: "Eat at Wendy's",
+	                postImageUrl: "",
+	                postComments: [{
+	                    user: "",
+	                    comment: ""
+	                }]
+	            }]
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Timeline, [{
+	        key: 'post',
+	        value: function post() {
+
+	            return this.state.tempPostInfo.map(function (post) {
+	                return _react2.default.createElement(
+	                    'div',
+	                    { className: 'card', style: { width: "100%" } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { style: { display: "inline" } },
+	                        _react2.default.createElement('div', { className: 'smallUserPic' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'postUserName' },
+	                            post.userName
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'postDate' },
+	                            post.postDate
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'card-body' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: 'card-text' },
+	                            post.postText
+	                        )
+	                    ),
+	                    _react2.default.createElement('div', { className: 'postImage' }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row likeCommentButtons' },
+	                        _react2.default.createElement('div', { className: 'col-md-1' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-3' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'btn btn-outline-success' },
+	                                'Like'
+	                            )
+	                        ),
+	                        _react2.default.createElement('div', { className: 'col-md-4' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-3' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'btn btn-outline-success' },
+	                                'Comment'
+	                            )
+	                        ),
+	                        _react2.default.createElement('div', { className: 'col-md-1' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { style: { display: "inline" } },
+	                            _react2.default.createElement('div', { className: 'addCommentPic' }),
+	                            _react2.default.createElement('input', { type: 'text', placeholder: 'Add a comment', style: { width: "400px", marginTop: "20px" } })
+	                        )
+	                    )
+	                );
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'subHeadArea' },
+	                        ' '
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement('div', { className: 'col-md-3' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'col-md-6 timelineBg' },
+	                            this.post()
+	                        ),
+	                        _react2.default.createElement('div', { className: 'col-md-3' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Timeline;
+	}(_react2.default.Component);
+
+	exports.default = Timeline;
+
+/***/ }),
 /* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38185,7 +38356,7 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'container' },
-	                            _react2.default.createElement('div', { style: styles.topArea }),
+	                            _react2.default.createElement('div', { className: 'topArea' }),
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'row' },
@@ -38473,12 +38644,6 @@
 	}(_react2.default.Component);
 
 	var styles = {
-	    test: {
-	        border: "2px solid black"
-	    },
-	    topArea: {
-	        minHeight: "80px"
-	    },
 	    inputBorder: {
 	        width: '100%',
 	        border: "2px solid rgba(31,193,68, .5)",
@@ -43911,29 +44076,32 @@
 
 	    _createClass(Search, [{
 	        key: 'handleSubmit',
-	        value: function handleSubmit() {
+	        value: function handleSubmit(event) {
 	            var that = this;
 	            event.preventDefault();
 
-	            _axios2.default.post('http://localhost:3000/users/findusers', {
-	                searchTerm: this.state.searchTerm
-	            }).then(function (response) {
-	                that.setState({ searchResultsList: response.data });
-	            }).catch(function (error) {
-	                console.log(error);
-	            });
+	            if (this.state.searchTerm) {
+
+	                _axios2.default.post('http://localhost:3000/users/findusers', {
+	                    searchTerm: this.state.searchTerm
+	                }).then(function (response) {
+	                    that.setState({ searchResultsList: response.data });
+	                }).catch(function (error) {
+	                    console.log(error);
+	                });
+	            }
 	        }
 	    }, {
 	        key: 'handleChange',
 	        value: function handleChange(e) {
+
+	            var that = this;
 
 	            this.setState({ searchTerm: e.target.value });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
-
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -43949,16 +44117,14 @@
 	                            value: this.state.searchTerm,
 	                            onChange: this.handleChange,
 	                            placeholder: 'Find Friends...' }),
-	                        _react2.default.createElement('img', { onClick: function onClick() {
-	                                return _this2.handleSubmit();
-	                            },
+	                        _react2.default.createElement('img', { onClick: this.handleSubmit,
 	                            src: '/icons/svg/magnifying-glass.svg',
 	                            alt: 'Search', className: 'searchIcon' })
 	                    )
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'container-fluid' },
+	                    { className: 'container-fluid ' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
@@ -44077,7 +44243,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(2);
@@ -44087,203 +44253,37 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var SearchResult = function SearchResult(_ref) {
-	  var personProp = _ref.personProp;
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "card", style: { width: "18rem" } },
-	    _react2.default.createElement("img", { className: "card-img-top", src: ".../100px180/", alt: "Card image cap" }),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "card-body" },
-	      _react2.default.createElement(
-	        "h5",
-	        { className: "card-title" },
-	        personProp.firstName,
-	        " ",
-	        personProp.lastName
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        { className: "card-text" },
-	        personProp.email
-	      )
-	    )
-	  );
+	    var personProp = _ref.personProp;
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "card searchResultCard" },
+	        _react2.default.createElement(
+	            "div",
+	            { style: { display: "inline" } },
+	            _react2.default.createElement("div", { className: "smallUserPic" }),
+	            _react2.default.createElement(
+	                "div",
+	                { className: "postUserName" },
+	                personProp.firstName,
+	                " ",
+	                personProp.lastName
+	            ),
+	            _react2.default.createElement(
+	                "div",
+	                { className: "postDate" },
+	                personProp.email
+	            )
+	        ),
+	        _react2.default.createElement(
+	            "p",
+	            null,
+	            "Hello"
+	        ),
+	        _react2.default.createElement("div", { className: "card-body" })
+	    );
 	};
 
 	exports.default = SearchResult;
-
-/***/ }),
-/* 326 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(11);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _header = __webpack_require__(209);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Timeline = function (_React$Component) {
-	    _inherits(Timeline, _React$Component);
-
-	    function Timeline(props) {
-	        _classCallCheck(this, Timeline);
-
-	        var _this = _possibleConstructorReturn(this, (Timeline.__proto__ || Object.getPrototypeOf(Timeline)).call(this, props));
-
-	        _this.state = {
-
-	            tempPostInfo: [{
-	                postId: "123",
-	                userName: "Steve Holt",
-	                postDate: "May 29th 2018",
-	                postText: "Arrested Season 5!",
-	                postImageUrl: "",
-	                postComments: [{
-	                    user: "Maybe Funke",
-	                    comment: "Where?"
-	                }, {
-	                    user: "Steve Holt",
-	                    comment: "Netflix"
-	                }]
-	            }, {
-	                postId: "456",
-	                userName: "Dave Thomas",
-	                postDate: "March 23rd 2018",
-	                postText: "Eat at Wendy's",
-	                postImageUrl: "",
-	                postComments: [{
-	                    user: "",
-	                    comment: ""
-	                }]
-	            }]
-	        };
-	        return _this;
-	    }
-
-	    _createClass(Timeline, [{
-	        key: 'post',
-	        value: function post() {
-
-	            return this.state.tempPostInfo.map(function (post) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { className: 'card', style: { width: "100%" } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { style: { display: "inline" } },
-	                        _react2.default.createElement('div', { className: 'smallUserPic' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'postUserName' },
-	                            post.userName
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'postDate' },
-	                            post.postDate
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'card-body' },
-	                        _react2.default.createElement(
-	                            'p',
-	                            { className: 'card-text' },
-	                            post.postText
-	                        )
-	                    ),
-	                    _react2.default.createElement('div', { className: 'postImage' }),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row likeCommentButtons' },
-	                        _react2.default.createElement('div', { className: 'col-md-1' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-md-3' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { type: 'button', className: 'btn btn-outline-success' },
-	                                'Like'
-	                            )
-	                        ),
-	                        _react2.default.createElement('div', { className: 'col-md-4' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-md-3' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { type: 'button', className: 'btn btn-outline-success' },
-	                                'Comment'
-	                            )
-	                        ),
-	                        _react2.default.createElement('div', { className: 'col-md-1' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { style: { display: "inline" } },
-	                            _react2.default.createElement('div', { className: 'addCommentPic' }),
-	                            _react2.default.createElement('input', { type: 'text', placeholder: 'Add a comment', style: { width: "400px", marginTop: "20px" } })
-	                        )
-	                    )
-	                );
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'container' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'subHeadArea' },
-	                        ' '
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'row' },
-	                        _react2.default.createElement('div', { className: 'col-md-3' }),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-md-6 timelineBg' },
-	                            this.post()
-	                        ),
-	                        _react2.default.createElement('div', { className: 'col-md-3' })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Timeline;
-	}(_react2.default.Component);
-
-	exports.default = Timeline;
 
 /***/ })
 /******/ ]);

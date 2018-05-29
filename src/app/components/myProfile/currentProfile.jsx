@@ -61,7 +61,7 @@ class CurrentProfile extends React.Component {
                     {/* Main Area */}
                     <div className="col-md-9" >
                         <div className="container">
-                            <div style={styles.topArea}></div>
+                            <div className="topArea"></div>
 
                             <div className="row">
                                 <div className="col-md-7">
@@ -201,12 +201,6 @@ class CurrentProfile extends React.Component {
 
 
 var styles = {
-    test: {
-        border: "2px solid black"
-    },
-    topArea: {
-        minHeight: "80px"
-    },
     inputBorder: {
         width: '100%',
         border: "2px solid rgba(31,193,68, .5)",

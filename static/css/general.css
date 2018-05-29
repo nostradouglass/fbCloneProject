@@ -69,3 +69,9 @@ ul {
     border-radius: 50%;
     float: left;
   }
+
+  .searchResultCard {
+    width: 100%;
+    border-color: #1FC144;
+  }
+
