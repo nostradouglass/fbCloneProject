@@ -4,6 +4,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Dropzone from 'react-dropzone'
 import axios from 'axios'
 
 const myCustomTheme = getMuiTheme({
@@ -34,6 +35,24 @@ class EditProfile extends React.Component {
         }
         this.updateUserData = this.updateUserData.bind(this)
     }
+
+    // Used to send profile pic image
+    onDrop(acceptedFiles, rejectedFiles) {
+
+        let formData = new FormData();
+        var file = acceptedFiles
+        console.log(file[0])
+        formData.append("file", file[0]);
+        formData.append('someName', 'someValue');
+        formData.append('_method', 'PUT'); // ADD THIS LINE
+
+        axios({
+            method: 'post', //CHANGE TO POST
+            url: "/upload/profile_pic",
+            data: formData
+        })
+    }
+
 
     componentWillMount() {
         var that = this
@@ -210,11 +229,20 @@ class EditProfile extends React.Component {
 
                                     </div>
                                     <div className="col-md-5">
+                                            <div style={styles.profilePic}>
+                                                <Dropzone
+                                                    onDrop={(files) => this.onDrop(files)}
+                                                    style={styles.profilePicDropZone}>
+                                                    <div style={styles.dropZoneText}>Drop image or click here to upload Image</div>
+                                                </Dropzone>
+                                            </div>
+                                            <label style={styles.textStyle} >Profile Image</label>
+                                       
                                         <div className="row">
                                             <div className="col-md-12" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >Cover Photo</label>
                                                 <div style={styles.coverPhotoBox}>
-                                    
+
                                                 </div>
 
                                             </div>
@@ -231,22 +259,13 @@ class EditProfile extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
-
-
                             </div>
-
 
                         </div>
                         <div className="col-md-2" >right side</div>
                     </div>
-
-
-
-
                 </div>
 
             </MuiThemeProvider>
@@ -294,6 +313,25 @@ var styles = {
     },
     SelectField: {
         width: "180px"
+    },
+    profilePic: {
+        margin: "10px",
+        height: " 150px",
+        width: "150px",
+        border: "2px solid rgba(31,193,68, .5)",
+        borderRadius: "50%",
+    },
+    profilePicDropZone: {
+        height: " 150px",
+        width: "150px",
+        borderRadius: "50%",
+    },
+    dropZoneText: {
+        marginTop: "30px",
+        marginLeft: "25px",
+        width: "90px",
+        textAlign: "center",
+        fontSize: "14px"
     }
 }
 

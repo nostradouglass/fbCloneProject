@@ -79,6 +79,7 @@ app.use(function (req, res, next) {
   }
 })
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'media')));
 
 function requireLogin (req, res, next) {
   if (!req.user) {

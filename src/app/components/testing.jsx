@@ -17,7 +17,7 @@ class Testing extends React.Component {
     formData.append('_method', 'PUT'); // ADD THIS LINE
     axios({
              method: 'post', //CHANGE TO POST
-             url: "/upload/upload",
+             url: "/upload/profile_pic",
              data: formData,
        })
        }

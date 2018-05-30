@@ -66,16 +66,29 @@ router.post('/coverPhoto', function(req, res, next) {
 });
 
 
-router.post('/upload', (req, res, next) => {
+router.post('/profile_pic', (req, res, next) => {
   
+   console.log(req.user._id)
+
+  var userDir = `./media/users/${req.user._id}`
+
+  if (!fs.existsSync(userDir)) {
+    fs.mkdirSync(userDir)
+  }
+
+  var profileDir = `${userDir}/profile_pics`
+
+  if (!fs.existsSync(profileDir)) {
+    fs.mkdirSync(profileDir)
+  }
+
    let imageFile = req.files.file;
 
-  imageFile.mv(`${__dirname}/${imageFile.name}.jpg`, function(err) {
+  imageFile.mv(`./media/users/${req.user._id}/profile_pics/primary_profile_pic.jpg`, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
-    res.end()
-   // res.json({file: `static/${imagefile.name}.jpg`});
+    res.json({message: "file saved"});
   });
 
 

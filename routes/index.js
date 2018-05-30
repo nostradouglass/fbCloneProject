@@ -11,7 +11,7 @@ var csrfProtection = csrf({ cookie: true })
 
 /* GET home page. */
 router.get('*', csrfProtection, function (req, res, next) {
-  if (isProduction) {
+
     if (req.session.user) {
       User.findOne({ email: req.session.user.email }, function (err, user) {
         if (!user) { // If no user send to login page
@@ -22,6 +22,8 @@ router.get('*', csrfProtection, function (req, res, next) {
               res.cookie('id', req.session.user._id);
               req.session.user = user;
               
+              
+
               res.redirect('/auth/');
             }
             else {
@@ -33,11 +35,6 @@ router.get('*', csrfProtection, function (req, res, next) {
     } else {
       res.render('index', { csrfToken: req.csrfToken() });
     }
-  } else {
-    
-    
-  }
-  //res.redirect('/auth/');
 
 });
 
