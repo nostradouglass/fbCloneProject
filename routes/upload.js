@@ -67,16 +67,17 @@ router.post('/coverPhoto', function(req, res, next) {
 
 
 router.post('/upload', (req, res, next) => {
-  console.log(req);
-  let imageFile = req.files.file;
+  
+   let imageFile = req.files.file;
 
-  imageFile.mv(`${__dirname}/static/${req.body.filename}.jpg`, function(err) {
+  imageFile.mv(`${__dirname}/${imageFile.name}.jpg`, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
-
-    res.json({file: `static/${req.body.filename}.jpg`});
+    res.end()
+   // res.json({file: `static/${imagefile.name}.jpg`});
   });
+
 
 })
 

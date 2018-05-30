@@ -1,0 +1,11 @@
+
+
+module.exports = {
+database: {
+username: "home",
+password: "Doritos1",
+database_location: "ds257627.mlab.com:57627/fb_clone_db"
+},
+server: true
+
+}
