@@ -16,6 +16,7 @@ var helmet = require('helmet')
 var compression = require('compression')
 var sessions = require('client-sessions')
 var csurf = require('csurf')
+var fileUpload = require('express-fileupload');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -52,6 +53,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(fileUpload());
 
 app.use(sessions({
   cookieName: 'session',
@@ -90,6 +92,7 @@ function requireLogin (req, res, next) {
 app.use('/users', users);
 app.use('/signup', signUp )
 app.use('/auth', requireLogin, express.static(path.join(__dirname, 'dist')));
+app.use('/auth', express.static(path.join(__dirname, 'dist')));
 app.use('/', index);
 
 app.use('/login', login);

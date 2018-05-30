@@ -13,6 +13,7 @@ import Settings from './components/settings/settings'
 import Photos from './components/photos/photos'
 import MyProfile from './components/myProfile/myProfile'
 import Search from './components/search/search'
+import Testing from './components/testing'
 
 const BasicExample = () => (
   <Router>
@@ -37,6 +38,7 @@ const BasicExample = () => (
         <Route path="/auth/photos" component={Photos} />
         <Route path="/auth/settings" component={Settings} /> 
         <Route path="/auth/search" component={Search} />
+        <Route path="/auth/testing" component={Testing} />
      
 
       </div>

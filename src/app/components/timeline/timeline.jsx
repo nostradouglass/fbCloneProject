@@ -48,7 +48,7 @@ class Timeline extends React.Component {
 
         return this.state.tempPostInfo.map((post) => {
             return (
-                <div className="card" style={{ width: "100%" }}>
+                <div key={post.postId} className="card" style={{ width: "100%" }}>
             <div style={{display: "inline"}}>
             <div className="smallUserPic"></div>
                 <div className="postUserName">{post.userName}</div>

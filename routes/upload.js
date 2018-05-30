@@ -4,21 +4,6 @@ var multer = require('multer')
 var fs = require('fs')
 Stream = require('stream').Transform  
 
-// const storage = multer.diskStorage({
-//     destination: `../../media/cover_photo/`,
-//     filename: "Test"
-//   });
-
-
-//   crypto.pseudoRandomBytes(16, function(err, raw) {
-//     if (err) return callback(err);
-  
-//     callback(null, raw.toString('hex') + path.extname(file.originalname));
-//   });
-
-// var upload = multer({
-//     dest: `../../media/cover_photo/`,
-//   })
 
 /* GET home page. */
 router.post('/coverPhoto', function(req, res, next) {
@@ -79,5 +64,20 @@ router.post('/coverPhoto', function(req, res, next) {
      
 
 });
+
+
+router.post('/upload', (req, res, next) => {
+  console.log(req);
+  let imageFile = req.files.file;
+
+  imageFile.mv(`${__dirname}/static/${req.body.filename}.jpg`, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.json({file: `static/${req.body.filename}.jpg`});
+  });
+
+})
 
 module.exports = router;

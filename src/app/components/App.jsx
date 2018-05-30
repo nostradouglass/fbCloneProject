@@ -13,6 +13,7 @@ class App extends React.Component {
 
             <div>
                 <Header />
+                <Link to="/auth/testing">Testing</Link>
 <Timeline />
                 <hr />
             </div>
