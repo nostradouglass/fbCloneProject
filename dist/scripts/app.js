@@ -43966,7 +43966,6 @@
 
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        _this.handleSubmit = _this.handleSubmit.bind(_this);
-
 	        return _this;
 	    }
 
@@ -43987,14 +43986,16 @@
 	    }, {
 	        key: 'handleChange',
 	        value: function handleChange(e) {
+	            var _this2 = this;
 
-	            this.setState({ searchTerm: e.target.value });
-	            console.log(this.state.searchTerm);
+	            this.setState({ searchTerm: e.target.value }, function () {
+	                console.log(_this2.state.searchTerm);
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -44002,19 +44003,24 @@
 	                _react2.default.createElement(_header2.default, null),
 	                _react2.default.createElement(
 	                    'form',
-	                    { onSubmit: this.handleSubmit },
+	                    null,
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'form-group' },
+	                        { id: 'div1' },
 	                        _react2.default.createElement('input', {
 	                            type: 'text',
+	                            value: this.state.searchTerm,
 	                            onChange: this.handleChange,
 	                            placeholder: 'Find Friends...' }),
-	                        _react2.default.createElement('img', { onClick: function onClick() {
-	                                return _this2.handleSubmit();
-	                            },
-	                            src: '/icons/svg/magnifying-glass.svg',
-	                            alt: 'Search', className: 'searchIcon' })
+	                        _react2.default.createElement(
+	                            'button',
+	                            { className: 'clearSubmitButton', type: 'button' },
+	                            _react2.default.createElement('img', { src: '/icons/svg/magnifying-glass.svg',
+	                                alt: 'Search', className: 'searchIcon',
+	                                onClick: function onClick() {
+	                                    return _this3.handleSubmit();
+	                                } })
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(
