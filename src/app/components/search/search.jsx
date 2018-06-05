@@ -39,7 +39,8 @@ class Search extends React.Component {
 
     handleChange(e) {
 
-        var that = this
+        this.setState({ searchTerm: e.target.value })
+		console.log(this.state.searchTerm);
 
         this.setState({ searchTerm: e.target.value })
 
@@ -52,15 +53,16 @@ class Search extends React.Component {
                 <Header />
                 <form onSubmit={this.handleSubmit} >
                     <div className="form-group">
-                        <input
-                            type="text"
-                            value={this.state.searchTerm}
-                            onChange={this.handleChange}
-                            placeholder="Find Friends..." />
-                        <img onClick={this.handleSubmit}
-                            src="/icons/svg/magnifying-glass.svg"
-                            alt="Search" className="searchIcon" />
-
+                        <input 
+                        type="text" 
+                        value={this.state.searchTerm} 
+                        onChange={this.handleChange(e)} 
+                        placeholder="Find Friends..." /> 
+			{/*<img onClick={() => this.handleSubmit()} */}
+                        <img onClick={()=>this.handleSubmit()} 
+                        src="/icons/svg/magnifying-glass.svg" 
+                        alt="Search" className="searchIcon" />
+                        
                     </div>
                 </form>
 

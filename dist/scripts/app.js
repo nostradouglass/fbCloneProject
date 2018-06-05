@@ -44263,6 +44263,7 @@
 	            var that = this;
 
 	            this.setState({ searchTerm: e.target.value });
+	            console.log(this.state.searchTerm);
 	        }
 	    }, {
 	        key: 'render',
@@ -44279,7 +44280,6 @@
 	                        { className: 'form-group' },
 	                        _react2.default.createElement('input', {
 	                            type: 'text',
-	                            value: this.state.searchTerm,
 	                            onChange: this.handleChange,
 	                            placeholder: 'Find Friends...' }),
 	                        _react2.default.createElement('img', { onClick: this.handleSubmit,
