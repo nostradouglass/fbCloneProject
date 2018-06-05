@@ -11,26 +11,81 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/set1.css">
+  <link rel="stylesheet" href="css/modal.css">
 
   <!--Google Fonts-->
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
   <script type="text/javascript">
+window.onload = function() {
 
-<!--<label class="input__label input__label--hoshi input__label--hoshi-color-3" for="password2">-->
+
+	var modalDiag = document.getElementById('modalDiag');
+	var span = document.getElementsByClassName("exit")[0];
+
+	span.onclick = function() {
+		modalDiag.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+		if(event.target == modalDiag) {
+			modalDiag.style.display = "none";
+		}
+	}
+}
+
+
+function submitForm() {
+
+	var pass1= $("#password").val(); 	
+	var pass2= $("#password2").val();
+
+	if(pass1!=pass2) {
+		modalDiag.style.display = "block";
+	}
+	else {
+		$.ajax({
+				type: 'POST',
+				url: '/signup',
+				data: {
+				'firstName': $('#first_name').val(),
+				'lastName' :$('#last_name').val(),
+				'email' : $('#email').val(),
+				'password' :$('#password2').val()
+				},
+
+success: function() {
+
+	$('#first_name').val('');
+	$('#last_name').val('');
+	$('#email').val('');
+	$('#password').val('');
+	$('#password2').val('');
+
+
+}
+
+});
+	}
+
+}
 
 function comparePass() {
+
 	var pass1= $("#password").val(); 	
 	var pass2= $("#password2").val();
 
 	if(pass1!= pass2) {
+		document.getElementById("pass1").className = "input__label input__label--hoshi input__label--wrong-password";
 		document.getElementById("pass2").className = "input__label input__label--hoshi input__label--wrong-password";
 	}
 			else
 			{
 
+		document.getElementById("pass1").className = "input__label input__label--hoshi input__label--hoshi-color-3";
 		document.getElementById("pass2").className = "input__label input__label--hoshi input__label--hoshi-color-3";
 		document.getElementById("btn_signup").removeAttribute("disabled");
 			}
@@ -45,13 +100,16 @@ function comparePass() {
 <div><nav class="navbar navbar-expand-lg nav" style="background-color: rgb(31, 193, 68); height: 70px;"><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav mr-auto"></ul></div></nav></div>
 
 
+
 <div id="main-wrapper">
+
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 right-side">
-          <form action="/signup" method="POST" >
+		<!--<form action="/signup" method="POST" >-->
+		<form role="form">
           <span class="input input--hoshi">
             <input class="input__field input__field--hoshi" type="text" id="first_name" name="firstName" />
             <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="first_name">
@@ -72,7 +130,7 @@ function comparePass() {
           </span>
           <span class="input input--hoshi">
             <input class="input__field input__field--hoshi" type="password" id="password" name="password" />
-            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="password">
+            <label id="pass1" class="input__label input__label--hoshi input__label--hoshi-color-3" for="password">
               <span class="input__label-content input__label-content--hoshi">Password</span>
             </label>
           </span>
@@ -83,7 +141,10 @@ function comparePass() {
             </label>
           </span> 
 	  <div class="cta">
-		  <button id="btn_signup" class="btn btn-primary pull-left" type="submit" disabled>
+		 <!-- <button id="btn_signup" class="btn btn-primary pull-left" type="submit">
+      		    Sign-Up Now
+	    </button>-->
+		  <button id="btn_signup" class="btn btn-primary pull-left" type="button" onclick="submitForm()">
       		    Sign-Up Now
             </button>
             <span>
@@ -98,6 +159,15 @@ function comparePass() {
 
   </div>
   <!-- end #main-wrapper -->
+<!--HTML for modal-->
+
+<div id="modalDiag" class="modalPopUp">
+
+	<div class="modalPopUp-content">
+		<span class="exit">&times;</span>
+		<h2>Passwords do not match!</h2>
+	</div>
+<!--HTML for modal end-->
 </body>
 
 </html>
