@@ -37,7 +37,7 @@ class EditProfile extends React.Component {
     }
 
     // Used to send profile pic image
-    onDrop(acceptedFiles, rejectedFiles) {
+    onDrop(acceptedFiles, location) {
 
         let formData = new FormData();
         var file = acceptedFiles
@@ -48,7 +48,7 @@ class EditProfile extends React.Component {
 
         axios({
             method: 'post', //CHANGE TO POST
-            url: "/upload/profile_pic",
+            url: `/upload/${location}`,
             data: formData
         })
     }
@@ -96,7 +96,29 @@ class EditProfile extends React.Component {
                         {/* Main Area */}
                         <div className="col-md-9" >
                             <div className="container">
-                                <div style={styles.topArea}></div>
+
+
+                                <div className="topArea"></div>
+
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="col-md-12" style={styles.textInputArea}>
+
+                                            <div style={styles.coverPhotoBox}>
+
+
+                                                <Dropzone
+                                                    onDrop={(files) => this.onDrop(files, "cover_photo")}
+                                                    style={styles.profilePicDropZone}>
+                                                    <div style={styles.dropZoneText}>Drop image or click here to upload Image</div>
+                                                </Dropzone>
+
+                                            </div>
+                                            <label style={styles.textStyle} >Cover Photo</label>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 <div className="row">
                                     <div className="col-md-7">
@@ -229,15 +251,15 @@ class EditProfile extends React.Component {
 
                                     </div>
                                     <div className="col-md-5">
-                                            <div style={styles.profilePic}>
-                                                <Dropzone
-                                                    onDrop={(files) => this.onDrop(files)}
-                                                    style={styles.profilePicDropZone}>
-                                                    <div style={styles.dropZoneText}>Drop image or click here to upload Image</div>
-                                                </Dropzone>
-                                            </div>
-                                            <label style={styles.textStyle} >Profile Image</label>
-                                       
+                                        <div style={styles.profilePic}>
+                                            <Dropzone
+                                                onDrop={(files) => this.onDrop(files, "profile_pic")}
+                                                style={styles.profilePicDropZone}>
+                                                <div style={styles.dropZoneText}>Drop image or click here to upload Image</div>
+                                            </Dropzone>
+                                        </div>
+                                        <label style={styles.textStyle} >Profile Image</label>
+
                                         <div className="row">
                                             <div className="col-md-12" style={styles.textInputArea}>
                                                 <label style={styles.textStyle} >Cover Photo</label>
@@ -297,10 +319,11 @@ var styles = {
         marginTop: '30px'
     },
     coverPhotoBox: {
-        height: "150px",
-        border: "2px solid rgba(31,193,68, .5)",
-        borderRadius: '20px'
+        height: "400px",
+        width: "100%",
+        border: "2px solid rgba(31,193,68, .5)"
     },
+
     aboutBox: {
         height: "125px",
         border: "2px solid rgba(31,193,68, .5)",

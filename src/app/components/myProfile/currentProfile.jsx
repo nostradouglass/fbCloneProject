@@ -55,8 +55,7 @@ class CurrentProfile extends React.Component {
     }
 
 profilePic() {
-    if (this.state.id) {
-    }
+
     return (
         <div style= {{
             width: "150px",
@@ -93,7 +92,13 @@ render() {
                                 <div className="col-md-12" style={styles.textInputArea}>
 
                                     <div style={styles.coverPhotoBox}>
-
+                                    <img style={{display: "inline",
+        left: "50%",
+        position: "relative",
+        transform: "translateX(-50%)",
+        margin: "0 auto",
+        height: "100%",
+        width: "auto"}} src={"/users/" + this.state.id + "/cover_photo/cover_photo.jpg"} />
                                     </div>
                                     <label style={styles.textStyle} >Cover Photo</label>
                                 </div>

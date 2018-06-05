@@ -32,6 +32,9 @@ router.post('/', function (req, res, next) {
       		console.log("Error saving to Db")
       		res.render('index')
     		} else {
+				
+			var userDir = `./media/users/${user._id}`
+
 	        res.redirect('/auth/')
                     }
                 });
