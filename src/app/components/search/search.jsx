@@ -15,10 +15,11 @@ class Search extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
+
     handleSubmit(event) {
+
         var that = this
         event.preventDefault();
 
@@ -37,33 +38,35 @@ class Search extends React.Component {
 
     }
 
-    handleChange(e) {
-
-        this.setState({ searchTerm: e.target.value })
+   handleChange(e){ 
+        this.setState({ searchTerm: e.target.value }, ()=> {
 		console.log(this.state.searchTerm);
-
-        this.setState({ searchTerm: e.target.value })
-
+		
+	});
     }
+   
 
 
     render() {
         return (
             <div>
                 <Header />
-                <form onSubmit={this.handleSubmit} >
-                    <div className="form-group">
+                <form >
+                    <div id="div1">
+
                         <input 
                         type="text" 
-                        value={this.state.searchTerm} 
-                        onChange={this.handleChange(e)} 
+                       value={this.state.searchTerm} 
+                        onChange={this.handleChange} 
                         placeholder="Find Friends..." /> 
-			{/*<img onClick={() => this.handleSubmit()} */}
-                        <img onClick={()=>this.handleSubmit()} 
-                        src="/icons/svg/magnifying-glass.svg" 
-                        alt="Search" className="searchIcon" />
+			<button className="clearSubmitButton" type="button"> 
+                        <img src="/icons/svg/magnifying-glass.svg" 
+                        alt="Search" className="searchIcon" 
+			onClick={()=>this.handleSubmit()} />
+			</button>
                         
                     </div>
+		 
                 </form>
 
                 <div className="container-fluid ">
@@ -85,6 +88,5 @@ class Search extends React.Component {
         )
     }
 }
-
 
 export default Search

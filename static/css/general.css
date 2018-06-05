@@ -1,6 +1,6 @@
 
-
-input[type=text] {
+/*input[type=text]*/
+input[type=text]{
     margin-top: 5px;
     margin-left: 20px;
     width: 130px;
@@ -8,9 +8,9 @@ input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 30%;
+/* When the input field gets focus, change its width to 100%*/ /*input[type=text]*/
+#div1:focus-within >input {
+    width: 70%;
 }
 
 .searchIcon {
@@ -75,3 +75,8 @@ ul {
     border-color: #1FC144;
   }
 
+.clearSubmitButton {
+	background: transparent;
+	border: none !important;
+	font-size:0;
+      }
