@@ -1,3 +1,7 @@
 .topArea {
     min-height: 80px;
 }
+
+.raisedButton{
+    margin: 12;
+}
