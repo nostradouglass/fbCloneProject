@@ -22,6 +22,7 @@ class Search extends React.Component {
 
         var that = this
         event.preventDefault();
+	
 
         if (this.state.searchTerm) {
 
@@ -51,7 +52,7 @@ class Search extends React.Component {
         return (
             <div>
                 <Header />
-                <form >
+                <form onSubmit={(e)=>this.handleSubmit(e)}>
                     <div id="div1">
 
                         <input 
@@ -59,10 +60,9 @@ class Search extends React.Component {
                        value={this.state.searchTerm} 
                         onChange={this.handleChange} 
                         placeholder="Find Friends..." /> 
-			<button className="clearSubmitButton" type="button"> 
+			<button className="clearSubmitButton" type="submit"> 
                         <img src="/icons/svg/magnifying-glass.svg" 
-                        alt="Search" className="searchIcon" 
-			onClick={()=>this.handleSubmit()} />
+                        alt="Search" className="searchIcon"/>
 			</button>
                         
                     </div>
