@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+global.appRoot = path.resolve(__dirname);
+
+
 var database = require('./config').database
 
 var User = require('./models/Users')
@@ -24,6 +27,7 @@ var login = require('./routes/login');
 var logout = require('./routes/logout')
 var signUp = require('./routes/signUp')
 var upload = require('./routes/upload')
+var friends = require('./routes/friends')
 
 mongoose.connect(`mongodb://${database.username}:${database.password}@${database.database_location}`, { useMongoClient: true})
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
@@ -99,7 +103,7 @@ app.use('/', index);
 app.use('/login', login);
 
 app.use('/logout', logout)
-
+app.use('/friends', friends)
 
 
 // Add require login function after completion

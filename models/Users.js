@@ -24,6 +24,7 @@ var User = new Schema ({
     post_images: [ String ],
     profiles_pics:[ String ],
     cover_photo:{ type: String},
+    friendsRequestArray: { type: String }
 
 })
 

@@ -31,3 +31,7 @@ npm-debug.log
 
 # Config file with usernames and passwords
 config.js
+
+
+# User images
+media
