@@ -27,7 +27,11 @@ var login = require('./routes/login');
 var logout = require('./routes/logout')
 var signUp = require('./routes/signUp')
 var upload = require('./routes/upload')
+<<<<<<< HEAD
 var friends = require('./routes/friends')
+=======
+var profile = require('./routes/profile')
+>>>>>>> working on the profile views
 
 mongoose.connect(`mongodb://${database.username}:${database.password}@${database.database_location}`, { useMongoClient: true})
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
@@ -98,6 +102,8 @@ app.use('/users', users);
 app.use('/signup', signUp )
 app.use('/auth', requireLogin, express.static(path.join(__dirname, 'dist')));
 app.use('/auth', express.static(path.join(__dirname, 'dist')));
+//added profile line
+app.use('/auth/profile', profile)
 app.use('/', index);
 
 app.use('/login', login);

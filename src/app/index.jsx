@@ -14,6 +14,7 @@ import Photos from './components/photos/photos'
 import MyProfile from './components/myProfile/myProfile'
 import Search from './components/search/search'
 import Testing from './components/testing'
+import Profile from './components/profile/profile'
 
 const BasicExample = () => (
   <Router>
@@ -39,6 +40,7 @@ const BasicExample = () => (
         <Route path="/auth/settings" component={Settings} /> 
         <Route path="/auth/search" component={Search} />
         <Route path="/auth/testing" component={Testing} />
+        <Route path="/auth/profile" component={Profile} />
      
 
       </div>
