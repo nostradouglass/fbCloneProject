@@ -44533,7 +44533,7 @@
 	                { className: 'postUserName' },
 	                _react2.default.createElement(
 	                    _reactRouterDom.Link,
-	                    { to: '/auth/profile' },
+	                    { to: "/auth/profile/" + personProp._id },
 	                    personProp.firstName,
 	                    ' ',
 	                    personProp.lastName
@@ -44671,6 +44671,10 @@
 	var _header = __webpack_require__(207);
 
 	var _header2 = _interopRequireDefault(_header);
+
+	var _axios = __webpack_require__(286);
+
+	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -22,7 +22,7 @@ class SearchResult extends React.Component {
 <div className="card searchResultCard">
 <div style={{display: "inline"}}>
 <div className="smallUserPic"></div>
-    <div className="postUserName"><Link to="/auth/profile">{personProp.firstName} {personProp.lastName}</Link></div>
+    <div className="postUserName"><Link to={"/auth/profile/"+personProp._id}>{personProp.firstName} {personProp.lastName}</Link></div>
     <div className="postDate">{personProp.email}</div>
     </div>
     <p>Hello</p>
