@@ -46529,6 +46529,10 @@
 
 	var _reactRouterDom = __webpack_require__(169);
 
+	var _profile = __webpack_require__(335);
+
+	var _profile2 = _interopRequireDefault(_profile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46569,6 +46573,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card searchResultCard' },
+	                _react2.default.createElement(_profile2.default, { test: 'this is a test, it works!' }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { style: { display: "inline" } },
@@ -46734,6 +46739,10 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _searchResult = __webpack_require__(333);
+
+	var _searchResult2 = _interopRequireDefault(_searchResult);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46745,10 +46754,10 @@
 	var Profile = function (_React$Component) {
 	    _inherits(Profile, _React$Component);
 
-	    function Profile() {
+	    function Profile(props) {
 	        _classCallCheck(this, Profile);
 
-	        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 	    }
 
 	    _createClass(Profile, [{
@@ -46762,7 +46771,8 @@
 	                    'h1',
 	                    null,
 	                    'Profile'
-	                )
+	                ),
+	                _react2.default.createElement(_searchResult2.default, null)
 	            );
 	        }
 	    }]);
