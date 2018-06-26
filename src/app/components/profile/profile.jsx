@@ -13,8 +13,8 @@ class Profile extends React.Component {
         return (
             <div>
                 <Header />
-                <h1>Profile</h1>
-		<SearchResult></SearchResult>
+                <h1>{this.state.temp}</h1>
+		{/*<h1>{this.props.test}</h1>*/}
             </div>
         )
     }

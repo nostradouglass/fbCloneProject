@@ -46573,7 +46573,6 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card searchResultCard' },
-	                _react2.default.createElement(_profile2.default, { test: 'this is a test, it works!' }),
 	                _react2.default.createElement(
 	                    'div',
 	                    { style: { display: "inline" } },
@@ -46770,9 +46769,8 @@
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    'Profile'
-	                ),
-	                _react2.default.createElement(_searchResult2.default, null)
+	                    this.state.temp
+	                )
 	            );
 	        }
 	    }]);
