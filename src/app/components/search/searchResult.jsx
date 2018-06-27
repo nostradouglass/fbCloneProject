@@ -7,17 +7,35 @@ class SearchResult extends React.Component {
         super(props)
 
         this.state = {
-            temp: ""
+            currentUserId: null
         }
 
         this.sendFriendRequest = this.sendFriendRequest.bind(this)
     }
 
 
+
+    componentDidMount() {
+            var that = this
+            axios.get('/users/user')
+                .then(function (res) {
+                    that.setState({ currentUserId: res.data._id })
+    
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+    
+    }
+
+
+
     sendFriendRequest() {
-        console.log("test")
+
         axios.post('http://localhost:3000/friends/newFriendRequest', {
-            friendRequestId: this.props.personProp._id
+            currentUserId: this.state.currentUserId,
+            friendRequestId:this.props.personProp._id
+
     })
 
     }

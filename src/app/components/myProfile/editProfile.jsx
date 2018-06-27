@@ -41,7 +41,7 @@ class EditProfile extends React.Component {
 
         let formData = new FormData();
         var file = acceptedFiles
-        console.log(file[0])
+       
         formData.append("file", file[0]);
         formData.append('someName', 'someValue');
         formData.append('_method', 'PUT'); // ADD THIS LINE

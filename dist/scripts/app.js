@@ -40586,7 +40586,7 @@
 
 	            var formData = new FormData();
 	            var file = acceptedFiles;
-	            console.log(file[0]);
+
 	            formData.append("file", file[0]);
 	            formData.append('someName', 'someValue');
 	            formData.append('_method', 'PUT'); // ADD THIS LINE
@@ -44446,7 +44446,7 @@
 	        var _this = _possibleConstructorReturn(this, (SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call(this, props));
 
 	        _this.state = {
-	            temp: ""
+	            currentUserId: null
 	        };
 
 	        _this.sendFriendRequest = _this.sendFriendRequest.bind(_this);
@@ -44454,11 +44454,23 @@
 	    }
 
 	    _createClass(SearchResult, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var that = this;
+	            _axios2.default.get('/users/user').then(function (res) {
+	                that.setState({ currentUserId: res.data._id });
+	            }).catch(function (error) {
+	                console.log(error);
+	            });
+	        }
+	    }, {
 	        key: 'sendFriendRequest',
 	        value: function sendFriendRequest() {
-	            console.log("test");
+
 	            _axios2.default.post('http://localhost:3000/friends/newFriendRequest', {
+	                currentUserId: this.state.currentUserId,
 	                friendRequestId: this.props.personProp._id
+
 	            });
 	        }
 	    }, {
@@ -44562,7 +44574,6 @@
 
 	            var formData = new FormData();
 	            var file = acceptedFiles;
-	            console.log(file[0]);
 	            formData.append("file", file[0]);
 	            formData.append('someName', 'someValue');
 	            formData.append('_method', 'PUT'); // ADD THIS LINE
