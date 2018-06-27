@@ -30,7 +30,7 @@ class SearchResult extends React.Component {
 	    {/*	<Profile test="this is a test, it works!"></Profile>*/}
                 <div style={{ display: "inline" }}>
                     <div className="smallUserPic"></div>
-    		    <div className="postUserName"><Link to={"/auth/profile/"+this.props.personProp._id}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
+    		    <div className="postUserName"><Link to={"/auth/profile/:myparam"+this.props.personProp._id}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
                     <div className="postDate">{this.props.personProp.email}</div>
                 </div>
                 <p>Hello</p>
