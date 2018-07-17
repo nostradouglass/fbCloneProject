@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 
-import FriendsReqList from '../base/friendsReqList'
+
 
 const myCustomTheme = getMuiTheme({
     textField: {
@@ -43,7 +43,7 @@ class EditProfile extends React.Component {
 
         let formData = new FormData();
         var file = acceptedFiles
-       
+
         formData.append("file", file[0]);
         formData.append('someName', 'someValue');
         formData.append('_method', 'PUT'); // ADD THIS LINE
@@ -288,7 +288,7 @@ class EditProfile extends React.Component {
                             </div>
 
                         </div>
-                        <div className="col-md-2" ><FriendsReqList /></div>
+                        <div className="col-md-2" ></div>
                     </div>
                 </div>
 

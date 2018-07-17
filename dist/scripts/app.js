@@ -91,7 +91,11 @@
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _testing = __webpack_require__(327);
+	var _friendRequest = __webpack_require__(327);
+
+	var _friendRequest2 = _interopRequireDefault(_friendRequest);
+
+	var _testing = __webpack_require__(336);
 
 	var _testing2 = _interopRequireDefault(_testing);
 
@@ -113,6 +117,7 @@
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/photos', component: _photos2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/settings', component: _settings2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/search', component: _search2.default }),
+	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friendRequest', component: _friendRequest2.default }),
 	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/testing', component: _testing2.default })
 	      )
 	    )
@@ -29204,7 +29209,7 @@
 	                        } },
 	                    _react2.default.createElement(_MenuItem2.default, {
 	                        containerElement: _react2.default.createElement(_reactRouterDom.Link, { to: '/auth' }),
-	                        primaryText: 'Time line' }),
+	                        primaryText: 'Timeline' }),
 	                    _react2.default.createElement(_MenuItem2.default, {
 	                        containerElement: _react2.default.createElement(_reactRouterDom.Link, { to: '/auth/myprofile' }),
 	                        primaryText: 'My Profile' }),
@@ -29217,6 +29222,9 @@
 	                    _react2.default.createElement(_MenuItem2.default, {
 	                        containerElement: _react2.default.createElement(_reactRouterDom.Link, { to: '/auth/search' }),
 	                        primaryText: 'Search' }),
+	                    _react2.default.createElement(_MenuItem2.default, {
+	                        containerElement: _react2.default.createElement(_reactRouterDom.Link, { to: '/auth/friendRequest' }),
+	                        primaryText: 'Friend Request\'s' }),
 	                    _react2.default.createElement(_MenuItem2.default, {
 	                        containerElement: _react2.default.createElement(_reactRouterDom.Link, { to: '/auth/settings' }),
 	                        primaryText: 'Settings' })
@@ -37806,17 +37814,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(11);
+	var _sideChat = __webpack_require__(337);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _header = __webpack_require__(209);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	var _friendsReqList = __webpack_require__(328);
-
-	var _friendsReqList2 = _interopRequireDefault(_friendsReqList);
+	var _sideChat2 = _interopRequireDefault(_sideChat);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37937,7 +37937,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_friendsReqList2.default, null),
+	                _react2.default.createElement(_sideChat2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'container' },
@@ -38298,10 +38298,6 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _friendsReqList = __webpack_require__(328);
-
-	var _friendsReqList2 = _interopRequireDefault(_friendsReqList);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38375,13 +38371,15 @@
 	                        borderRadius: "50%"
 	                    }
 	                },
-	                _react2.default.createElement('img', { style: { display: "inline",
+	                _react2.default.createElement('img', { style: {
+	                        display: "inline",
 	                        left: "50%",
 	                        position: "relative",
 	                        transform: "translateX(-50%)",
 	                        margin: "0 auto",
 	                        height: "100%",
-	                        width: "auto" }, src: "/users/" + this.state.id + "/profile_pics/primary_profile_pic.jpg" })
+	                        width: "auto"
+	                    }, src: "/users/" + this.state.id + "/profile_pics/primary_profile_pic.jpg" })
 	            );
 	        }
 	    }, {
@@ -38413,13 +38411,15 @@
 	                                        _react2.default.createElement(
 	                                            'div',
 	                                            { style: styles.coverPhotoBox },
-	                                            _react2.default.createElement('img', { style: { display: "inline",
+	                                            _react2.default.createElement('img', { style: {
+	                                                    display: "inline",
 	                                                    left: "50%",
 	                                                    position: "relative",
 	                                                    transform: "translateX(-50%)",
 	                                                    margin: "0 auto",
 	                                                    height: "100%",
-	                                                    width: "auto" }, src: "/users/" + this.state.id + "/cover_photo/cover_photo.jpg" })
+	                                                    width: "auto"
+	                                                }, src: "/users/" + this.state.id + "/cover_photo/cover_photo.jpg" })
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'label',
@@ -38697,11 +38697,7 @@
 	                            )
 	                        )
 	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'col-md-2' },
-	                        _react2.default.createElement(_friendsReqList2.default, null)
-	                    )
+	                    _react2.default.createElement('div', { className: 'col-md-2' })
 	                ),
 	                _react2.default.createElement('footer', { style: styles.footer })
 	            );
@@ -40541,10 +40537,6 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _friendsReqList = __webpack_require__(328);
-
-	var _friendsReqList2 = _interopRequireDefault(_friendsReqList);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40990,11 +40982,7 @@
 	                                )
 	                            )
 	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-md-2' },
-	                            _react2.default.createElement(_friendsReqList2.default, null)
-	                        )
+	                        _react2.default.createElement('div', { className: 'col-md-2' })
 	                    )
 	                )
 	            );
@@ -44556,13 +44544,9 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _reactDropzone = __webpack_require__(321);
+	var _friendsReqList = __webpack_require__(328);
 
-	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-
-	var _axios = __webpack_require__(279);
-
-	var _axios2 = _interopRequireDefault(_axios);
+	var _friendsReqList2 = _interopRequireDefault(_friendsReqList);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44572,63 +44556,35 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Testing = function (_React$Component) {
-	    _inherits(Testing, _React$Component);
+	var FriendRequest = function (_React$Component) {
+	    _inherits(FriendRequest, _React$Component);
 
-	    function Testing() {
-	        _classCallCheck(this, Testing);
+	    function FriendRequest(props) {
+	        _classCallCheck(this, FriendRequest);
 
-	        return _possibleConstructorReturn(this, (Testing.__proto__ || Object.getPrototypeOf(Testing)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (FriendRequest.__proto__ || Object.getPrototypeOf(FriendRequest)).call(this, props));
 	    }
 
-	    _createClass(Testing, [{
-	        key: 'onDrop',
-	        value: function onDrop(acceptedFiles, rejectedFiles) {
-
-	            var formData = new FormData();
-	            var file = acceptedFiles;
-	            formData.append("file", file[0]);
-	            formData.append('someName', 'someValue');
-	            formData.append('_method', 'PUT'); // ADD THIS LINE
-	            (0, _axios2.default)({
-	                method: 'post', //CHANGE TO POST
-	                url: "/upload/profile_pic",
-	                data: formData
-	            });
-	        }
-	    }, {
+	    _createClass(FriendRequest, [{
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
-
 	            return _react2.default.createElement(
 	                'div',
 	                null,
 	                _react2.default.createElement(_header2.default, null),
 	                _react2.default.createElement(
-	                    'h1',
+	                    'h3',
 	                    null,
-	                    'Testing'
-	                ),
-	                _react2.default.createElement(
-	                    _reactDropzone2.default,
-	                    { onDrop: function onDrop(files) {
-	                            return _this2.onDrop(files);
-	                        } },
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        'Try dropping some files here, or click to select files to upload.'
-	                    )
+	                    _react2.default.createElement(_friendsReqList2.default, null)
 	                )
 	            );
 	        }
 	    }]);
 
-	    return Testing;
+	    return FriendRequest;
 	}(_react2.default.Component);
 
-	exports.default = Testing;
+	exports.default = FriendRequest;
 
 /***/ }),
 /* 328 */
@@ -44667,10 +44623,6 @@
 	var _Paper = __webpack_require__(226);
 
 	var _Paper2 = _interopRequireDefault(_Paper);
-
-	var _SvgIcon = __webpack_require__(244);
-
-	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44718,7 +44670,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { style: { float: "right" } },
+	                null,
 	                _react2.default.createElement(
 	                    _Paper2.default,
 	                    { style: style, zDepth: 2, rounded: false },
@@ -44753,7 +44705,7 @@
 
 	var style = {
 	    minHeight: 300,
-	    width: 250,
+	    width: 350,
 	    margin: 10,
 	    display: 'inline-block'
 	};
@@ -45294,6 +45246,226 @@
 	CommunicationChatBubble.muiName = 'SvgIcon';
 
 	exports.default = CommunicationChatBubble;
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _header = __webpack_require__(209);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _reactDropzone = __webpack_require__(321);
+
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+	var _axios = __webpack_require__(279);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Testing = function (_React$Component) {
+	    _inherits(Testing, _React$Component);
+
+	    function Testing() {
+	        _classCallCheck(this, Testing);
+
+	        return _possibleConstructorReturn(this, (Testing.__proto__ || Object.getPrototypeOf(Testing)).apply(this, arguments));
+	    }
+
+	    _createClass(Testing, [{
+	        key: 'onDrop',
+	        value: function onDrop(acceptedFiles, rejectedFiles) {
+
+	            var formData = new FormData();
+	            var file = acceptedFiles;
+	            formData.append("file", file[0]);
+	            formData.append('someName', 'someValue');
+	            formData.append('_method', 'PUT'); // ADD THIS LINE
+	            (0, _axios2.default)({
+	                method: 'post', //CHANGE TO POST
+	                url: "/upload/profile_pic",
+	                data: formData
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_header2.default, null),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Testing'
+	                ),
+	                _react2.default.createElement(
+	                    _reactDropzone2.default,
+	                    { onDrop: function onDrop(files) {
+	                            return _this2.onDrop(files);
+	                        } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        'Try dropping some files here, or click to select files to upload.'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Testing;
+	}(_react2.default.Component);
+
+	exports.default = Testing;
+
+/***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Avatar = __webpack_require__(329);
+
+	var _Avatar2 = _interopRequireDefault(_Avatar);
+
+	var _List = __webpack_require__(331);
+
+	var _Subheader = __webpack_require__(268);
+
+	var _Subheader2 = _interopRequireDefault(_Subheader);
+
+	var _Divider = __webpack_require__(333);
+
+	var _Divider2 = _interopRequireDefault(_Divider);
+
+	var _chatBubble = __webpack_require__(335);
+
+	var _chatBubble2 = _interopRequireDefault(_chatBubble);
+
+	var _Paper = __webpack_require__(226);
+
+	var _Paper2 = _interopRequireDefault(_Paper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SideChat = function (_React$Component) {
+	    _inherits(SideChat, _React$Component);
+
+	    function SideChat(props) {
+	        _classCallCheck(this, SideChat);
+
+	        return _possibleConstructorReturn(this, (SideChat.__proto__ || Object.getPrototypeOf(SideChat)).call(this, props));
+	    }
+
+	    _createClass(SideChat, [{
+	        key: 'requestList',
+	        value: function requestList() {
+	            var temp = ["Dave", "Steve", "Mike", "Susan"];
+	            return temp.map(function (Person) {
+	                return _react2.default.createElement(_List.ListItem, { key: Person,
+	                    primaryText: Person,
+	                    leftAvatar: _react2.default.createElement(_Avatar2.default, { src: 'images/ok-128.jpg' }),
+	                    rightIcon: _react2.default.createElement(_chatBubble2.default, null)
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'suggestList',
+	        value: function suggestList() {
+	            var temp = ["Alice", "Dave"];
+	            return temp.map(function (Person) {
+	                return _react2.default.createElement(_List.ListItem, { key: Person,
+	                    primaryText: Person,
+	                    leftAvatar: _react2.default.createElement(_Avatar2.default, { src: 'images/ok-128.jpg' }),
+	                    rightIcon: _react2.default.createElement(_chatBubble2.default, null)
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { style: { float: "right" } },
+	                _react2.default.createElement(
+	                    _Paper2.default,
+	                    { style: style, zDepth: 2, rounded: false },
+	                    _react2.default.createElement(
+	                        _List.List,
+	                        null,
+	                        _react2.default.createElement(
+	                            _Subheader2.default,
+	                            null,
+	                            'Online Friends'
+	                        ),
+	                        this.requestList()
+	                    ),
+	                    _react2.default.createElement(_Divider2.default, null),
+	                    _react2.default.createElement(
+	                        _List.List,
+	                        null,
+	                        _react2.default.createElement(
+	                            _Subheader2.default,
+	                            null,
+	                            'Recent Conversations'
+	                        ),
+	                        this.suggestList()
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SideChat;
+	}(_react2.default.Component);
+
+	var style = {
+	    minHeight: 300,
+	    width: 250,
+	    margin: 10,
+	    display: 'inline-block'
+	};
+
+	exports.default = SideChat;
 
 /***/ })
 /******/ ]);

@@ -16,8 +16,8 @@ class Header extends React.Component {
             <div>
                 <nav className="navbar navbar-expand-lg nav" style={styles.navbar}>
                     <div onClick={this.handleToggle} ><span style={styles.hamburger}>&#9776;</span></div>
-                    
-                   
+
+
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
 
@@ -36,7 +36,7 @@ class Header extends React.Component {
 
                     <MenuItem
                         containerElement={<Link to="/auth" />}
-                        primaryText="Time line" />
+                        primaryText="Timeline" />
                     <MenuItem
                         containerElement={<Link to="/auth/myprofile" />}
                         primaryText="My Profile" />
@@ -46,10 +46,12 @@ class Header extends React.Component {
                     <MenuItem
                         containerElement={<Link to="/auth/photos" />}
                         primaryText="Photos" />
-<MenuItem
+                    <MenuItem
                         containerElement={<Link to="/auth/search" />}
                         primaryText="Search" />
-
+<MenuItem
+                        containerElement={<Link to="/auth/friendRequest" />}
+                        primaryText="Friend Request's" />
                     <MenuItem
                         containerElement={<Link to="/auth/settings" />}
                         primaryText="Settings" />
