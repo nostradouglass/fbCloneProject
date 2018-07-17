@@ -15,6 +15,7 @@ import MyProfile from './components/myProfile/myProfile'
 import Search from './components/search/search'
 import FriendRequest from './components/friendRequest/friendRequest'
 import Testing from './components/testing'
+import Profile from './components/profile/profile'
 
 const BasicExample = () => (
   <Router>
@@ -41,6 +42,7 @@ const BasicExample = () => (
         <Route path="/auth/search" component={Search} />
         <Route path="/auth/friendRequest" component={FriendRequest} />
         <Route path="/auth/testing" component={Testing} />
+        <Route path="/auth/profile" component={Profile} />
      
 
       </div>
