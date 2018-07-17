@@ -6,9 +6,17 @@ class SearchResults extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state =  { language: '' }
 
         this.mapSearchResultsList = this.mapSearchResultsList.bind(this)
 
+    }
+
+
+    handleLanguage = (langValue) => {
+        console.log(langValue) // Not needed but an example of passing data up
+        // look into person._id  anfd if that is correct Id pass that up
+        this.setState({language: langValue});
     }
 
     mapSearchResultsList() {
@@ -18,7 +26,7 @@ class SearchResults extends React.Component {
             var list = this.props.searchResultsList
 
             var mappedList = list.map((person) => {
-                return <SearchResult personProp={person} key={person._id} />
+                return <SearchResult personProp={person} key={person._id} onSelectLanguage={this.handleLanguage}/>
             })
 
             return mappedList
@@ -29,10 +37,9 @@ class SearchResults extends React.Component {
 
 
     render() {
+       
         return (
             <div>
-
-
 
                 <ul>
                     {this.mapSearchResultsList()}
