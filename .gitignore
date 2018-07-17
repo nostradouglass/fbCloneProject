@@ -1,6 +1,6 @@
 
 # files
-dist/scripts
+**/dist/scripts/
 
 # Logs
 logs
