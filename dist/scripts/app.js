@@ -91,11 +91,11 @@
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _testing = __webpack_require__(334);
+	var _testing = __webpack_require__(335);
 
 	var _testing2 = _interopRequireDefault(_testing);
 
-	var _profile = __webpack_require__(335);
+	var _profile = __webpack_require__(334);
 
 	var _profile2 = _interopRequireDefault(_profile);
 
@@ -46529,7 +46529,7 @@
 
 	var _reactRouterDom = __webpack_require__(169);
 
-	var _profile = __webpack_require__(335);
+	var _profile = __webpack_require__(334);
 
 	var _profile2 = _interopRequireDefault(_profile);
 
@@ -46571,44 +46571,49 @@
 	            var _this2 = this;
 
 	            return _react2.default.createElement(
-	                'div',
-	                { className: 'card searchResultCard' },
+	                _reactRouterDom.BrowserRouter,
+	                null,
 	                _react2.default.createElement(
 	                    'div',
-	                    { style: { display: "inline" } },
-	                    _react2.default.createElement('div', { className: 'smallUserPic' }),
+	                    { className: 'card searchResultCard' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'postUserName' },
+	                        { style: { display: "inline" } },
+	                        _react2.default.createElement('div', { className: 'smallUserPic' }),
 	                        _react2.default.createElement(
-	                            _reactRouterDom.Link,
-	                            { to: "/auth/profile/:myparam" + this.props.personProp._id },
-	                            this.props.personProp.firstName,
-	                            ' ',
-	                            this.props.personProp.lastName
+	                            'div',
+	                            { className: 'postUserName' },
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: '/auth/profile/' + this.props.personProp._id },
+	                                this.props.personProp.firstName,
+	                                ' ',
+	                                this.props.personProp.lastName
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'postDate' },
+	                            this.props.personProp.email
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'postDate' },
-	                        this.props.personProp.email
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Hello'
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'card-body' },
+	                        'p',
+	                        null,
+	                        'Hello'
+	                    ),
 	                    _react2.default.createElement(
-	                        'button',
-	                        { onClick: function onClick() {
-	                                return _this2.sendFriendRequest();
-	                            }, type: 'button', className: 'btn btn-primary btn-sm' },
-	                        'Add Friend'
-	                    )
+	                        'div',
+	                        { className: 'card-body' },
+	                        _react2.default.createElement(
+	                            'button',
+	                            { onClick: function onClick() {
+	                                    return _this2.sendFriendRequest();
+	                                }, type: 'button', className: 'btn btn-primary btn-sm' },
+	                            'Add Friend'
+	                        )
+	                    ),
+	                    _react2.default.createElement(_reactRouterDom.Route, { name: "/auth/profile/" + this.props.personProp._id, path: '/auth/profile/:myparam', component: _profile2.default })
 	                )
 	            );
 	        }
@@ -46621,6 +46626,77 @@
 
 /***/ }),
 /* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _header = __webpack_require__(207);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _axios = __webpack_require__(286);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _searchResult = __webpack_require__(333);
+
+	var _searchResult2 = _interopRequireDefault(_searchResult);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Profile = function (_React$Component) {
+	    _inherits(Profile, _React$Component);
+
+	    function Profile(props) {
+	        _classCallCheck(this, Profile);
+
+	        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+	    }
+
+	    _createClass(Profile, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_header2.default, null),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Profile'
+	                ),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    this.props.match.params.myparam
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Profile;
+	}(_react2.default.Component);
+
+	exports.default = Profile;
+
+/***/ }),
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46713,77 +46789,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Testing;
-
-/***/ }),
-/* 335 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _header = __webpack_require__(207);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	var _axios = __webpack_require__(286);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _searchResult = __webpack_require__(333);
-
-	var _searchResult2 = _interopRequireDefault(_searchResult);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Profile = function (_React$Component) {
-	    _inherits(Profile, _React$Component);
-
-	    function Profile(props) {
-	        _classCallCheck(this, Profile);
-
-	        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
-	    }
-
-	    _createClass(Profile, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_header2.default, null),
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Profile'
-	                ),
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    this.props.match.params.muyparam
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Profile;
-	}(_react2.default.Component);
-
-	exports.default = Profile;
 
 /***/ })
 /******/ ]);
