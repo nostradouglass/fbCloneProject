@@ -7,6 +7,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
 
+import FriendsReqList from '../base/friendsReqList'
+
 const myCustomTheme = getMuiTheme({
     textField: {
         focusColor: '#1fc144'
@@ -286,7 +288,7 @@ class EditProfile extends React.Component {
                             </div>
 
                         </div>
-                        <div className="col-md-2" >right side</div>
+                        <div className="col-md-2" ><FriendsReqList /></div>
                     </div>
                 </div>
 

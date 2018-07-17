@@ -2,7 +2,7 @@
 import React from 'react'
 import axios from 'axios'
 
-
+import FriendsReqList from '../base/friendsReqList'
 
 
 class CurrentProfile extends React.Component {
@@ -226,7 +226,7 @@ render() {
 
 
                 </div>
-                <div className="col-md-2" >right side</div>
+                <div className="col-md-2" ><FriendsReqList /></div>
             </div>
 
 

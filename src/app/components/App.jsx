@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import Header from '../components/base/header'
 import Timeline from '../components/timeline/timeline'
 
-
 class App extends React.Component {
 
     render() {
@@ -13,7 +12,7 @@ class App extends React.Component {
 
             <div>
                 <Header />
-                <Link to="/auth/testing">Testing</Link>
+                <Link to="/auth/testing">Tesing page for whatever</Link>
 <Timeline />
                 <hr />
             </div>

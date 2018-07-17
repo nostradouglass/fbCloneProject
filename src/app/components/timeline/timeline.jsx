@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../base/header'
 
+import FriendsReqList from '../base/friendsReqList'
+
 class Timeline extends React.Component {
 
     constructor(props) {
@@ -79,7 +81,7 @@ class Timeline extends React.Component {
 
     render() {
         return (
-            <div>
+            <div><FriendsReqList />
                 <div className="container">
                 <div className="subHeadArea"> </div>
                     <div className="row">
