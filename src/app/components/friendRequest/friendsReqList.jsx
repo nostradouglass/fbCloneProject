@@ -14,15 +14,14 @@ class FriendsReqList extends React.Component {
 
     }
 
-
-
     requestList() {
-        var temp = ["Dave", "Steve", "Mike", "Susan"]
-        return temp.map((Person) => {
+        var friendRequestArray = this.props.friendRequestArray
+        return friendRequestArray.map((person) => {
+            var fullName = `${person.firstName} ${person.lastName}`
             return (
-                <ListItem key={Person}
-                    primaryText={Person}
-                    leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                <ListItem key={person._id}
+                    primaryText={fullName}
+                    leftAvatar={<Avatar src={"/users/" + person._id + "/profile_pics/primary_profile_pic.jpg"} />}
                     rightIcon={<CommunicationChatBubble />}
                 />
             )
@@ -64,8 +63,8 @@ class FriendsReqList extends React.Component {
 
 const style = {
     minHeight: 300,
-    width: 350,
-    margin: 10,
+    width: "100%",
+    margin: 40,
     display: 'inline-block',
 };
 
