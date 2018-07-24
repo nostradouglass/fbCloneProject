@@ -43,7 +43,7 @@ class SearchResult extends React.Component {
     }
 
     handleLangChange = () => {
-        var lang = "Testing123"
+        var lang = this.props.personProp._id;
         this.props.onSelectLanguage(lang);            
     }
 

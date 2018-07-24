@@ -16,7 +16,13 @@ class SearchResults extends React.Component {
     handleLanguage = (langValue) => {
         console.log(langValue) // Not needed but an example of passing data up
         // look into person._id  anfd if that is correct Id pass that up
-        this.setState({language: langValue});
+        this.setState({language: langValue})
+
+    }
+
+    handleLangChange2 = () => {
+        var lang2 = this.props.personProp._id;
+        this.props.onSelectLanguage2(lang);            
     }
 
     mapSearchResultsList() {
