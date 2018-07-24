@@ -1,6 +1,7 @@
 
 # files
 **/dist/scripts/
+dist/scripts
 
 # Logs
 logs
@@ -41,3 +42,4 @@ config.js
 media
 # Vim temporary swap files
 *.swp
+*.*.swp
