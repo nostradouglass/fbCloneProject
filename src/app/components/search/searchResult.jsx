@@ -42,9 +42,9 @@ class SearchResult extends React.Component {
 
     }
 
-    handleLangChange = () => {
-        var lang = this.props.personProp._id;
-        this.props.onSelectLanguage(lang);            
+    sendPersonId = () => {
+        var personId = this.props.personProp._id;
+        this.props.onSelectPerson(personId);            
     }
 
     render() {
@@ -54,7 +54,7 @@ class SearchResult extends React.Component {
 	    {/*	<Profile test="this is a test, it works!"></Profile>*/}
                 <div>
                     <div className="smallUserPic"></div>
-    		    <div className="postUserName"><Link  onClick={() => this.handleLangChange()} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
+    		    <div className="postUserName"><Link  onClick={() => this.sendPersonId()} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
                     <div className="postDate">{this.props.personProp.email}</div>
                 </div>
                 <p>Hello</p>

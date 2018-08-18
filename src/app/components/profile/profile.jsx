@@ -7,14 +7,14 @@ class Profile extends React.Component {
 
 	constructor(props) {
 		super(props)
-			this.state =  { language2: ''};
+			this.state =  { parameter: ''};
 	}
 
-    handleLanguage2 = (langValue2) => {
+    sendToProfile = (otherParameter) => {
 	    console.log("This might work");
-        console.log(langValue2) // Not needed but an example of passing data up
+        console.log(otherParameter) // Not needed but an example of passing data up
         // look into person._id  anfd if that is correct Id pass that up
-        this.setState({language2: langValue2});
+        this.setState({parameter: otherParameter});
 
     }
 
@@ -23,7 +23,7 @@ class Profile extends React.Component {
             <div>
                 <Header />
                 <h1>Profile</h1>
-		<SearchResults onSelectLanguage2= {this.handleLanguage2}/>
+		<SearchResults otherParameter= {this.sendToProfile}/>
             </div>
         )
     }
