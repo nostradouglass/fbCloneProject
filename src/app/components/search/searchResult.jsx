@@ -33,7 +33,6 @@ class SearchResult extends React.Component {
 
 
     sendFriendRequest() {
-
         axios.post('http://localhost:3000/friends/newFriendRequest', {
             currentUserId: this.state.currentUserId,
             friendRequestId:this.props.personProp._id

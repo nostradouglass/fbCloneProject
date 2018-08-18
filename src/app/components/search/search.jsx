@@ -3,6 +3,8 @@ import Header from '../base/header'
 import axios from 'axios'
 import SearchResults from './searchResults'
 
+
+// Inside of 
 class Search extends React.Component {
 
     constructor(props) {
@@ -46,9 +48,15 @@ class Search extends React.Component {
 	});
     }
    
+    // sendPersonId= (personIdValue) => {
+    //     console.log(personIdValue + "test2") // Not needed but an example of passing data up
+    //     // look into person._id  anfd if that is correct Id pass that up
+
+    // }
 
 
     render() {
+        console.log(this.props.onSelectPerson + "TEst3")
         return (
             <div>
                 <Header />
@@ -75,7 +83,7 @@ class Search extends React.Component {
 
                         {/* Main Area */}
                         <div className="col-md-6" >
-                            <SearchResults searchResultsList={this.state.searchResultsList} />
+                            <SearchResults searchResultsList={this.state.searchResultsList} onSelectPerson={this.onSelectPerson} />
                         </div>
 
                         <div className="col-md-3" >right</div>
