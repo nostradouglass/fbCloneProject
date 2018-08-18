@@ -16,11 +16,11 @@ class SearchResults extends React.Component {
 
 
 
-    sendPersonId= (personIdValue) => {
-        console.log(personIdValue) // Not needed but an example of passing data up
+    sendPersonId = (personIdValue) => {
+       // console.log(personIdValue) // Not needed but an example of passing data up
         // look into person._id  anfd if that is correct Id pass that up
-
         this.setState({personIdState: personIdValue})
+        return personIdValue
 
     }
 
@@ -34,8 +34,6 @@ class SearchResults extends React.Component {
             var mappedList = list.map((person) => {
                 return <SearchResult personProp={person} key={person._id} onSelectPerson = {this.sendPersonId}/>
             })
-            console.log(this.props)
-            
 
             return mappedList
         } else {

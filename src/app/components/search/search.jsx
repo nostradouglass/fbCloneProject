@@ -43,20 +43,15 @@ class Search extends React.Component {
 
    handleChange(e){ 
         this.setState({ searchTerm: e.target.value }, ()=> {
-		console.log(this.state.searchTerm);
+		
 		
 	});
     }
    
-    // sendPersonId= (personIdValue) => {
-    //     console.log(personIdValue + "test2") // Not needed but an example of passing data up
-    //     // look into person._id  anfd if that is correct Id pass that up
-
-    // }
 
 
     render() {
-        console.log(this.props.onSelectPerson + "TEst3")
+    
         return (
             <div>
                 <Header />
@@ -83,7 +78,9 @@ class Search extends React.Component {
 
                         {/* Main Area */}
                         <div className="col-md-6" >
-                            <SearchResults searchResultsList={this.state.searchResultsList} onSelectPerson={this.onSelectPerson} />
+                            <SearchResults 
+                            searchResultsList={this.state.searchResultsList} 
+                            onSelectPerson={ this.onSelectPerson }/>
                         </div>
 
                         <div className="col-md-3" >right</div>

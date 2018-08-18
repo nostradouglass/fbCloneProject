@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../base/header'
-import SearchResults from '../search/searchResults'; 
+// import SearchResults from '../search/searchResults'; 
 
 class Profile extends React.Component {
 
@@ -9,16 +9,14 @@ class Profile extends React.Component {
 			this.state =  { parameter: ''};
 	}
 
- 
-
 
     render() {
-        console.log(this.props.onSelectPerson + "TEst4")
+        
         return (
             <div>
                 <Header />
                 <h1>Profile</h1>
-		<SearchResults onSelectPerson={this.onSelectPerson}/>
+		{/* <SearchResults onSelectPerson={this.onSelectPerson}/> */}
             </div>
         )
     }
