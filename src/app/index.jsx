@@ -17,13 +17,28 @@ import FriendRequest from './components/friendRequest/friendRequest'
 import Testing from './components/testing'
 import Profile from './components/profile/profile'
 
-const BasicExample = () => (
-  <Router>
-    <MuiThemeProvider>
-      <div>
+class BasicExample extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      personId : "",
+      testData: null
+    }
+
+  }
+
+ 
+  render() {
+    
+    return (
+      <Router>
+        <MuiThemeProvider>
+          <div>
 
 
-        {/* <Route exact path="/auth" component={App} />
+            {/* <Route exact path="/auth" component={App} />
         <Route path="/auth/home" component={Home} />
         <Route path="/auth/friends" component={Friends} />
         <Route path="/auth/myProfile" component={MyProfile} />
@@ -33,23 +48,24 @@ const BasicExample = () => (
       */}
 
 
-        {/* For dev */}
-        <Route exact path="/auth" component={App} />
-        <Route path="/auth/friends" component={Friends} />
-        <Route path="/auth/myProfile" component={MyProfile} />
-        <Route path="/auth/photos" component={Photos} />
-        <Route path="/auth/settings" component={Settings} /> 
-        <Route path="/auth/search" component={Search} />
-        <Route path="/auth/friendRequest" component={FriendRequest} />
-        <Route path="/auth/testing" component={Testing} />
-        <Route path="/auth/profile" component={Profile} />
-     
+            {/* For dev */}
+            <Route exact path="/auth" component={App} />
+            <Route path="/auth/friends" component={Friends} />
+            <Route path="/auth/myProfile" component={MyProfile} />
+            <Route path="/auth/photos" component={Photos} />
+            <Route path="/auth/settings" component={Settings} />
+            <Route path="/auth/search" render={()=> <Search test = { testData => this.setState({testData: testData}) } /> }   />
+            <Route path="/auth/friendRequest" component={FriendRequest} />
+            <Route path="/auth/testing" component={Testing} />
+            <Route path="/auth/profile" render={()=> <Profile test = {this.state.testData } /> } />
 
-      </div>
-    </MuiThemeProvider>
-  </Router>
-)
 
+          </div>
+        </MuiThemeProvider>
+      </Router>
+    )
+  }
+}
 
 
 ReactDOM.render(<BasicExample />, document.getElementById('react-root'))

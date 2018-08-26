@@ -55,18 +55,7 @@ router.put('/', function (req, res) {
   console.log(req.body)
   User.findOne({ email: req.session.user.email }, function (err, user, next) {
     if (user) {
-      // var firstName = req.body.firstName
-      // var lastName = req.body.lastName
-      // var email = req.body.email
-      // var nickname = req.body.nickname
-      // var about = req.body.about
-      // var DOB = req.body.DOB
-      // var city = req.body.city
-      // var state = req.body.state
-      // var zip = req.body.zip
-      // var country = req.body.country
-      // var work = req.body.work
-      // var relationship_status = req.body.relationship_status
+    
 
       User.update({ 
        firstName : req.body.firstName,

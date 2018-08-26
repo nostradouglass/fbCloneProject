@@ -3,6 +3,8 @@ import Header from '../base/header'
 import axios from 'axios'
 import SearchResults from './searchResults'
 
+
+// Inside of 
 class Search extends React.Component {
 
     constructor(props) {
@@ -41,7 +43,7 @@ class Search extends React.Component {
 
    handleChange(e){ 
         this.setState({ searchTerm: e.target.value }, ()=> {
-		console.log(this.state.searchTerm);
+		
 		
 	});
     }
@@ -49,6 +51,7 @@ class Search extends React.Component {
 
 
     render() {
+    
         return (
             <div>
                 <Header />
@@ -75,7 +78,10 @@ class Search extends React.Component {
 
                         {/* Main Area */}
                         <div className="col-md-6" >
-                            <SearchResults searchResultsList={this.state.searchResultsList} />
+                            <SearchResults 
+                            searchResultsList={this.state.searchResultsList} 
+                            test = {this.props.test}
+                             />
                         </div>
 
                         <div className="col-md-3" >right</div>
