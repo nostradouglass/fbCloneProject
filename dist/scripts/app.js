@@ -53,6 +53,8 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -105,29 +107,65 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var BasicExample = function BasicExample() {
-	  return _react2.default.createElement(
-	    _reactRouterDom.BrowserRouter,
-	    null,
-	    _react2.default.createElement(
-	      _MuiThemeProvider2.default,
-	      null,
-	      _react2.default.createElement(
-	        'div',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BasicExample = function (_React$Component) {
+	  _inherits(BasicExample, _React$Component);
+
+	  function BasicExample(props) {
+	    _classCallCheck(this, BasicExample);
+
+	    var _this = _possibleConstructorReturn(this, (BasicExample.__proto__ || Object.getPrototypeOf(BasicExample)).call(this, props));
+
+	    _this.state = {
+	      personId: "",
+	      testData: null
+	    };
+
+	    return _this;
+	  }
+
+	  _createClass(BasicExample, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        _reactRouterDom.BrowserRouter,
 	        null,
-	        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/auth', component: _App2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friends', component: _friends2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/myProfile', component: _myProfile2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/photos', component: _photos2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/settings', component: _settings2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/search', component: _search2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friendRequest', component: _friendRequest2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/testing', component: _testing2.default }),
-	        _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/profile', component: _profile2.default })
-	      )
-	    )
-	  );
-	};
+	        _react2.default.createElement(
+	          _MuiThemeProvider2.default,
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/auth', component: _App2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friends', component: _friends2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/myProfile', component: _myProfile2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/photos', component: _photos2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/settings', component: _settings2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/search', render: function render() {
+	                return _react2.default.createElement(_search2.default, { test: function test(testData) {
+	                    return _this2.setState({ testData: testData });
+	                  } });
+	              } }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friendRequest', component: _friendRequest2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/testing', component: _testing2.default }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/profile', render: function render() {
+	                return _react2.default.createElement(_profile2.default, { test: _this2.state.testData });
+	              } })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return BasicExample;
+	}(_react2.default.Component);
 
 	_reactDom2.default.render(_react2.default.createElement(BasicExample, null), document.getElementById('react-root'));
 
@@ -44893,6 +44931,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// Inside of 
 	var Search = function (_React$Component) {
 	    _inherits(Search, _React$Component);
 
@@ -44932,16 +44971,12 @@
 	    }, {
 	        key: 'handleChange',
 	        value: function handleChange(e) {
-	            var _this2 = this;
-
-	            this.setState({ searchTerm: e.target.value }, function () {
-	                console.log(_this2.state.searchTerm);
-	            });
+	            this.setState({ searchTerm: e.target.value }, function () {});
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -44950,7 +44985,7 @@
 	                _react2.default.createElement(
 	                    'form',
 	                    { onSubmit: function onSubmit(e) {
-	                            return _this3.handleSubmit(e);
+	                            return _this2.handleSubmit(e);
 	                        } },
 	                    _react2.default.createElement(
 	                        'div',
@@ -44982,7 +45017,10 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'col-md-6' },
-	                            _react2.default.createElement(_searchResults2.default, { searchResultsList: this.state.searchResultsList })
+	                            _react2.default.createElement(_searchResults2.default, {
+	                                searchResultsList: this.state.searchResultsList,
+	                                test: this.props.test
+	                            })
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -45040,13 +45078,14 @@
 
 	        var _this = _possibleConstructorReturn(this, (SearchResults.__proto__ || Object.getPrototypeOf(SearchResults)).call(this, props));
 
-	        _this.handleLanguage = function (langValue) {
-	            console.log(langValue); // Not needed but an example of passing data up
+	        _this.sendPersonId = function (personIdValue) {
+	            // console.log(personIdValue) // Not needed but an example of passing data up
 	            // look into person._id  anfd if that is correct Id pass that up
-	            _this.setState({ language: langValue });
+	            _this.setState({ personIdState: personIdValue });
+	            return personIdValue;
 	        };
 
-	        _this.state = { language: '' };
+	        _this.state = { personIdState: '' };
 
 	        _this.mapSearchResultsList = _this.mapSearchResultsList.bind(_this);
 
@@ -45063,7 +45102,9 @@
 	                var list = this.props.searchResultsList;
 
 	                var mappedList = list.map(function (person) {
-	                    return _react2.default.createElement(_searchResult2.default, { personProp: person, key: person._id, onSelectLanguage: _this2.handleLanguage });
+	                    return _react2.default.createElement(_searchResult2.default, {
+	                        personProp: person, key: person._id,
+	                        test: _this2.props.test });
 	                });
 
 	                return mappedList;
@@ -45130,11 +45171,6 @@
 
 	        var _this = _possibleConstructorReturn(this, (SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call(this, props));
 
-	        _this.handleLangChange = function () {
-	            var lang = "Testing123";
-	            _this.props.onSelectLanguage(lang);
-	        };
-
 	        _this.state = {
 	            currentUserId: null
 	        };
@@ -45156,7 +45192,6 @@
 	    }, {
 	        key: 'sendFriendRequest',
 	        value: function sendFriendRequest() {
-
 	            _axios2.default.post('http://localhost:3000/friends/newFriendRequest', {
 	                currentUserId: this.state.currentUserId,
 	                friendRequestId: this.props.personProp._id
@@ -45167,6 +45202,8 @@
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
+
+	            var test = this.props.test;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -45181,7 +45218,7 @@
 	                        _react2.default.createElement(
 	                            _reactRouterDom.Link,
 	                            { onClick: function onClick() {
-	                                    return _this2.handleLangChange();
+	                                    return test(_this2.props.personProp._id);
 	                                }, to: '/auth/profile' },
 	                            this.props.personProp.firstName,
 	                            ' ',
@@ -45569,14 +45606,6 @@
 
 	var _header2 = _interopRequireDefault(_header);
 
-	var _axios = __webpack_require__(273);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _searchResult = __webpack_require__(334);
-
-	var _searchResult2 = _interopRequireDefault(_searchResult);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45585,18 +45614,24 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// import SearchResults from '../search/searchResults'; 
+
 	var Profile = function (_React$Component) {
 	    _inherits(Profile, _React$Component);
 
 	    function Profile(props) {
 	        _classCallCheck(this, Profile);
 
-	        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+	        _this.state = { parameter: '' };
+	        return _this;
 	    }
 
 	    _createClass(Profile, [{
 	        key: 'render',
 	        value: function render() {
+
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -45609,7 +45644,7 @@
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
-	                    this.props.match.params.myparam
+	                    this.props.test
 	                )
 	            );
 	        }

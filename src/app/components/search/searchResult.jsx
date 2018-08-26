@@ -8,6 +8,8 @@ class SearchResult extends React.Component {
     constructor(props) {
         super(props)
 
+        
+
         this.state = {
             currentUserId: null
         }
@@ -33,7 +35,6 @@ class SearchResult extends React.Component {
 
 
     sendFriendRequest() {
-
         axios.post('http://localhost:3000/friends/newFriendRequest', {
             currentUserId: this.state.currentUserId,
             friendRequestId:this.props.personProp._id
@@ -42,19 +43,19 @@ class SearchResult extends React.Component {
 
     }
 
-    handleLangChange = () => {
-        var lang = "Testing123"
-        this.props.onSelectLanguage(lang);            
-    }
+    
 
     render() {
+
+        var test = this.props.test
+
         return (
 		
             <div className="card searchResultCard">
 	    {/*	<Profile test="this is a test, it works!"></Profile>*/}
                 <div>
                     <div className="smallUserPic"></div>
-    		    <div className="postUserName"><Link  onClick={() => this.handleLangChange()} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
+    		    <div className="postUserName"><Link  onClick={() => test(this.props.personProp._id)} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
                     <div className="postDate">{this.props.personProp.email}</div>
                 </div>
                 <p>Hello</p>

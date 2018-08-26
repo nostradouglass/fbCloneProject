@@ -2,22 +2,28 @@ import React from 'react'
 import axios from 'axios'
 import SearchResult from './searchResult'
 
+
 class SearchResults extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state =  { language: '' }
+        this.state =  { personIdState: '' }
 
         this.mapSearchResultsList = this.mapSearchResultsList.bind(this)
 
+
     }
 
 
-    handleLanguage = (langValue) => {
-        console.log(langValue) // Not needed but an example of passing data up
+
+    sendPersonId = (personIdValue) => {
+       // console.log(personIdValue) // Not needed but an example of passing data up
         // look into person._id  anfd if that is correct Id pass that up
-        this.setState({language: langValue});
+        this.setState({personIdState: personIdValue})
+        return personIdValue
+
     }
+
 
     mapSearchResultsList() {
 
@@ -26,7 +32,9 @@ class SearchResults extends React.Component {
             var list = this.props.searchResultsList
 
             var mappedList = list.map((person) => {
-                return <SearchResult personProp={person} key={person._id} onSelectLanguage={this.handleLanguage}/>
+                return <SearchResult 
+                personProp={person} key={person._id} 
+                test = {this.props.test} />
             })
 
             return mappedList
@@ -43,6 +51,7 @@ class SearchResults extends React.Component {
 
                 <ul>
                     {this.mapSearchResultsList()}
+	
                 </ul>
             </div>
         )
