@@ -122,7 +122,8 @@
 	    var _this = _possibleConstructorReturn(this, (BasicExample.__proto__ || Object.getPrototypeOf(BasicExample)).call(this, props));
 
 	    _this.state = {
-	      personId: ""
+	      personId: "",
+	      testData: null
 	    };
 
 	    return _this;
@@ -131,6 +132,7 @@
 	  _createClass(BasicExample, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        _reactRouterDom.BrowserRouter,
@@ -146,10 +148,16 @@
 	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/myProfile', component: _myProfile2.default }),
 	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/photos', component: _photos2.default }),
 	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/settings', component: _settings2.default }),
-	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/search', component: _search2.default, onSelectPersonPass: this.props.onSelectPerson }),
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/search', render: function render() {
+	                return _react2.default.createElement(_search2.default, { test: function test(testData) {
+	                    return _this2.setState({ testData: testData });
+	                  } });
+	              } }),
 	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/friendRequest', component: _friendRequest2.default }),
 	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/testing', component: _testing2.default }),
-	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/profile', component: _profile2.default, onSelectPersonPass: this.props.onSelectPerson })
+	            _react2.default.createElement(_reactRouterDom.Route, { path: '/auth/profile', render: function render() {
+	                return _react2.default.createElement(_profile2.default, { test: _this2.state.testData });
+	              } })
 	          )
 	        )
 	      );
@@ -45005,7 +45013,8 @@
 	                            { className: 'col-md-6' },
 	                            _react2.default.createElement(_searchResults2.default, {
 	                                searchResultsList: this.state.searchResultsList,
-	                                onSelectPerson: this.onSelectPerson })
+	                                test: this.props.test
+	                            })
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
@@ -45087,7 +45096,9 @@
 	                var list = this.props.searchResultsList;
 
 	                var mappedList = list.map(function (person) {
-	                    return _react2.default.createElement(_searchResult2.default, { personProp: person, key: person._id, onSelectPerson: _this2.sendPersonId });
+	                    return _react2.default.createElement(_searchResult2.default, {
+	                        personProp: person, key: person._id,
+	                        test: _this2.props.test });
 	                });
 
 	                return mappedList;
@@ -45154,11 +45165,6 @@
 
 	        var _this = _possibleConstructorReturn(this, (SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call(this, props));
 
-	        _this.sendPersonId = function () {
-	            var personId = _this.props.personProp._id;
-	            _this.props.onSelectPerson(personId);
-	        };
-
 	        _this.state = {
 	            currentUserId: null
 	        };
@@ -45191,6 +45197,8 @@
 	        value: function render() {
 	            var _this2 = this;
 
+	            var test = this.props.test;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'card searchResultCard' },
@@ -45204,7 +45212,7 @@
 	                        _react2.default.createElement(
 	                            _reactRouterDom.Link,
 	                            { onClick: function onClick() {
-	                                    return _this2.sendPersonId();
+	                                    return test(_this2.props.personProp._id);
 	                                }, to: '/auth/profile' },
 	                            this.props.personProp.firstName,
 	                            ' ',
@@ -45578,6 +45586,11 @@
 	                    'h1',
 	                    null,
 	                    'Profile'
+	                ),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    this.props.test
 	                )
 	            );
 	        }

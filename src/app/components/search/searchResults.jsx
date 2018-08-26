@@ -32,7 +32,9 @@ class SearchResults extends React.Component {
             var list = this.props.searchResultsList
 
             var mappedList = list.map((person) => {
-                return <SearchResult personProp={person} key={person._id} onSelectPerson = {this.sendPersonId}/>
+                return <SearchResult 
+                personProp={person} key={person._id} 
+                test = {this.props.test} />
             })
 
             return mappedList

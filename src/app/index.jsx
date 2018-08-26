@@ -23,7 +23,8 @@ class BasicExample extends React.Component {
     super(props)
 
     this.state = {
-      personId : ""
+      personId : "",
+      testData: null
     }
 
   }
@@ -53,10 +54,10 @@ class BasicExample extends React.Component {
             <Route path="/auth/myProfile" component={MyProfile} />
             <Route path="/auth/photos" component={Photos} />
             <Route path="/auth/settings" component={Settings} />
-            <Route path="/auth/search" component={Search} onSelectPersonPass={this.props.onSelectPerson } />
+            <Route path="/auth/search" render={()=> <Search test = { testData => this.setState({testData: testData}) } /> }   />
             <Route path="/auth/friendRequest" component={FriendRequest} />
             <Route path="/auth/testing" component={Testing} />
-            <Route path="/auth/profile" component={Profile} onSelectPersonPass={this.props.onSelectPerson }/>
+            <Route path="/auth/profile" render={()=> <Profile test = {this.state.testData } /> } />
 
 
           </div>

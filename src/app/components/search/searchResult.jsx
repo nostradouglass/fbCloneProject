@@ -8,6 +8,8 @@ class SearchResult extends React.Component {
     constructor(props) {
         super(props)
 
+        
+
         this.state = {
             currentUserId: null
         }
@@ -41,19 +43,19 @@ class SearchResult extends React.Component {
 
     }
 
-    sendPersonId = () => {
-        var personId = this.props.personProp._id;
-        this.props.onSelectPerson(personId);            
-    }
+    
 
     render() {
+
+        var test = this.props.test
+
         return (
 		
             <div className="card searchResultCard">
 	    {/*	<Profile test="this is a test, it works!"></Profile>*/}
                 <div>
                     <div className="smallUserPic"></div>
-    		    <div className="postUserName"><Link  onClick={() => this.sendPersonId()} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
+    		    <div className="postUserName"><Link  onClick={() => test(this.props.personProp._id)} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
                     <div className="postDate">{this.props.personProp.email}</div>
                 </div>
                 <p>Hello</p>

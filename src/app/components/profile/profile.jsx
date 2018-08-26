@@ -16,6 +16,7 @@ class Profile extends React.Component {
             <div>
                 <Header />
                 <h1>Profile</h1>
+                <h1>{this.props.test}</h1>
 		{/* <SearchResults onSelectPerson={this.onSelectPerson}/> */}
             </div>
         )
