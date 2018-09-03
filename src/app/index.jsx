@@ -24,7 +24,7 @@ class BasicExample extends React.Component {
 
     this.state = {
       personId : "",
-      testData: null
+      profileIdData: null
     }
 
   }
@@ -54,10 +54,10 @@ class BasicExample extends React.Component {
             <Route path="/auth/myProfile" component={MyProfile} />
             <Route path="/auth/photos" component={Photos} />
             <Route path="/auth/settings" component={Settings} />
-            <Route path="/auth/search" render={()=> <Search test = { testData => this.setState({testData: testData}) } /> }   />
+            <Route path="/auth/search" render={()=> <Search profileId = { profileIdData => this.setState({profileIdData: profileIdData}) } /> }   />
             <Route path="/auth/friendRequest" component={FriendRequest} />
             <Route path="/auth/testing" component={Testing} />
-            <Route path="/auth/profile" render={()=> <Profile test = {this.state.testData } /> } />
+            <Route path="/auth/profile" render={()=> <Profile profileId = {this.state.profileIdData } /> } />
 
 
           </div>

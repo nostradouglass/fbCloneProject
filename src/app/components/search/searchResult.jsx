@@ -47,7 +47,7 @@ class SearchResult extends React.Component {
 
     render() {
 
-        var test = this.props.test
+        var profileId = this.props.profileId
 
         return (
 		
@@ -55,7 +55,7 @@ class SearchResult extends React.Component {
 	    {/*	<Profile test="this is a test, it works!"></Profile>*/}
                 <div>
                     <div className="smallUserPic"></div>
-    		    <div className="postUserName"><Link  onClick={() => test(this.props.personProp._id)} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
+    		    <div className="postUserName"><Link  onClick={() => profileId(this.props.personProp._id)} to={`/auth/profile`}>{this.props.personProp.firstName} {this.props.personProp.lastName}</Link></div>
                     <div className="postDate">{this.props.personProp.email}</div>
                 </div>
                 <p>Hello</p>

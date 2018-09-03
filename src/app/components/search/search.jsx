@@ -80,7 +80,7 @@ class Search extends React.Component {
                         <div className="col-md-6" >
                             <SearchResults 
                             searchResultsList={this.state.searchResultsList} 
-                            test = {this.props.test}
+                            profileId = {this.props.profileId}
                              />
                         </div>
 
