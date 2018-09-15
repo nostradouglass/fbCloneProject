@@ -94,6 +94,7 @@ function requireLogin (req, res, next) {
   }
 }
 
+app.use('/upload', upload)
 app.use('/friends', friends)
 app.use('/users', users);
 app.use('/signup', signUp )
