@@ -12,15 +12,8 @@ var Post = new Schema ({
     postText: { type: String },
     postImageUrl: { type: String },
     postComments: [{ type: Schema.Types.ObjectId, ref: 'PostComment'}],
-
-
-
-    albums: [{ type: Schema.Types.ObjectId, ref: 'Album'}],
-
-
 })
 
 module.exports = mongoose.model('Post', Post)
 
 
-    

@@ -29,6 +29,7 @@ var signUp = require('./routes/signUp')
 var upload = require('./routes/upload')
 var friends = require('./routes/friends')
 var profile = require('./routes/profile')
+var posts = require('./routes/posts')
 
 mongoose.connect(`mongodb://${database.username}:${database.password}@${database.database_location}`, { useMongoClient: true})
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
@@ -103,7 +104,7 @@ app.use('/auth', express.static(path.join(__dirname, 'dist')));
 //added profile line
 app.use('/auth/profile', profile)
 app.use('/', index);
-
+app.use('/posts', posts)
 app.use('/login', login);
 
 app.use('/logout', logout)
