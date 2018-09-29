@@ -66,31 +66,33 @@ class Profile extends React.Component {
                                                 height: "100%",
                                                 width: "auto"
                                             }} src={"/users/" + this.props.profileId + "/cover_photo/cover_photo.jpg"} />
-                                        </div>
             <div style={{
                 width: "150px",
                 height: "150px",
-                position: "relative",
+                position: "absolute",
                 overflow: "hidden",
-                borderRadius: "50%"
+                borderRadius: "50%",
+		bottom: 0
             }}
             >
                 <img style={{
                     display: "inline",
                     left: "50%",
-                    position: "relative",
+                    position: "absolute",
                     transform: "translateX(-50%) scale(1.7)",
                     margin: "0 auto",
                     height: "100%",
                     width: "auto"
-                }} src={"/users/" + this.props.profileId + "/profile_pics/primary_profile_pic.jpg"} />
+               }} src={"/users/" + this.props.profileId + "/profile_pics/primary_profile_pic.jpg"} />
             </div>
-                                        <label style={styles.textStyle} >Cover Photo</label>
+		    <div style={styles.profileName}> <h5 style={styles.profileHeader}>{this.state.firstName} {this.state.lastName}</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="row">
+			    <div className="row">
                                 <div className="col-md-7">
                                     <div className="row">
                                         <div className="col-md-6" style={styles.textInputArea}>
@@ -164,7 +166,6 @@ class Profile extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div className="col-md-5">
                                     <div className="row">
@@ -236,7 +237,8 @@ var styles = {
     coverPhotoBox: {
         height: "280px",
         width: "100%",
-        border: "2px solid rgba(31,193,68, .5)"
+        border: "2px solid rgba(31,193,68, .5)",
+	position: "relative"
     },
     aboutBox: {
         height: "125px",
@@ -263,6 +265,15 @@ var styles = {
     },
     footer: {
         height: "70px"
+    },
+    profileHeader: {
+	    color: "rgb(187,239,201)",
+	    fontSize: "2.25rem"
+    },
+    profileName: {
+	    position: "absolute",
+	    bottom: "15%",
+	    marginLeft: "16%"
     },
 }
 
