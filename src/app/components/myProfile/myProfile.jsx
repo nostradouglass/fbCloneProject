@@ -40,7 +40,6 @@ class MyProfile extends React.Component {
                     relationship_status:this.state.userData.relationship_status
           })
           .then(function (response) {
-            //console.log(response);
           })
           .catch(function (error) {
             console.log(error);

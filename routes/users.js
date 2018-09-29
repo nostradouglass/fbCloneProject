@@ -31,7 +31,6 @@ router.post('/findUsers', function (req, res) {
     {
         res.send(err);
     }
-    console.log(userList)
     res.json(userList);
 
  })
@@ -52,7 +51,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.put('/', function (req, res) {
-  console.log(req.body)
+
   User.findOne({ email: req.session.user.email }, function (err, user, next) {
     if (user) {
     

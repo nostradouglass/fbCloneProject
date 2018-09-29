@@ -49,12 +49,13 @@ class BasicExample extends React.Component {
 
 
             {/* For dev */}
-            <Route exact path="/auth" component={App} />
+            <Route path="/auth/search" render={()=> <Search test = { testData => this.setState({testData: testData}) } /> }   />
+            <Route exact path="/auth" render={()=> <App currentUserData = {this.state.testData } /> } />
             <Route path="/auth/friends" component={Friends} />
             <Route path="/auth/myProfile" component={MyProfile} />
             <Route path="/auth/photos" component={Photos} />
             <Route path="/auth/settings" component={Settings} />
-            <Route path="/auth/search" render={()=> <Search test = { testData => this.setState({testData: testData}) } /> }   />
+            
             <Route path="/auth/friendRequest" component={FriendRequest} />
             <Route path="/auth/testing" component={Testing} />
             <Route path="/auth/profile" render={()=> <Profile test = {this.state.testData } /> } />

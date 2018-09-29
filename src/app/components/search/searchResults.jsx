@@ -17,8 +17,6 @@ class SearchResults extends React.Component {
 
 
     sendPersonId = (personIdValue) => {
-       // console.log(personIdValue) // Not needed but an example of passing data up
-        // look into person._id  anfd if that is correct Id pass that up
         this.setState({personIdState: personIdValue})
         return personIdValue
 
