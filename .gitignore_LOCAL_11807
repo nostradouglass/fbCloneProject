@@ -1,12 +1,7 @@
 
 # files
-<<<<<<< HEAD
 **/dist/scripts/
 dist/scripts
-=======
-**/dist/scripts
-dist/scripts/*
->>>>>>> 30a8383ed07fbf435a3ec94f93cc81f0a9d88cb6
 
 # Logs
 logs
