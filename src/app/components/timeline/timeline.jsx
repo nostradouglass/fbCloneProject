@@ -3,6 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios'
+import moment from 'moment'
 
 import SideChat from '../base/sideChat'
 
@@ -19,7 +20,8 @@ class Timeline extends React.Component {
             email: "",
             nickname: "",
             open: false,
-            textAreaVal: "Test",
+            textAreaVal: "",
+            postDate: moment().format('MMMM Do YYYY, h:mm:ss a'),
             tempPostInfo: [
                 {
                     postId: "123",
@@ -113,11 +115,15 @@ class Timeline extends React.Component {
     }
 
     handleClose = () => {
+        this.setState({ open: false, textAreaVal: "" });
+    };
+
+    handleSubmit = () => {
         this.setState({ open: false });
     };
 
-    handleTextValChange = () => {
-        console.log("change")
+    handleTextValChange = (e) => {
+       this.setState({textAreaVal: e.target.value})
     }
 
     render() {
@@ -131,8 +137,8 @@ class Timeline extends React.Component {
             <FlatButton
                 label="Submit"
                 primary={true}
-                disabled={true}
-                onClick={this.handleClose}
+                disabled={false}
+                onClick={this.handleSubmit}
             />,
         ];
 
@@ -167,12 +173,12 @@ class Timeline extends React.Component {
                     <div style={{ width: "100%" }}>
                         <div style={{ display: "inline" }}>
                             <div ><img className="smallUserPic" src={"/users/" + this.state.id + "/profile_pics/primary_profile_pic.jpg"} /></div>
-                            <div className="postUserName">{this.state.firstName}</div>
-                            <div className="postDate">Post Date</div>
+                            <div className="postUserName">{this.state.firstName} {this.state.lastName}</div>
+                            <div className="postDate">{this.state.postDate}</div>
                         </div>
 
                         <div className="card-body">
-                            <p className="card-text">Post text</p>
+                            <p className="card-text">{this.state.textAreaVal}</p>
                         </div>
                         <textarea className="createPostTextInput" value={this.state.textAreaVal} onChange={this.handleTextValChange} />
                     </div>
