@@ -154,7 +154,7 @@ class Profile extends React.Component {
                
         borderRadius: '50%',
         float: 'left' }}src= {"/users/" + this.state.myId+ "/profile_pics/primary_profile_pic.jpg"}/></div>
-                                                <div className="postUserName"></div>
+                                                <div className="postUserName">Write something to {this.state.firstName} {this.state.lastName}...</div>
                                                 <div className="postDate"> </div>
                                             </div>
 
