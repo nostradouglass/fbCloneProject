@@ -1,12 +1,9 @@
 import React from 'react'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios'
 import moment from 'moment'
 
 import SideChat from '../base/sideChat'
-
+import CreatePost from '../base/createPost'
 
 class Timeline extends React.Component {
 
@@ -56,7 +53,6 @@ class Timeline extends React.Component {
             ]
         }
 
-        this.createPost = this.createPost.bind(this)
 
     }
 
@@ -79,6 +75,10 @@ class Timeline extends React.Component {
 
     }
 
+  createPost() {
+        this.setState({ open: true });
+    }
+    
     post() {
 
         return this.state.tempPostInfo.map((post) => {
@@ -109,38 +109,9 @@ class Timeline extends React.Component {
             )
         })
     }
-
-    createPost() {
-        this.setState({ open: true });
-    }
-
-    handleClose = () => {
-        this.setState({ open: false, textAreaVal: "" });
-    };
-
-    handleSubmit = () => {
-        this.setState({ open: false });
-    };
-
-    handleTextValChange = (e) => {
-       this.setState({textAreaVal: e.target.value})
-    }
+    
 
     render() {
-
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onClick={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                disabled={false}
-                onClick={this.handleSubmit}
-            />,
-        ];
 
 
         return (
@@ -154,35 +125,18 @@ class Timeline extends React.Component {
                         <div className="col-md-3"></div>
                     </div>
 
-
-
                     <div className="row">
                         <div className="col-md-3"></div>
-                        <div className="col-md-6 timelineBg">
-                            {this.post()}</div>
-                        <div className="col-md-3"></div>
+                        <div className="col-md-9">{this.post()}</div>
+                        
                     </div>
+
+                     <CreatePost open={this.state.open} id={this.state.id} firstName={this.state.firstName} lastName={this.state.lastName} postDate={this.state.postDate} />
+
                 </div>
 
 
-                <Dialog
-                    actions={actions}
-                    modal={true}
-                    open={this.state.open}
-                >
-                    <div style={{ width: "100%" }}>
-                        <div style={{ display: "inline" }}>
-                            <div ><img className="smallUserPic" src={"/users/" + this.state.id + "/profile_pics/primary_profile_pic.jpg"} /></div>
-                            <div className="postUserName">{this.state.firstName} {this.state.lastName}</div>
-                            <div className="postDate">{this.state.postDate}</div>
-                        </div>
 
-                        <div className="card-body">
-                            <p className="card-text">{this.state.textAreaVal}</p>
-                        </div>
-                        <textarea className="createPostTextInput" value={this.state.textAreaVal} onChange={this.handleTextValChange} />
-                    </div>
-                </Dialog>
             </div >
         )
     }
