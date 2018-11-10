@@ -161,7 +161,7 @@ class Profile extends React.Component {
                                             <div className="card-body">
                                                 <p className="card-text"></p>
                                             </div>
-                                            <div className="postImage" ></div>
+                                            <textarea ></textarea>
                                             <div className="row likeCommentButtons">
                                                 <div className="col-md-1"></div>
                                                 <div className="col-md-3"><button type="button" className="btn btn-outline-success">Like</button></div>
