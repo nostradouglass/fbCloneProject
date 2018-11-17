@@ -17,7 +17,7 @@ class Profile extends React.Component {
         };
     }
 
-   
+
 
     componentWillMount() {
         var that = this;
@@ -37,14 +37,17 @@ class Profile extends React.Component {
                 that.setState({
                     myId: res.data._id,
                     myProfPict: "/users/" + res.data._id + "/profile_pics/primary_profile_pic.jpg"
-                    
+
                 })
 
             })
             .catch(function (error) {
                 console.log(error);
             });
+
+
     }
+
 
     profilePic() {
 
@@ -70,6 +73,13 @@ class Profile extends React.Component {
                 }} src={"/users/" + this.state.myId + "/profile_pics/primary_profile_pic.jpg"} />
             </div>
         )
+    }
+
+    profileTextArea() {
+        var txtArea = document.getElementById("postToUserName");
+        txtArea.setAttribute("placeholder", this.state.firstName);
+        console.log("txtArea works");
+
     }
 
 
@@ -149,12 +159,15 @@ class Profile extends React.Component {
                                     <div className="col-md-6">
                                         <div /* key={post.postId} */ className="card" style={{ width: "100%" }}>
                                             <div style={{ display: "inline" }}>
-                                                <div> <img style={{margin: '10px',height: '70px',
-        width: '70px',
-               
-        borderRadius: '50%',
-        float: 'left' }}src= {"/users/" + this.state.myId+ "/profile_pics/primary_profile_pic.jpg"}/></div>
+                                                <div> <img style={{
+                                                    margin: '10px', height: '70px',
+                                                    width: '70px',
+
+                                                    borderRadius: '50%',
+                                                    float: 'left'
+                                                }} src={"/users/" + this.state.myId + "/profile_pics/primary_profile_pic.jpg"} /></div>
                                                 <div className="postUserName">Write something to {this.state.firstName} {this.state.lastName}...</div>
+                                                {/* <textarea id="postToUserName"></textarea> */}
                                                 <div className="postDate"> </div>
                                             </div>
 
@@ -168,10 +181,7 @@ class Profile extends React.Component {
                                                 <div className="col-md-4"></div>
                                                 <div className="col-md-3"><button type="button" className="btn btn-outline-success">Comment</button></div>
                                                 <div className="col-md-1"></div>
-                                                <div style={{ display: "inline" }}>
-                                                    <div className="addCommentPic"></div>
-                                                    <input type="text" placeholder="Add a comment" style={{ width: "400px", marginTop: "20px" }} />
-                                                </div>
+
                                             </div>
                                         </div>
 
@@ -210,7 +220,7 @@ class Profile extends React.Component {
 
 var styles = {
 
-       inputBorder: {
+    inputBorder: {
         width: '100%',
         border: "2px solid rgba(31,193,68, .5)",
         borderRadius: "20px",
