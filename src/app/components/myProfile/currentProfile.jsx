@@ -51,6 +51,13 @@ class CurrentProfile extends React.Component {
                 console.log(error);
             });
 
+            
+
+
+    }
+
+    componentDidMount() {
+
     }
 
     profilePic() {
@@ -99,8 +106,8 @@ class CurrentProfile extends React.Component {
                                                 position: "relative",
                                                 transform: "translateX(-50%)",
                                                 margin: "0 auto",
-                                                height: "100%",
-                                                width: "auto"
+                                                height: "130%",
+                                                width: "120%"
                                             }} src={"/users/" + this.state.id + "/cover_photo/cover_photo.jpg"} />
                                         </div>
                                         <label style={styles.textStyle} >Cover Photo</label>
@@ -259,7 +266,8 @@ var styles = {
     coverPhotoBox: {
         height: "400px",
         width: "100%",
-        border: "2px solid rgba(31,193,68, .5)"
+        border: "2px solid rgba(31,193,68, .5)",
+        overflow: "hidden"
     },
     aboutBox: {
         height: "125px",

@@ -85,6 +85,7 @@ class EditProfile extends React.Component {
 
     updateUserData = () => {
         this.props.userData(this.state)
+        this.forceUpdate();
     }
 
     render() {
