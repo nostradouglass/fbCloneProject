@@ -15,6 +15,27 @@ router.get('/user', function (req, res, next) {
   })
 })
 
+router.post('/findUserById', function (req, res) {
+
+  let searchTerm = req.body.searchTerm
+
+  User.find({$or:[
+    {_id: {'$regex':searchTerm,$options:'i'}}]})
+    
+    .select('_id firstName lastName email nickname city state country')
+    .exec(function(err, userList) 
+ {
+    if (err)
+    {
+        res.send(err);
+    }
+    res.json(userList);
+
+ })
+
+
+
+})
 router.post('/findUsers', function (req, res) {
 
   let searchTerm = req.body.searchTerm
