@@ -29,8 +29,7 @@ class Profile extends React.Component {
         axios.post('http://localhost:3000/users/findUserById', {
 		searchTerm: this.props.test
 		}).then(function (response){
-			that.setState({ searchResultLists: response.data })
-			console.log(response.data);
+			that.setState({ firstName: response.data.firstName})
 		})
     .catch(function (error) {
 	    console.log(error);
@@ -45,7 +44,8 @@ class Profile extends React.Component {
             <div>
                 <Header />
                 <h1>Profile</h1>
-                <h1>{this.props.test}</h1>
+                <h1>{this.state.searchResultLists}</h1>
+                <h1>{this.state.firstName}</h1>
             </div>
         )
     }
